@@ -1,0 +1,55 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ONETOO.eu Trust API",
+    "version": "1.0.0",
+    "description": "Public contract for ONETOO.eu APIs (operated by ONETOO.dynamics). This document is intentionally minimal and expands over time."
+  },
+  "servers": [
+    {
+      "url": "https://onetoo.eu"
+    }
+  ],
+  "paths": {
+    "/api/v1/index.json": {
+      "get": {
+        "summary": "API index",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/methodology/snapshot.json": {
+      "get": {
+        "summary": "Public methodology snapshot",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/incidents/list.json": {
+      "get": {
+        "summary": "Incident list",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/meta/version.json": {
+      "get": {
+        "summary": "Version metadata",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

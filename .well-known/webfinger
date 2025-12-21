@@ -1,0 +1,15 @@
+{
+  "subject": "https://onetoo.eu",
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/json",
+      "href": "https://onetoo.eu/api/v1/index.json"
+    },
+    {
+      "rel": "https://onetoo.eu/rel/trust",
+      "type": "application/json",
+      "href": "https://onetoo.eu/api/v1/methodology/snapshot.json"
+    }
+  ]
+}

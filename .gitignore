@@ -1,0 +1,16 @@
+minisign.key
+
+# minisign private keys (DO NOT COMMIT)
+*.key
+*.key.*
+/onetoo.key
+
+# secrets
+*.sec
+*minisign*key*
+onetoo-keys/
+
+# build artifacts
+*.zip
+*.zip.sha256
+*-workingtree-*.sha256

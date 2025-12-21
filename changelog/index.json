@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "date": "2025-12-19",
+      "href": "/changelog/2025-12-19-sigstore.md",
+      "id": "2025-12-19-sigstore",
+      "title": "Sigstore/Cosign (optional) + transparency log bundles"
+    }
+  ],
+  "generated_at": "2025-12-19T00:00:00Z",
+  "releases": [
+    {
+      "date": "2025-12-19",
+      "notes_url": "https://onetoo.eu/changelog/2025-12-19.md",
+      "tag": "2025.12.19-onetoo-ai-trust-hub"
+    }
+  ],
+  "schema": "https://onetoo.eu/schemas/changelog-index.schema.json"
+}

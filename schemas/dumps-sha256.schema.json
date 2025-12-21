@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onetoo.eu/schemas/dumps-sha256.schema.json",
+  "title": "ONETOO sha256 inventory",
+  "type": "object",
+  "required": ["platform", "operator", "generated_at", "algorithm", "count", "files"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "platform": {"type": "string"},
+    "operator": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "algorithm": {"type": "string", "enum": ["sha256"]},
+    "git": {
+      "type": "object",
+      "properties": {
+        "commit": {"type": "string"},
+        "working_tree": {"type": "string", "enum": ["clean", "dirty", ""]}
+      },
+      "additionalProperties": true
+    },
+    "count": {"type": "integer", "minimum": 0},
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[A-Fa-f0-9]{64}$"
+      }
+    }
+  },
+  "additionalProperties": true
+}

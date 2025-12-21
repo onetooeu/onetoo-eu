@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "cosign": {
+      "properties": {
+        "bundles_index": {
+          "type": "string"
+        },
+        "certificate_identity_regexp": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "oidc_issuer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "oidc_issuer",
+        "certificate_identity_regexp",
+        "bundles_index"
+      ],
+      "type": "object"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "type": {
+      "const": "sigstore"
+    }
+  },
+  "required": [
+    "type",
+    "cosign",
+    "notes"
+  ],
+  "title": "Sigstore Metadata",
+  "type": "object"
+}

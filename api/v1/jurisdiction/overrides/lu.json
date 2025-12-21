@@ -1,0 +1,9 @@
+{
+  "country": "LU",
+  "overrides": {
+    "risk_policy": {
+      "missing_legal_info_penalty": 1.7
+    }
+  },
+  "currency": "EUR"
+}

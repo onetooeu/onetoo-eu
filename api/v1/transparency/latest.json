@@ -1,0 +1,20 @@
+{
+  "period": "2025-12",
+  "api_requests": {
+    "month": 0,
+    "note": "Counters start after production onboarding."
+  },
+  "affiliate_redirects": {
+    "total": 0,
+    "verified": 0,
+    "blocked": 0
+  },
+  "top_reason_codes": [],
+  "policy_changes": [
+    {
+      "date": "2025-12-19",
+      "change": "Introduced confidence, temporal trend, and cross-border diff fields."
+    }
+  ],
+  "incidents": []
+}

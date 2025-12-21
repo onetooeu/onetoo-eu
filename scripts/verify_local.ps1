@@ -1,0 +1,159 @@
+[CmdletBinding()]
+param(
+  [string]$RepoRoot = ""
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+function Ok($msg)  { Write-Host "[OK]  $msg" -ForegroundColor Green }
+function Warn($msg){ Write-Host "[WARN] $msg" -ForegroundColor Yellow }
+function Fail($msg){ Write-Host "[FAIL] $msg" -ForegroundColor Red; exit 1 }
+
+function Ensure-File($p) {
+  if (-not (Test-Path -LiteralPath $p)) { Fail "Missing file: $p" }
+}
+
+function Run-MinisignVerifyDetached($pub, $msgFile, $sigFile) {
+  Ensure-File $pub
+  Ensure-File $msgFile
+  Ensure-File $sigFile
+  & minisign -V -p $pub -m $msgFile -x $sigFile | Out-Host
+  if ($LASTEXITCODE -ne 0) { Fail "minisign verify failed for $msgFile" }
+}
+
+function Read-Json($p) {
+  Ensure-File $p
+  $raw = Get-Content -LiteralPath $p -Raw -Encoding UTF8
+  return $raw | ConvertFrom-Json
+}
+
+function Has-JsonProperty($obj, $name) {
+  return $null -ne ($obj.PSObject.Properties[$name])
+}
+
+# Resolve repo root
+if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
+  # script is in scripts/, repo root is parent
+  $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+} else {
+  $RepoRoot = (Resolve-Path $RepoRoot).Path
+}
+
+Push-Location $RepoRoot
+try {
+  Ok "RepoRoot = $RepoRoot"
+
+  # ---- Required files ----
+  $pub = ".well-known/minisign.pub"
+
+  $hub = ".well-known/ai-trust-hub.json"
+  $hubSig = ".well-known/ai-trust-hub.json.minisig"
+
+  $kh = ".well-known/key-history.json"
+  $khSig = ".well-known/key-history.json.minisig"
+
+  $sha = "dumps/sha256.json"
+  $shaSig = "dumps/sigs/sha256.json.minisig"
+
+  $tgt = "dumps/targets.json"
+  $tgtSig = "dumps/sigs/targets.json.minisig"
+
+  Ensure-File $pub
+  Ensure-File $hub
+  Ensure-File $hubSig
+  Ensure-File $kh
+  Ensure-File $khSig
+  Ensure-File $sha
+  Ensure-File $shaSig
+  Ensure-File $tgt
+  Ensure-File $tgtSig
+
+  # ---- minisign verification gates ----
+  Run-MinisignVerifyDetached $pub $hub $hubSig
+  Ok "ai-trust-hub.json signature verified"
+
+  Run-MinisignVerifyDetached $pub $kh $khSig
+  Ok "key-history.json signature verified"
+
+  Run-MinisignVerifyDetached $pub $sha $shaSig
+  Ok "sha256.json signature verified"
+
+  Run-MinisignVerifyDetached $pub $tgt $tgtSig
+  Ok "targets.json signature verified"
+
+  # ---- Validate ai-trust-hub.json has critical endpoints ----
+  $hubObj = Read-Json $hub
+  if (-not (Has-JsonProperty $hubObj "endpoints")) { Fail "ai-trust-hub.json missing endpoints" }
+  $eps = $hubObj.endpoints
+
+  $mustEndpoints = @{
+    "verification_targets"      = "/dumps/targets.json"
+    "signature_targets"         = "/dumps/sigs/targets.json.minisig"
+    "key_history"               = "/.well-known/key-history.json"
+    "signature_key_history"     = "/.well-known/key-history.json.minisig"
+    "signature_ai_trust_hub"    = "/.well-known/ai-trust-hub.json.minisig"
+    "changelog_feed_atom"       = "/changelog/feed.xml"
+    "incidents_feed_atom"       = "/incidents/feed.xml"
+    "webhooks_contract"         = "/.well-known/webhooks.json"
+    "webhooks_docs"             = "/docs/WEBHOOKS.md"
+  }
+
+  foreach ($k in $mustEndpoints.Keys) {
+    $v = $eps.$k
+    if ([string]::IsNullOrWhiteSpace($v)) { Fail "ai-trust-hub.json endpoints.$k is missing/empty" }
+    if ($v -ne $mustEndpoints[$k]) { Warn "endpoints.$k = '$v' (expected '$($mustEndpoints[$k])')" }
+  }
+  Ok "ai-trust-hub.json endpoint wiring looks OK"
+
+  # ---- Ensure feeds + webhooks files exist ----
+  $mustFiles = @(
+    "changelog/feed.xml",
+    "incidents/feed.xml",
+    ".well-known/webhooks.json",
+    "docs/WEBHOOKS.md"
+  )
+  foreach ($f in $mustFiles) { Ensure-File $f }
+  Ok "feed + webhooks files exist"
+
+  # ---- Ensure sha256 inventory contains these files ----
+  $shaObj = Read-Json $sha
+  if (-not (Has-JsonProperty $shaObj "files")) { Fail "sha256.json missing 'files' map" }
+
+  # Convert the 'files' object keys to a HashSet for quick contains checks
+  $shaKeys = New-Object System.Collections.Generic.HashSet[string]
+  foreach ($p in $shaObj.files.PSObject.Properties.Name) { [void]$shaKeys.Add($p) }
+
+  foreach ($f in $mustFiles) {
+    if (-not $shaKeys.Contains($f)) { Fail "sha256.json inventory missing: $f" }
+  }
+  Ok "sha256.json inventory contains feeds + webhooks"
+
+  # ---- Ensure per-target minisigs exist (best effort) ----
+  function To-TargetSigName($path) {
+    # sign-all.ps1 uses path normalization like / -> __
+    return ($path -replace "/", "__") + ".minisig"
+  }
+  $targetsSigDir = "dumps/sigs/targets"
+  Ensure-File $targetsSigDir
+
+  $expectedTargetSigs = @(
+    (Join-Path $targetsSigDir (To-TargetSigName "changelog/feed.xml")),
+    (Join-Path $targetsSigDir (To-TargetSigName "incidents/feed.xml")),
+    (Join-Path $targetsSigDir (To-TargetSigName ".well-known/webhooks.json")),
+    (Join-Path $targetsSigDir (To-TargetSigName "docs/WEBHOOKS.md"))
+  )
+
+  foreach ($s in $expectedTargetSigs) {
+    if (-not (Test-Path -LiteralPath $s)) {
+      Warn "Missing per-target signature (can be regenerated by sign-all.ps1): $s"
+    }
+  }
+  Ok "per-target signature presence check completed"
+
+  Ok "VERIFY PASSED ✅"
+  exit 0
+}
+finally {
+  Pop-Location
+}

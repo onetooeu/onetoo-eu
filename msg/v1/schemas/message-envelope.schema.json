@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OCP-MSG Message Envelope",
+  "type": "object",
+  "required": [
+    "msg_id",
+    "from",
+    "to",
+    "created_at",
+    "expires_at",
+    "payload_hash",
+    "signature"
+  ],
+  "properties": {
+    "msg_id": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string"
+    },
+    "cipher": {
+      "type": "string"
+    },
+    "content_type": {
+      "type": "string"
+    },
+    "payload_hash": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "headers": {
+      "type": "object",
+      "description": "Optional headers; may include headers.class"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OCP-MSG Agent Profile",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "pubkey",
+    "visibility",
+    "accept_policy",
+    "updated_at"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string"
+    },
+    "pubkey": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "object"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "public",
+        "unlisted",
+        "private"
+      ]
+    },
+    "accept_policy": {
+      "type": "string",
+      "enum": [
+        "friends_only",
+        "allowlist",
+        "open_with_quota"
+      ]
+    },
+    "updated_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

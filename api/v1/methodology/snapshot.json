@@ -1,0 +1,32 @@
+{
+  "platform": "ONETOO.eu",
+  "operator": "ONETOO.dynamics",
+  "version": "1.0",
+  "principles": [
+    "explainability",
+    "auditability",
+    "jurisdiction-awareness",
+    "safety-first"
+  ],
+  "signals": [
+    "transparency",
+    "behavioral-stability",
+    "reputation-anomalies",
+    "redirect-patterns"
+  ],
+  "time_dimension": {
+    "temporal_risk_memory": true,
+    "trend": [
+      "improving",
+      "stable",
+      "worsening",
+      "unknown"
+    ]
+  },
+  "confidence": [
+    "high",
+    "medium",
+    "low"
+  ],
+  "eu_coverage": "EU 27/27 via EU core + national overrides"
+}

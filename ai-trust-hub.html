@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Trust Hub — ONETOO.eu</title>
+  <link rel="canonical" href="https://onetoo.eu/ai-trust-hub.html">
+  <meta name="description" content="Machine-readable trust, governance, and safety signals for AI agents and partners." />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f19;color:#e7eaf3}
+    a{color:#9cc2ff;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:0 auto;padding:32px}
+    .card{background:#10182a;border:1px solid #223055;border-radius:14px;padding:18px;margin-top:16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;background:#162544;border:1px solid #2a3d6b}
+    .muted{color:#b9c1d6}
+    .pill{display:inline-block;font-size:12px;padding:4px 8px;border:1px solid #2a3d6b;border-radius:999px;color:#cfe0ff;margin-right:6px}
+  </style>
+
+  <link rel="stylesheet" href="/assets/site.css"> 
+  <script defer src="/assets/site.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1>AI Trust Hub</h1>
+      <p class="lead"><strong>ONETOO.eu</strong> — bot‑first, human‑readable trust portal: governance, policies, security contacts, incidents, and verification artifacts.</p>
+      <div class="grid">
+        <a class="card" href="/.well-known/ai-trust-hub.json"><strong>Trust manifest</strong><br><span>/.well-known/ai-trust-hub.json</span></a>
+        <a class="card" href="/.well-known/ai-governance.json"><strong>AI governance</strong><br><span>/.well-known/ai-governance.json</span></a>
+        <a class="card" href="/openapi.json"><strong>OpenAPI</strong><br><span>Programmatic interface</span></a>
+        <a class="card" href="/status.json"><strong>Status</strong><br><span>Current capability signals</span></a>
+      </div>
+    </header>
+
+    <section>
+      <h2>What AI agents should check</h2>
+      <ul>
+        <li><strong>Identity & scope</strong> — who operates this site and what systems it covers.</li>
+        <li><strong>Policies</strong> — privacy, terms, cookies, accessibility, affiliate disclosure.</li>
+        <li><strong>Security</strong> — vulnerability reporting via <code>security.txt</code> and keys.</li>
+        <li><strong>Incidents & changelog</strong> — what changed and what went wrong, with timestamps.</li>
+        <li><strong>Verification</strong> — SHA‑256 dumps and signed artifacts to detect tampering.</li>
+      </ul>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Policies</h3>
+        <p><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cookies/">Cookies</a> · <a href="/accessibility/">Accessibility</a> · <a href="/affiliate-disclosure/">Affiliate disclosure</a></p>
+      </div>
+      <div class="card">
+        <h3>Operational transparency</h3>
+        <p><a href="/incidents/">Incidents</a> · <a href="/changelog/">Changelog</a> · <a href="/methodology/">Methodology</a></p>
+      </div>
+      <div class="card">
+        <h3>Security & verification</h3>
+        <p><a href="/.well-known/security.txt">security.txt</a> · <a href="/control/keys/maintainers.pub">Keys</a> · <a href="/dumps/sha256.json">SHA‑256 dump</a></p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>Built for EU‑grade transparency and AI interoperability. Start with <a href="/">home</a> · customize <code>/.well-known/ai-trust-hub.json</code> and <code>/status.json</code> to match your organization.</p>
+    </footer>
+  </main>
+</body>
+</html>

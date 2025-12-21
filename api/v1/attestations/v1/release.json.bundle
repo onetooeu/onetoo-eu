@@ -1,0 +1,6 @@
+{
+  "artifact": "/dumps/release.json",
+  "note": "Placeholder bundle in freeze package. CI will replace this file with a real Sigstore bundle (Rekor inclusion proof) after cosign-attest workflow runs.",
+  "pending": true,
+  "type": "sigstore/cosign-bundle"
+}

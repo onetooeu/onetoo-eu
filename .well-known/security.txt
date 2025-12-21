@@ -1,0 +1,7 @@
+Contact: mailto:security@onetoo.eu
+Contact: mailto:trust@onetoo.eu
+Expires: 2026-12-19
+Preferred-Languages: en, sk
+Policy: https://onetoo.eu/regulatory
+Acknowledgments: https://onetoo.eu/transparency
+Hiring: https://onetoo.eu/partners

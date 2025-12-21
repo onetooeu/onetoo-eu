@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Risk Evaluation Result",
+  "type": "object",
+  "properties": {
+    "classification": {
+      "type": "string",
+      "enum": [
+        "safe",
+        "neutral",
+        "risky"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trend": {
+      "type": "string",
+      "enum": [
+        "improving",
+        "stable",
+        "worsening",
+        "unknown"
+      ]
+    },
+    "cross_border_diff": {
+      "type": "object"
+    },
+    "jurisdiction": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "classification",
+    "confidence",
+    "reason_codes"
+  ]
+}

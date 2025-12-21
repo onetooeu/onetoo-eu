@@ -1,0 +1,21 @@
+{
+  "schema": "https://onetoo.eu/schemas/incident.schema.json",
+  "id": "INC-YYYYMMDD-XXXX",
+  "reported_at": "YYYY-MM-DDThh:mm:ssZ",
+  "last_updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "severity": "low|medium|high|critical",
+  "status": "investigating|identified|monitoring|resolved",
+  "summary": "",
+  "customer_impact": "",
+  "systems_affected": [],
+  "timeline": [
+    {
+      "at": "YYYY-MM-DDThh:mm:ssZ",
+      "event": ""
+    }
+  ],
+  "mitigation": "",
+  "root_cause": "",
+  "preventive_actions": [],
+  "links": []
+}

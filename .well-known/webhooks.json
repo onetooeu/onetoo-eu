@@ -1,0 +1,33 @@
+{
+  "$schema": "/schemas/webhooks.schema.json",
+  "project": "onetoo.eu",
+  "version": "1.0",
+  "notes": "Declarative webhook capabilities. Delivery endpoints are partner-managed; this document describes event types and payload shape.",
+  "events": [
+    {
+      "type": "changelog.new_entry",
+      "description": "New changelog entry published",
+      "source": "/changelog/index.json",
+      "feed_atom": "/changelog/feed.xml",
+      "payload_schema": "/schemas/webhook-event.schema.json"
+    },
+    {
+      "type": "incidents.updated",
+      "description": "Incident created or status updated",
+      "source": "/incidents/index.json",
+      "feed_atom": "/incidents/feed.xml",
+      "payload_schema": "/schemas/webhook-event.schema.json"
+    }
+  ],
+  "delivery": {
+    "modes": ["pull", "webhook"],
+    "webhook": {
+      "status": "planned",
+      "subscribe": "/docs/WEBHOOKS.md",
+      "security": {
+        "recommended": ["mTLS", "HMAC-SHA256 signature header", "replay protection via timestamp + nonce"],
+        "verification_key_source": "/.well-known/minisign.pub"
+      }
+    }
+  }
+}

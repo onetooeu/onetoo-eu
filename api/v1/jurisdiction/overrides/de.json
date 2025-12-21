@@ -1,0 +1,12 @@
+{
+  "country": "DE",
+  "overrides": {
+    "consumer_protection": {
+      "returns_expectation": "high"
+    },
+    "risk_policy": {
+      "missing_legal_info_penalty": 1.8
+    }
+  },
+  "currency": "EUR"
+}

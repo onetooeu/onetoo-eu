@@ -1,0 +1,18 @@
+{
+  "tag": "2025.12.19-onetoo-ai-trust-hub-mega",
+  "generated_at": "2025-12-19T00:00:00Z",
+  "notes": "Mega upgrade: AI Trust Hub for onetoo.eu (llms.txt, verification page, incident + changelog scaffolding, hardened headers, deterministic SHA-256 inventory).",
+  "artifacts": {
+    "trust_manifest": "https://onetoo.eu/.well-known/ai-trust-hub.json",
+    "sha256_json": "https://onetoo.eu/dumps/sha256.json",
+    "sha256_txt": "https://onetoo.eu/dumps/sha256.txt",
+    "verify": "https://onetoo.eu/verify.html"
+  },
+  "signing": {
+    "release_json_minisig": "https://onetoo.eu/dumps/sigs/release.json.minisig",
+    "note": "release.json is signed; release-mega.json is unsigned unless you sign it in CI."
+  },
+  "version": "2025.12-final",
+  "stability": "final",
+  "frozen_date": "2025-12-19"
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onetoo.eu/schemas/incidents-index.schema.json",
+  "title": "Incidents Index",
+  "type": "object",
+  "required": ["schema", "generated_at", "items"],
+  "properties": {
+    "schema": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "notes": {"type": "string"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "published_at"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "status": {"type": "string"},
+          "published_at": {"type": "string"},
+          "url": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

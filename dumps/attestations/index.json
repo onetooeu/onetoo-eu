@@ -1,0 +1,21 @@
+{
+  "bundles": [
+    {
+      "artifact": "/dumps/sha256.json",
+      "bundle": "/dumps/attestations/sha256.json.bundle"
+    },
+    {
+      "artifact": "/dumps/release.json",
+      "bundle": "/dumps/attestations/release.json.bundle"
+    },
+    {
+      "artifact": "/dumps/release-mega.json",
+      "bundle": "/dumps/attestations/release-mega.json.bundle"
+    }
+  ],
+  "generated_at_utc": "2025-12-20T23:43:32Z",
+  "notes": [
+    "Cosign bundles include Rekor transparency-log inclusion proof.",
+    "Minisign signatures remain the primary trust anchor for content integrity."
+  ]
+}

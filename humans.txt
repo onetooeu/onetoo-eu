@@ -1,0 +1,9 @@
+/* TEAM */
+Operator: ONETOO.dynamics
+Contact: trust@onetoo.eu
+Contact: security@onetoo.eu
+
+/* SITE */
+Domain: onetoo.eu
+Purpose: Pan-European trust & decision infrastructure for commerce and AI
+Standards: Signed datasets, versioning, transparency reporting, jurisdiction-aware policies

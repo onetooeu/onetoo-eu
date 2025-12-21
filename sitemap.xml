@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://onetoo.eu/</loc></url>
+  <url><loc>https://onetoo.eu/ai-trust-hub.html</loc></url>
+  <url><loc>https://onetoo.eu/verify.html</loc></url>
+  <url><loc>https://onetoo.eu/incidents/</loc></url>
+  <url><loc>https://onetoo.eu/changelog/</loc></url>
+  <url><loc>https://onetoo.eu/openapi.json</loc></url>
+  <url><loc>https://onetoo.eu/.well-known/ai-trust-hub.json</loc></url>
+  <url><loc>https://onetoo.eu/.well-known/llms.txt</loc></url>
+  <url><loc>https://onetoo.eu/.well-known/security.txt</loc></url>
+  <url><loc>https://onetoo.eu/.well-known/minisign.pub</loc></url>
+</urlset>

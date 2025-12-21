@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "updated": "2025-12-20",
+  "levels": [
+    {
+      "id": "low",
+      "label": "Low",
+      "description": "Sparse or indirect evidence; treat as weak signal."
+    },
+    {
+      "id": "medium",
+      "label": "Medium",
+      "description": "Multiple consistent signals; still requires corroboration."
+    },
+    {
+      "id": "high",
+      "label": "High",
+      "description": "Strong direct evidence or signed/attested sources."
+    }
+  ]
+}

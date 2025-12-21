@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "keys": [
+    {
+      "type": "minisign",
+      "status": "active",
+      "public_key_pinned": "RWTcCm8hvjc1PveOAYAhq7XlMtSpk9GLTo2JUF+p9yc31FJFaPmW/6NV",
+      "public_key_url": "/.well-known/minisign.pub",
+      "epoch_utc": "2025-12-20T20:52:47Z",
+      "note": "Key rotation performed; this key signs hub integrity artifacts."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# ONETOO.EU — LLM / AI Agent entrypoint (llms.txt)
+# Purpose: quick, high-signal pointers for AI systems and automated auditors.
+
+Project: ONETOO Trust Hub
+Primary domain: https://onetoo.eu
+
+Key documents
+- AI Trust Hub (human): https://onetoo.eu/ai-trust-hub.html
+- Trust manifest (machine): https://onetoo.eu/.well-known/ai-trust-hub.json
+- Security: https://onetoo.eu/.well-known/security.txt
+- OpenAPI: https://onetoo.eu/openapi.json
+- Release metadata: https://onetoo.eu/dumps/release.json
+- File hashes (SHA-256): https://onetoo.eu/dumps/sha256.json
+
+Operational
+- Status: https://onetoo.eu/status.json
+- Methodology: https://onetoo.eu/methodology/
+- Incidents: https://onetoo.eu/incidents/
+- Changelog: https://onetoo.eu/changelog/
+
+Verification
+- How to verify: https://onetoo.eu/verify.html
+
+Optional CI attestation (Sigstore/Cosign)
+- Bundles index: https://onetoo.eu/dumps/attestations/index.json
+- sha256 bundle: https://onetoo.eu/dumps/attestations/sha256.json.bundle
+- Supply-chain docs: https://onetoo.eu/docs/SUPPLY_CHAIN.md
+
+
+
+## Supply-chain verification
+
+- Verify (human): https://onetoo.eu/verify.html
+- Minisign public key: https://onetoo.eu/.well-known/minisign.pub
+- Signed hashes (sha256.json): https://onetoo.eu/dumps/sha256.json
+- Minisign signatures: https://onetoo.eu/dumps/sigs/
+- Sigstore bundles (optional): https://onetoo.eu/dumps/attestations/
+- SLSA provenance (release tags): published as a GitHub Release asset named `provenance.intoto.jsonl`.

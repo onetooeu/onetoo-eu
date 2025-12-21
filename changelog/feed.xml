@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://onetoo.eu/changelog/feed.xml</id>
+  <title>ONETOO Changelog (Atom)</title>
+  <updated>2025-12-19T00:00:00Z</updated>
+  <link rel="self" href="https://onetoo.eu/changelog/feed.xml"/>
+  <link rel="alternate" href="https://onetoo.eu/changelog/"/>
+
+  <entry>
+    <id>https://onetoo.eu/changelog/feed.xml:2025-12-19-sigstore</id>
+    <title>Sigstore/Cosign (optional) + transparency log bundles</title>
+    <updated>2025-12-19</updated>
+    <link rel="alternate" href="https://onetoo.eu/changelog/2025-12-19-sigstore.md"/>
+    <summary>Changelog entry: Sigstore/Cosign (optional) + transparency log bundles</summary>
+  </entry>
+</feed>

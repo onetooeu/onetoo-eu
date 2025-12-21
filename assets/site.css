@@ -1,0 +1,129 @@
+/* ONETOO.eu – unified Trust Hub styling ("Mozart pass") */
+
+:root{
+  color-scheme: light dark;
+  --bg: #0b0f14;
+  --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.72);
+  --line: rgba(255,255,255,.14);
+  --accent: #7dd3fc;
+  --accent2: #a78bfa;
+  --shadow: 0 10px 25px rgba(0,0,0,.28);
+  --radius: 16px;
+  --w: 1100px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f7fafc;
+    --panel: rgba(0,0,0,.04);
+    --panel2: rgba(0,0,0,.07);
+    --text: rgba(0,0,0,.86);
+    --muted: rgba(0,0,0,.62);
+    --line: rgba(0,0,0,.12);
+    --shadow: 0 10px 25px rgba(0,0,0,.12);
+  }
+}
+
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--text);
+  background: radial-gradient(1200px 600px at 20% -20%, rgba(125,211,252,.22), transparent 60%),
+              radial-gradient(900px 500px at 80% 0%, rgba(167,139,250,.18), transparent 55%),
+              var(--bg);
+  line-height:1.55;
+}
+
+a{color:inherit; text-decoration-color: var(--line)}
+a:hover{ text-decoration-color: var(--accent)}
+
+.ocp-skip{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.ocp-skip:focus{
+  left:16px; top:16px; width:auto; height:auto; padding:10px 12px;
+  background:var(--panel2); border:1px solid var(--line); border-radius:12px; z-index:9999;
+}
+
+.ocp-shell{max-width:var(--w); margin:0 auto; padding: 22px 18px 56px;}
+
+.ocp-header{
+  position:sticky; top:0; backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  border-bottom:1px solid var(--line);
+  z-index:1000;
+}
+
+.ocp-header .ocp-shell{padding:14px 18px;}
+
+.ocp-brand{display:flex; gap:12px; align-items:center;}
+.ocp-brand b{letter-spacing:.2px}
+.ocp-dot{width:10px; height:10px; border-radius:999px; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: var(--shadow)}
+
+.ocp-nav{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between}
+.ocp-links{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.ocp-links a{
+  padding:8px 10px; border-radius:12px; border:1px solid transparent;
+  text-decoration:none; color:var(--muted);
+}
+.ocp-links a:hover{border-color: var(--line); color:var(--text); background: var(--panel)}
+.ocp-links a[aria-current="page"]{color:var(--text); border-color: var(--line); background: var(--panel2)}
+
+.ocp-search{
+  display:flex; gap:8px; align-items:center; padding:8px 10px; border-radius:12px;
+  border:1px solid var(--line); background: var(--panel);
+}
+.ocp-search input{
+  border:0; outline:0; background:transparent; color:var(--text); min-width:220px;
+}
+.ocp-search kbd{font-family:var(--mono); font-size:.8rem; color:var(--muted); border:1px solid var(--line); padding:2px 6px; border-radius:8px;}
+
+.ocp-card{
+  border:1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.ocp-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:14px}
+.ocp-col-6{grid-column: span 6}
+.ocp-col-12{grid-column: span 12}
+@media (max-width: 860px){
+  .ocp-col-6{grid-column: span 12}
+  .ocp-search input{min-width:140px}
+}
+
+h1,h2,h3{line-height:1.15; margin: 0 0 12px}
+h1{font-size: clamp(26px, 3.2vw, 40px)}
+h2{font-size: clamp(18px, 2.2vw, 24px)}
+h3{font-size: 16px; text-transform: uppercase; letter-spacing:.08em; color: var(--muted)}
+
+p{margin:0 0 12px; color: var(--muted)}
+code, pre{font-family:var(--mono)}
+pre{overflow:auto; padding:14px; border-radius:14px; border:1px solid var(--line); background: color-mix(in srgb, var(--panel) 70%, transparent)}
+
+.ocp-btn{
+  display:inline-flex; gap:10px; align-items:center; justify-content:center;
+  padding:10px 12px; border-radius:14px; border:1px solid var(--line);
+  background: color-mix(in srgb, var(--panel2) 55%, transparent);
+  text-decoration:none;
+}
+.ocp-btn:hover{border-color: color-mix(in srgb, var(--accent) 45%, var(--line));}
+
+.ocp-pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background: var(--panel); color: var(--muted); font-family:var(--mono); font-size:.86rem}
+
+.ocp-footer{margin-top:28px; padding-top:20px; border-top:1px solid var(--line); color: var(--muted)}
+.ocp-footer small{display:block; opacity:.9}
+
+/* Make existing pages look better without rewriting content */
+main, .main, #main{max-width:var(--w); margin:0 auto; padding: 22px 18px 56px;}
+table{width:100%; border-collapse: collapse; overflow:auto}
+th,td{border:1px solid var(--line); padding:10px; vertical-align:top}
+th{background: var(--panel2)}

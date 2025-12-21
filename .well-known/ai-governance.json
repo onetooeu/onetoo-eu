@@ -1,0 +1,21 @@
+{
+  "platform": "onetoo.eu",
+  "scope": "EU",
+  "purpose": "Trust & decision signals for commerce and AI",
+  "principles": [
+    "explainability",
+    "auditability",
+    "jurisdiction_respect",
+    "affiliate_transparency",
+    "safety_first"
+  ],
+  "docs": [
+    "/en/for-ai",
+    "/api/v1/ai/policies/current.json",
+    "/api/v1/transparency/latest.json",
+    "/en/regulatory"
+  ],
+  "signed_data": [
+    "/dumps/sha256.json"
+  ]
+}

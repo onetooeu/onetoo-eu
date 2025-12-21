@@ -1,0 +1,7 @@
+{
+  "tag": "2025.12.18-ocp-project-final-v8-signed-ready",
+  "generated_at": "2025-12-18T00:00:00Z",
+  "deterministic_build_target": true,
+  "sha256_count": 45,
+  "merkle_root_sha256": "a63124e8f3ba168922ab1b67bc53d729893baaf0e787be542b04274a99743e03"
+}

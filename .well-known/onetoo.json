@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "project": {
+    "name": "OneToo",
+    "canonical_domain": "onetoo.eu",
+    "homepage_url": "https://onetoo.eu/",
+    "version": "1.0",
+    "freeze": {
+      "is_frozen": true,
+      "freeze_date": "2025-12-20",
+      "notes": "Foundation release. Stable endpoints. Changes only via versioned updates."
+    }
+  },
+  "operator": {
+    "type": "GDPR_DATA_CONTROLLER",
+    "legal_name": "OneToo s. r. o.",
+    "address": "Mostová 20, 034 01 Ružomberok, Slovak Republic",
+    "registration": {
+      "register": "OR SR",
+      "court": "Okresný súd Žilina",
+      "section": "Sro",
+      "insert_number": "51723/L"
+    },
+    "identifiers": {
+      "ico": "44903952",
+      "dic": "2022869871",
+      "ic_dph": "SK2022869871"
+    }
+  },
+  "contacts": {
+    "trust": {
+      "email": "trust@onetoo.eu",
+      "preferred_language": [
+        "sk",
+        "en"
+      ]
+    },
+    "privacy": {
+      "email": "trust@onetoo.eu",
+      "preferred_language": [
+        "sk",
+        "en"
+      ]
+    },
+    "security": {
+      "email": "trust@onetoo.eu",
+      "preferred_language": [
+        "sk",
+        "en"
+      ],
+      "policy": "Responsible disclosure. Include steps to reproduce and impact."
+    }
+  },
+  "policies": {
+    "privacy_url": "https://onetoo.eu/privacy/",
+    "terms_url": "https://onetoo.eu/terms/",
+    "status_url": "https://onetoo.eu/status.json"
+  },
+  "agent_guidance": {
+    "purpose": "Trust hub and public statements for humans and autonomous agents.",
+    "allowed": [
+      "Read and index public pages and machine-readable endpoints",
+      "Cache content respecting standard HTTP caching headers",
+      "Use provided contact channels for trust/privacy/security matters"
+    ],
+    "disallowed": [
+      "Assume private data collection beyond what is stated in the Privacy Policy",
+      "Perform actions that require authentication (public information only)"
+    ]
+  }
+}

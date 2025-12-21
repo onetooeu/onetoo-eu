@@ -1,0 +1,4 @@
+version: 1
+id: 000-template
+actions:
+  - type: maintenance_only

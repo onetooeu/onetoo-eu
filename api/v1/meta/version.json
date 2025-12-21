@@ -1,0 +1,7 @@
+{
+  "name": "ONETOO.eu",
+  "operator": "ONETOO.dynamics",
+  "version": "1.0.1",
+  "updated": "2025-12-20",
+  "notes": "Added pinned targets, offline signing helpers, and completed referenced risk/registry artifacts."
+}

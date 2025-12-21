@@ -1,0 +1,7 @@
+{
+  "schema": "ocp-msg-limits-v1",
+  "retention_days": 31,
+  "max_message_bytes": 262144,
+  "max_inbox_bytes": 67108864,
+  "default_accept_policy": "friends_only"
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transparency Report (Latest)",
+  "type": "object",
+  "properties": {
+    "period": {
+      "type": "string"
+    },
+    "api_requests": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "redirects_total": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "redirects_verified": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "redirects_blocked": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "top_reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "period",
+    "api_requests"
+  ]
+}

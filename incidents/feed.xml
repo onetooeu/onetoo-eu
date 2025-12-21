@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://onetoo.eu/incidents/feed.xml</id>
+  <title>ONETOO Incidents (Atom)</title>
+  <updated>2025-12-19T00:00:00Z</updated>
+  <link rel="self" href="https://onetoo.eu/incidents/feed.xml"/>
+  <link rel="alternate" href="https://onetoo.eu/incidents/"/>
+
+  <entry>
+    <id>https://onetoo.eu/incidents/feed.xml:empty</id>
+    <title>No entries</title>
+    <updated>2025-12-19T00:00:00Z</updated>
+    <summary>Empty feed</summary>
+  </entry>
+</feed>

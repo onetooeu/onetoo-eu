@@ -1,0 +1,11 @@
+{
+  "platform": "ONETOO.eu",
+  "operator": "ONETOO.dynamics",
+  "status": "operational",
+  "updated": "2025-12-19",
+  "links": {
+    "health": "/api/v1/meta/health.json",
+    "incidents": "/api/v1/incidents/list.json",
+    "transparency": "/api/v1/transparency/latest.json"
+  }
+}

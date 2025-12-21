@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "bundles": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "artifact": {
+            "type": "string"
+          },
+          "bundle": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifact",
+          "bundle"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "generated_at_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "bundles",
+    "notes"
+  ],
+  "title": "Sigstore Attestations Index",
+  "type": "object"
+}

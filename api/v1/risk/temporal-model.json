@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "updated": "2025-12-20",
+  "model": {
+    "decay": "exponential",
+    "half_life_days": 30,
+    "notes": "Signals decay over time unless refreshed by new signed releases or verified uptime signals."
+  }
+}

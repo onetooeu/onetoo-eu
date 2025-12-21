@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "updated": "2025-12-20",
+  "levels": [
+    {
+      "id": "L0",
+      "label": "Declared",
+      "description": "Self-declared signals; may be unsigned."
+    },
+    {
+      "id": "L1",
+      "label": "Signed",
+      "description": "Critical artifacts are signed by published maintainer keys."
+    },
+    {
+      "id": "L2",
+      "label": "Attested",
+      "description": "Build artifacts include CI attestations (e.g., Sigstore/SLSA)."
+    },
+    {
+      "id": "L3",
+      "label": "Audited",
+      "description": "Independent audit evidence is published and verifiable."
+    }
+  ]
+}

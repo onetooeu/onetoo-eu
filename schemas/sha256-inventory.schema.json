@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onetoo.eu/schemas/sha256-inventory.schema.json",
+  "title": "SHA256 Inventory",
+  "type": "object",
+  "required": ["generated_at", "algorithm", "files"],
+  "properties": {
+    "generated_at": {"type": "string"},
+    "algorithm": {"type": "string", "enum": ["sha256"]},
+    "count": {"type": "integer", "minimum": 0},
+    "git": {"type": "object"},
+    "platform": {"type": "string"},
+    "operator": {"type": "string"},
+    "files": {
+      "type": "object",
+      "minProperties": 1,
+      "patternProperties": {
+        "^.+$": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

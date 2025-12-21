@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onetoo.eu/api/v1/risk/score.schema.json",
+  "title": "ONETOO Risk Score",
+  "type": "object",
+  "required": [
+    "version",
+    "generated_at",
+    "score",
+    "confidence",
+    "reasons"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

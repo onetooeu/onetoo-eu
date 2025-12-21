@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ONETOO — Verification</title>
+  <link rel="canonical" href="https://onetoo.eu/verify.html">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="stylesheet" href="/assets/site.css"> 
+  <script defer src="/assets/site.js"></script>
+</head><body>
+<h1>Verification <span class="badge">AI trust hub</span></h1>
+<p>This site publishes deterministic artifacts so automated systems can verify integrity.</p>
+
+<h2>1) Hash inventory (SHA-256)</h2>
+<ul>
+  <li><a href="/dumps/sha256.json">/dumps/sha256.json</a> (machine)</li>
+  <li><a href="/dumps/sha256.txt">/dumps/sha256.txt</a> (human)</li>
+</ul>
+
+<h2>2) Release metadata</h2>
+<ul>
+  <li><a href="/dumps/release.json">/dumps/release.json</a></li>
+  <li>Signature: <a href="/dumps/sigs/release.json.minisig">/dumps/sigs/release.json.minisig</a></li>
+</ul>
+
+<h2>3) How to verify locally (minisign)</h2>
+<pre><code># Install minisign
+# macOS: brew install minisign
+# Linux: your package manager
+
+# Verify release.json (requires public key)
+minisign -Vm dumps/release.json -P &lt;PUBLIC_KEY&gt;</code></pre>
+
+
+<h2>4) Optional CI Attestation (Sigstore/Cosign)</h2>
+<p>In addition to minisign, this site can publish <strong>keyless Sigstore/Cosign bundles</strong> generated in GitHub Actions. Each bundle includes a <em>transparency log (Rekor)</em> inclusion proof.</p>
+<ul>
+  <li>Bundles index (machine): <a href="/dumps/attestations/index.json">/dumps/attestations/index.json</a></li>
+  <li>sha256 bundle: <a href="/dumps/attestations/sha256.json.bundle">/dumps/attestations/sha256.json.bundle</a></li>
+  <li>release bundle: <a href="/dumps/attestations/release.json.bundle">/dumps/attestations/release.json.bundle</a></li>
+  <li>release-mega bundle: <a href="/dumps/attestations/release-mega.json.bundle">/dumps/attestations/release-mega.json.bundle</a></li>
+</ul>
+
+<h3>Verify with cosign (example)</h3>
+<pre><code># Install cosign (see Sigstore docs)
+# Verify the sha256 inventory blob using the published bundle
+cosign verify-blob \
+  --bundle dumps/attestations/sha256.json.bundle \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  --certificate-identity-regexp 'https://github.com/.+/.+/.github/workflows/cosign-attest.yml@refs/heads/main' \
+  dumps/sha256.json</code></pre>
+
+<p><strong>Note:</strong> minisign remains the primary trust anchor; Sigstore is an additional, non-blocking attestation of CI provenance.</p>
+
+<h2>5) SLSA Provenance for Release Tags</h2>
+<p>When you create a <strong>release tag</strong> (e.g. <code>v1.2.3</code>), the repo can generate <strong>SLSA 3+</strong> build provenance for the release artifacts using the OpenSSF <code>slsa-github-generator</code> generic generator. The provenance is attached to the GitHub Release as <code>provenance.intoto.jsonl</code>.</p>
+<ul>
+  <li>Trigger: push a tag matching <code>v*</code> or <code>release-*</code></li>
+  <li>Release asset: <code>provenance.intoto.jsonl</code></li>
+  <li>Workflow: <code>.github/workflows/slsa-provenance-release-tags.yml</code></li>
+</ul>
+
+<h3>Consumer-side verification (example)</h3>
+<pre><code>slsa-verifier verify-artifact \
+  --provenance provenance.intoto.jsonl \
+  --source github.com/OWNER/REPO \
+  --tag v1.2.3 \
+  --artifact-path onetoo-trust-hub-v1.2.3.tar.gz</code></pre>
+
+<p><strong>Note:</strong> Minisign remains the primary trust anchor. SLSA provenance is an additional, cryptographically verifiable statement of how the release artifacts were built.</p>
+
+
+<p>For automated generation/signing, see <a href="/SIGNING.md">SIGNING.md</a>, <a href="/docs/SUPPLY_CHAIN.md">docs/SUPPLY_CHAIN.md</a> and the repo workflows.</p>
+</body></html>

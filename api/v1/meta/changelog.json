@@ -1,0 +1,28 @@
+{
+  "platform": "ONETOO.eu",
+  "operator": "ONETOO.dynamics",
+  "updated": "2025-12-19",
+  "entries": [
+    {
+      "date": "2025-12-19",
+      "version_note": "Everything hardening release",
+      "changes": [
+        "Added .well-known/ai-plugin.json, OpenSearch, host-meta, webfinger",
+        "Added SBOM (CycloneDX) and governance docs",
+        "Added accessibility/cookies/search pages, 404.html",
+        "Added SECURITY.md, SUPPORT.md, ROADMAP.md",
+        "Added ADRs for key rotation and SBOM"
+      ]
+    },
+    {
+      "date": "2025-12-19",
+      "version_note": "Mega-detail hardening release",
+      "changes": [
+        "Added /.well-known/pgp-key.txt placeholder",
+        "Added /.well-known/dnt-policy.txt",
+        "Added /changelog page and ensured /api/v1/meta/changelog.json is present",
+        "Added ADR (Architecture Decision Records) for long-term maintainability"
+      ]
+    }
+  ]
+}

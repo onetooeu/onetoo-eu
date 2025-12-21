@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ONETOO.eu — Pan‑EU Trust & Decision Infrastructure</title>
+  <link rel="canonical" href="https://onetoo.eu/">
+  <meta name="description" content="Pan-European trust and decision infrastructure for commerce and AI. Transparent, explainable, audit‑ready." />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f19;color:#e7eaf3}
+    a{color:#9cc2ff;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:0 auto;padding:32px}
+    .card{background:#10182a;border:1px solid #223055;border-radius:14px;padding:18px;margin-top:16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;background:#162544;border:1px solid #2a3d6b}
+    .muted{color:#b9c1d6}
+    .pill{display:inline-block;font-size:12px;padding:4px 8px;border:1px solid #2a3d6b;border-radius:999px;color:#cfe0ff;margin-right:6px}
+  </style>
+
+  <link rel="stylesheet" href="/assets/site.css"> 
+  <script defer src="/assets/site.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="pill">EU 27/27 coverage</div>
+    <div class="pill">Explainable</div>
+    <div class="pill">Signed & versioned</div>
+    <h1>ONETOO.eu</h1>
+    <p class="muted">Pan‑European Trust & Decision Infrastructure for Commerce and AI.</p>
+
+    <div class="card">
+      <h2>Choose language</h2>
+      <p class="muted">We publish content in all <strong>24 official EU languages</strong> (EU has 24 official languages). Country coverage is EU‑wide (27/27).</p>
+      <div class="grid" id="langs"></div>
+    </div>
+
+    <div class="card">
+      <h2>Developer & AI entry points</h2>
+      <div class="grid">
+        <a class="btn" href="/api/v1/index.json">API index</a>
+        <a class="btn" href="/ai-trust">AI Trust Hub</a>
+        <a class="btn" href="/.well-known/ai-trust-hub.json">Trust manifest (JSON)</a>
+        <a class="btn" href="/.well-known/ai-governance.json">AI governance</a>
+        <a class="btn" href="/api/v1/transparency/latest.json">Transparency (latest)</a>
+        <a class="btn" href="/docs/manifest/EU-Trust-Manifest-v1.0.pdf">EU Trust Manifest (PDF)</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>About</h2>
+      <p class="muted">Project operated by <strong>ONETOO.dynamics</strong> in the <strong>EU</strong>. This site publishes both human-readable pages and machine-readable trust signals for AI agents and partners.</p>
+    </div>
+
+    <p class="muted" style="margin-top:22px">If your browser language is supported, we’ll open it automatically.</p>
+  </div>
+
+<script src="/assets/lang-redirect.js" defer></script>
+</body>
+</html>
+

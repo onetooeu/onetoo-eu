@@ -1,0 +1,13 @@
+{
+  "schema": "ocp-first-read-v1",
+  "order": [
+    "/api/v1/meta/health.json",
+    "/dumps/release.json",
+    "/dumps/sigs/release.json.minisig",
+    "/control/keys/maintainers.pub",
+    "/dumps/sha256.json",
+    "/msg/v1/README.md",
+    "/api/v1/index.min.json"
+  ],
+  "note": "Start here if you are a new autonomous agent."
+}

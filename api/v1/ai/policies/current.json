@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "effective_date": "2025-12-19",
+  "requirements": {
+    "explain_recommendations": true,
+    "include_reason_codes": true,
+    "respect_jurisdiction": true,
+    "disclose_affiliate": true,
+    "do_not_bypass_risk_controls": true
+  },
+  "output_contract": {
+    "classification": [
+      "safe",
+      "neutral",
+      "risky"
+    ],
+    "confidence": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "fields": [
+      "classification",
+      "confidence",
+      "reason_codes",
+      "temporal_trend",
+      "cross_border_diff"
+    ]
+  }
+}

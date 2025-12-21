@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "updated": "2025-12-20",
+  "reason_codes": [
+    {
+      "code": "RISK_DATA_INCOMPLETE",
+      "category": "data",
+      "description": "Insufficient coverage or missing fields."
+    },
+    {
+      "code": "RISK_OUTDATED_ARTIFACTS",
+      "category": "freshness",
+      "description": "Artifacts appear stale beyond declared update window."
+    },
+    {
+      "code": "RISK_SIGNATURE_MISSING",
+      "category": "integrity",
+      "description": "Expected signature/attestation missing."
+    },
+    {
+      "code": "RISK_SIGNATURE_INVALID",
+      "category": "integrity",
+      "description": "Signature verification failed."
+    },
+    {
+      "code": "RISK_POLICY_CONFLICT",
+      "category": "governance",
+      "description": "Policy rules conflict or cannot be satisfied."
+    },
+    {
+      "code": "RISK_JURISDICTION_MISMATCH",
+      "category": "jurisdiction",
+      "description": "Jurisdiction claims conflict with observed hosting/operator signals."
+    }
+  ]
+}

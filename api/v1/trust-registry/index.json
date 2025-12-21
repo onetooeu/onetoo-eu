@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "updated": "2025-12-20",
+  "entries": [],
+  "links": {
+    "registry": "/api/v1/trust-registry/registry.json",
+    "certification_levels": "/api/v1/trust-registry/certification-levels.json"
+  }
+}
