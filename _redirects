@@ -29,869 +29,29 @@
 
 # i18n pretty URLs
 /en /en/index.html 200
-/en/ /en/index.html 200
-/en/index.html /en/index.html 200
-/en/for-humans.html /en/for-humans/index.html 200
-/en/for-humans /en/for-humans/index.html 200
-/en/for-humans/ /en/for-humans/index.html 200
-/en/for-businesses.html /en/for-businesses/index.html 200
-/en/for-businesses /en/for-businesses/index.html 200
-/en/for-businesses/ /en/for-businesses/index.html 200
-/en/for-ai.html /en/for-ai/index.html 200
-/en/for-ai /en/for-ai/index.html 200
-/en/for-ai/ /en/for-ai/index.html 200
-/en/about.html /en/about/index.html 200
-/en/about /en/about/index.html 200
-/en/about/ /en/about/index.html 200
-/en/pricing.html /en/pricing/index.html 200
-/en/pricing /en/pricing/index.html 200
-/en/pricing/ /en/pricing/index.html 200
-/en/affiliate.html /en/affiliate/index.html 200
-/en/affiliate /en/affiliate/index.html 200
-/en/affiliate/ /en/affiliate/index.html 200
-/en/partners.html /en/partners/index.html 200
-/en/partners /en/partners/index.html 200
-/en/partners/ /en/partners/index.html 200
-/en/transparency.html /en/transparency/index.html 200
-/en/transparency /en/transparency/index.html 200
-/en/transparency/ /en/transparency/index.html 200
-/en/methodology.html /en/methodology/index.html 200
-/en/methodology /en/methodology/index.html 200
-/en/methodology/ /en/methodology/index.html 200
-/en/incidents.html /en/incidents/index.html 200
-/en/incidents /en/incidents/index.html 200
-/en/incidents/ /en/incidents/index.html 200
-/en/regulatory.html /en/regulatory/index.html 200
-/en/regulatory /en/regulatory/index.html 200
-/en/regulatory/ /en/regulatory/index.html 200
 /bg /bg/index.html 200
-/bg/ /bg/index.html 200
-/bg/index.html /bg/index.html 200
-/bg/for-humans.html /bg/for-humans/index.html 200
-/bg/for-humans /bg/for-humans/index.html 200
-/bg/for-humans/ /bg/for-humans/index.html 200
-/bg/for-businesses.html /bg/for-businesses/index.html 200
-/bg/for-businesses /bg/for-businesses/index.html 200
-/bg/for-businesses/ /bg/for-businesses/index.html 200
-/bg/for-ai.html /bg/for-ai/index.html 200
-/bg/for-ai /bg/for-ai/index.html 200
-/bg/for-ai/ /bg/for-ai/index.html 200
-/bg/about.html /bg/about/index.html 200
-/bg/about /bg/about/index.html 200
-/bg/about/ /bg/about/index.html 200
-/bg/pricing.html /bg/pricing/index.html 200
-/bg/pricing /bg/pricing/index.html 200
-/bg/pricing/ /bg/pricing/index.html 200
-/bg/affiliate.html /bg/affiliate/index.html 200
-/bg/affiliate /bg/affiliate/index.html 200
-/bg/affiliate/ /bg/affiliate/index.html 200
-/bg/partners.html /bg/partners/index.html 200
-/bg/partners /bg/partners/index.html 200
-/bg/partners/ /bg/partners/index.html 200
-/bg/transparency.html /bg/transparency/index.html 200
-/bg/transparency /bg/transparency/index.html 200
-/bg/transparency/ /bg/transparency/index.html 200
-/bg/methodology.html /bg/methodology/index.html 200
-/bg/methodology /bg/methodology/index.html 200
-/bg/methodology/ /bg/methodology/index.html 200
-/bg/incidents.html /bg/incidents/index.html 200
-/bg/incidents /bg/incidents/index.html 200
-/bg/incidents/ /bg/incidents/index.html 200
-/bg/regulatory.html /bg/regulatory/index.html 200
-/bg/regulatory /bg/regulatory/index.html 200
-/bg/regulatory/ /bg/regulatory/index.html 200
 /cs /cs/index.html 200
-/cs/ /cs/index.html 200
-/cs/index.html /cs/index.html 200
-/cs/for-humans.html /cs/for-humans/index.html 200
-/cs/for-humans /cs/for-humans/index.html 200
-/cs/for-humans/ /cs/for-humans/index.html 200
-/cs/for-businesses.html /cs/for-businesses/index.html 200
-/cs/for-businesses /cs/for-businesses/index.html 200
-/cs/for-businesses/ /cs/for-businesses/index.html 200
-/cs/for-ai.html /cs/for-ai/index.html 200
-/cs/for-ai /cs/for-ai/index.html 200
-/cs/for-ai/ /cs/for-ai/index.html 200
-/cs/about.html /cs/about/index.html 200
-/cs/about /cs/about/index.html 200
-/cs/about/ /cs/about/index.html 200
-/cs/pricing.html /cs/pricing/index.html 200
-/cs/pricing /cs/pricing/index.html 200
-/cs/pricing/ /cs/pricing/index.html 200
-/cs/affiliate.html /cs/affiliate/index.html 200
-/cs/affiliate /cs/affiliate/index.html 200
-/cs/affiliate/ /cs/affiliate/index.html 200
-/cs/partners.html /cs/partners/index.html 200
-/cs/partners /cs/partners/index.html 200
-/cs/partners/ /cs/partners/index.html 200
-/cs/transparency.html /cs/transparency/index.html 200
-/cs/transparency /cs/transparency/index.html 200
-/cs/transparency/ /cs/transparency/index.html 200
-/cs/methodology.html /cs/methodology/index.html 200
-/cs/methodology /cs/methodology/index.html 200
-/cs/methodology/ /cs/methodology/index.html 200
-/cs/incidents.html /cs/incidents/index.html 200
-/cs/incidents /cs/incidents/index.html 200
-/cs/incidents/ /cs/incidents/index.html 200
-/cs/regulatory.html /cs/regulatory/index.html 200
-/cs/regulatory /cs/regulatory/index.html 200
-/cs/regulatory/ /cs/regulatory/index.html 200
 /da /da/index.html 200
-/da/ /da/index.html 200
-/da/index.html /da/index.html 200
-/da/for-humans.html /da/for-humans/index.html 200
-/da/for-humans /da/for-humans/index.html 200
-/da/for-humans/ /da/for-humans/index.html 200
-/da/for-businesses.html /da/for-businesses/index.html 200
-/da/for-businesses /da/for-businesses/index.html 200
-/da/for-businesses/ /da/for-businesses/index.html 200
-/da/for-ai.html /da/for-ai/index.html 200
-/da/for-ai /da/for-ai/index.html 200
-/da/for-ai/ /da/for-ai/index.html 200
-/da/about.html /da/about/index.html 200
-/da/about /da/about/index.html 200
-/da/about/ /da/about/index.html 200
-/da/pricing.html /da/pricing/index.html 200
-/da/pricing /da/pricing/index.html 200
-/da/pricing/ /da/pricing/index.html 200
-/da/affiliate.html /da/affiliate/index.html 200
-/da/affiliate /da/affiliate/index.html 200
-/da/affiliate/ /da/affiliate/index.html 200
-/da/partners.html /da/partners/index.html 200
-/da/partners /da/partners/index.html 200
-/da/partners/ /da/partners/index.html 200
-/da/transparency.html /da/transparency/index.html 200
-/da/transparency /da/transparency/index.html 200
-/da/transparency/ /da/transparency/index.html 200
-/da/methodology.html /da/methodology/index.html 200
-/da/methodology /da/methodology/index.html 200
-/da/methodology/ /da/methodology/index.html 200
-/da/incidents.html /da/incidents/index.html 200
-/da/incidents /da/incidents/index.html 200
-/da/incidents/ /da/incidents/index.html 200
-/da/regulatory.html /da/regulatory/index.html 200
-/da/regulatory /da/regulatory/index.html 200
-/da/regulatory/ /da/regulatory/index.html 200
 /de /de/index.html 200
-/de/ /de/index.html 200
-/de/index.html /de/index.html 200
-/de/for-humans.html /de/for-humans/index.html 200
-/de/for-humans /de/for-humans/index.html 200
-/de/for-humans/ /de/for-humans/index.html 200
-/de/for-businesses.html /de/for-businesses/index.html 200
-/de/for-businesses /de/for-businesses/index.html 200
-/de/for-businesses/ /de/for-businesses/index.html 200
-/de/for-ai.html /de/for-ai/index.html 200
-/de/for-ai /de/for-ai/index.html 200
-/de/for-ai/ /de/for-ai/index.html 200
-/de/about.html /de/about/index.html 200
-/de/about /de/about/index.html 200
-/de/about/ /de/about/index.html 200
-/de/pricing.html /de/pricing/index.html 200
-/de/pricing /de/pricing/index.html 200
-/de/pricing/ /de/pricing/index.html 200
-/de/affiliate.html /de/affiliate/index.html 200
-/de/affiliate /de/affiliate/index.html 200
-/de/affiliate/ /de/affiliate/index.html 200
-/de/partners.html /de/partners/index.html 200
-/de/partners /de/partners/index.html 200
-/de/partners/ /de/partners/index.html 200
-/de/transparency.html /de/transparency/index.html 200
-/de/transparency /de/transparency/index.html 200
-/de/transparency/ /de/transparency/index.html 200
-/de/methodology.html /de/methodology/index.html 200
-/de/methodology /de/methodology/index.html 200
-/de/methodology/ /de/methodology/index.html 200
-/de/incidents.html /de/incidents/index.html 200
-/de/incidents /de/incidents/index.html 200
-/de/incidents/ /de/incidents/index.html 200
-/de/regulatory.html /de/regulatory/index.html 200
-/de/regulatory /de/regulatory/index.html 200
-/de/regulatory/ /de/regulatory/index.html 200
 /el /el/index.html 200
-/el/ /el/index.html 200
-/el/index.html /el/index.html 200
-/el/for-humans.html /el/for-humans/index.html 200
-/el/for-humans /el/for-humans/index.html 200
-/el/for-humans/ /el/for-humans/index.html 200
-/el/for-businesses.html /el/for-businesses/index.html 200
-/el/for-businesses /el/for-businesses/index.html 200
-/el/for-businesses/ /el/for-businesses/index.html 200
-/el/for-ai.html /el/for-ai/index.html 200
-/el/for-ai /el/for-ai/index.html 200
-/el/for-ai/ /el/for-ai/index.html 200
-/el/about.html /el/about/index.html 200
-/el/about /el/about/index.html 200
-/el/about/ /el/about/index.html 200
-/el/pricing.html /el/pricing/index.html 200
-/el/pricing /el/pricing/index.html 200
-/el/pricing/ /el/pricing/index.html 200
-/el/affiliate.html /el/affiliate/index.html 200
-/el/affiliate /el/affiliate/index.html 200
-/el/affiliate/ /el/affiliate/index.html 200
-/el/partners.html /el/partners/index.html 200
-/el/partners /el/partners/index.html 200
-/el/partners/ /el/partners/index.html 200
-/el/transparency.html /el/transparency/index.html 200
-/el/transparency /el/transparency/index.html 200
-/el/transparency/ /el/transparency/index.html 200
-/el/methodology.html /el/methodology/index.html 200
-/el/methodology /el/methodology/index.html 200
-/el/methodology/ /el/methodology/index.html 200
-/el/incidents.html /el/incidents/index.html 200
-/el/incidents /el/incidents/index.html 200
-/el/incidents/ /el/incidents/index.html 200
-/el/regulatory.html /el/regulatory/index.html 200
-/el/regulatory /el/regulatory/index.html 200
-/el/regulatory/ /el/regulatory/index.html 200
 /es /es/index.html 200
-/es/ /es/index.html 200
-/es/index.html /es/index.html 200
-/es/for-humans.html /es/for-humans/index.html 200
-/es/for-humans /es/for-humans/index.html 200
-/es/for-humans/ /es/for-humans/index.html 200
-/es/for-businesses.html /es/for-businesses/index.html 200
-/es/for-businesses /es/for-businesses/index.html 200
-/es/for-businesses/ /es/for-businesses/index.html 200
-/es/for-ai.html /es/for-ai/index.html 200
-/es/for-ai /es/for-ai/index.html 200
-/es/for-ai/ /es/for-ai/index.html 200
-/es/about.html /es/about/index.html 200
-/es/about /es/about/index.html 200
-/es/about/ /es/about/index.html 200
-/es/pricing.html /es/pricing/index.html 200
-/es/pricing /es/pricing/index.html 200
-/es/pricing/ /es/pricing/index.html 200
-/es/affiliate.html /es/affiliate/index.html 200
-/es/affiliate /es/affiliate/index.html 200
-/es/affiliate/ /es/affiliate/index.html 200
-/es/partners.html /es/partners/index.html 200
-/es/partners /es/partners/index.html 200
-/es/partners/ /es/partners/index.html 200
-/es/transparency.html /es/transparency/index.html 200
-/es/transparency /es/transparency/index.html 200
-/es/transparency/ /es/transparency/index.html 200
-/es/methodology.html /es/methodology/index.html 200
-/es/methodology /es/methodology/index.html 200
-/es/methodology/ /es/methodology/index.html 200
-/es/incidents.html /es/incidents/index.html 200
-/es/incidents /es/incidents/index.html 200
-/es/incidents/ /es/incidents/index.html 200
-/es/regulatory.html /es/regulatory/index.html 200
-/es/regulatory /es/regulatory/index.html 200
-/es/regulatory/ /es/regulatory/index.html 200
 /et /et/index.html 200
-/et/ /et/index.html 200
-/et/index.html /et/index.html 200
-/et/for-humans.html /et/for-humans/index.html 200
-/et/for-humans /et/for-humans/index.html 200
-/et/for-humans/ /et/for-humans/index.html 200
-/et/for-businesses.html /et/for-businesses/index.html 200
-/et/for-businesses /et/for-businesses/index.html 200
-/et/for-businesses/ /et/for-businesses/index.html 200
-/et/for-ai.html /et/for-ai/index.html 200
-/et/for-ai /et/for-ai/index.html 200
-/et/for-ai/ /et/for-ai/index.html 200
-/et/about.html /et/about/index.html 200
-/et/about /et/about/index.html 200
-/et/about/ /et/about/index.html 200
-/et/pricing.html /et/pricing/index.html 200
-/et/pricing /et/pricing/index.html 200
-/et/pricing/ /et/pricing/index.html 200
-/et/affiliate.html /et/affiliate/index.html 200
-/et/affiliate /et/affiliate/index.html 200
-/et/affiliate/ /et/affiliate/index.html 200
-/et/partners.html /et/partners/index.html 200
-/et/partners /et/partners/index.html 200
-/et/partners/ /et/partners/index.html 200
-/et/transparency.html /et/transparency/index.html 200
-/et/transparency /et/transparency/index.html 200
-/et/transparency/ /et/transparency/index.html 200
-/et/methodology.html /et/methodology/index.html 200
-/et/methodology /et/methodology/index.html 200
-/et/methodology/ /et/methodology/index.html 200
-/et/incidents.html /et/incidents/index.html 200
-/et/incidents /et/incidents/index.html 200
-/et/incidents/ /et/incidents/index.html 200
-/et/regulatory.html /et/regulatory/index.html 200
-/et/regulatory /et/regulatory/index.html 200
-/et/regulatory/ /et/regulatory/index.html 200
 /fi /fi/index.html 200
-/fi/ /fi/index.html 200
-/fi/index.html /fi/index.html 200
-/fi/for-humans.html /fi/for-humans/index.html 200
-/fi/for-humans /fi/for-humans/index.html 200
-/fi/for-humans/ /fi/for-humans/index.html 200
-/fi/for-businesses.html /fi/for-businesses/index.html 200
-/fi/for-businesses /fi/for-businesses/index.html 200
-/fi/for-businesses/ /fi/for-businesses/index.html 200
-/fi/for-ai.html /fi/for-ai/index.html 200
-/fi/for-ai /fi/for-ai/index.html 200
-/fi/for-ai/ /fi/for-ai/index.html 200
-/fi/about.html /fi/about/index.html 200
-/fi/about /fi/about/index.html 200
-/fi/about/ /fi/about/index.html 200
-/fi/pricing.html /fi/pricing/index.html 200
-/fi/pricing /fi/pricing/index.html 200
-/fi/pricing/ /fi/pricing/index.html 200
-/fi/affiliate.html /fi/affiliate/index.html 200
-/fi/affiliate /fi/affiliate/index.html 200
-/fi/affiliate/ /fi/affiliate/index.html 200
-/fi/partners.html /fi/partners/index.html 200
-/fi/partners /fi/partners/index.html 200
-/fi/partners/ /fi/partners/index.html 200
-/fi/transparency.html /fi/transparency/index.html 200
-/fi/transparency /fi/transparency/index.html 200
-/fi/transparency/ /fi/transparency/index.html 200
-/fi/methodology.html /fi/methodology/index.html 200
-/fi/methodology /fi/methodology/index.html 200
-/fi/methodology/ /fi/methodology/index.html 200
-/fi/incidents.html /fi/incidents/index.html 200
-/fi/incidents /fi/incidents/index.html 200
-/fi/incidents/ /fi/incidents/index.html 200
-/fi/regulatory.html /fi/regulatory/index.html 200
-/fi/regulatory /fi/regulatory/index.html 200
-/fi/regulatory/ /fi/regulatory/index.html 200
 /fr /fr/index.html 200
-/fr/ /fr/index.html 200
-/fr/index.html /fr/index.html 200
-/fr/for-humans.html /fr/for-humans/index.html 200
-/fr/for-humans /fr/for-humans/index.html 200
-/fr/for-humans/ /fr/for-humans/index.html 200
-/fr/for-businesses.html /fr/for-businesses/index.html 200
-/fr/for-businesses /fr/for-businesses/index.html 200
-/fr/for-businesses/ /fr/for-businesses/index.html 200
-/fr/for-ai.html /fr/for-ai/index.html 200
-/fr/for-ai /fr/for-ai/index.html 200
-/fr/for-ai/ /fr/for-ai/index.html 200
-/fr/about.html /fr/about/index.html 200
-/fr/about /fr/about/index.html 200
-/fr/about/ /fr/about/index.html 200
-/fr/pricing.html /fr/pricing/index.html 200
-/fr/pricing /fr/pricing/index.html 200
-/fr/pricing/ /fr/pricing/index.html 200
-/fr/affiliate.html /fr/affiliate/index.html 200
-/fr/affiliate /fr/affiliate/index.html 200
-/fr/affiliate/ /fr/affiliate/index.html 200
-/fr/partners.html /fr/partners/index.html 200
-/fr/partners /fr/partners/index.html 200
-/fr/partners/ /fr/partners/index.html 200
-/fr/transparency.html /fr/transparency/index.html 200
-/fr/transparency /fr/transparency/index.html 200
-/fr/transparency/ /fr/transparency/index.html 200
-/fr/methodology.html /fr/methodology/index.html 200
-/fr/methodology /fr/methodology/index.html 200
-/fr/methodology/ /fr/methodology/index.html 200
-/fr/incidents.html /fr/incidents/index.html 200
-/fr/incidents /fr/incidents/index.html 200
-/fr/incidents/ /fr/incidents/index.html 200
-/fr/regulatory.html /fr/regulatory/index.html 200
-/fr/regulatory /fr/regulatory/index.html 200
-/fr/regulatory/ /fr/regulatory/index.html 200
 /ga /ga/index.html 200
-/ga/ /ga/index.html 200
-/ga/index.html /ga/index.html 200
-/ga/for-humans.html /ga/for-humans/index.html 200
-/ga/for-humans /ga/for-humans/index.html 200
-/ga/for-humans/ /ga/for-humans/index.html 200
-/ga/for-businesses.html /ga/for-businesses/index.html 200
-/ga/for-businesses /ga/for-businesses/index.html 200
-/ga/for-businesses/ /ga/for-businesses/index.html 200
-/ga/for-ai.html /ga/for-ai/index.html 200
-/ga/for-ai /ga/for-ai/index.html 200
-/ga/for-ai/ /ga/for-ai/index.html 200
-/ga/about.html /ga/about/index.html 200
-/ga/about /ga/about/index.html 200
-/ga/about/ /ga/about/index.html 200
-/ga/pricing.html /ga/pricing/index.html 200
-/ga/pricing /ga/pricing/index.html 200
-/ga/pricing/ /ga/pricing/index.html 200
-/ga/affiliate.html /ga/affiliate/index.html 200
-/ga/affiliate /ga/affiliate/index.html 200
-/ga/affiliate/ /ga/affiliate/index.html 200
-/ga/partners.html /ga/partners/index.html 200
-/ga/partners /ga/partners/index.html 200
-/ga/partners/ /ga/partners/index.html 200
-/ga/transparency.html /ga/transparency/index.html 200
-/ga/transparency /ga/transparency/index.html 200
-/ga/transparency/ /ga/transparency/index.html 200
-/ga/methodology.html /ga/methodology/index.html 200
-/ga/methodology /ga/methodology/index.html 200
-/ga/methodology/ /ga/methodology/index.html 200
-/ga/incidents.html /ga/incidents/index.html 200
-/ga/incidents /ga/incidents/index.html 200
-/ga/incidents/ /ga/incidents/index.html 200
-/ga/regulatory.html /ga/regulatory/index.html 200
-/ga/regulatory /ga/regulatory/index.html 200
-/ga/regulatory/ /ga/regulatory/index.html 200
 /hr /hr/index.html 200
-/hr/ /hr/index.html 200
-/hr/index.html /hr/index.html 200
-/hr/for-humans.html /hr/for-humans/index.html 200
-/hr/for-humans /hr/for-humans/index.html 200
-/hr/for-humans/ /hr/for-humans/index.html 200
-/hr/for-businesses.html /hr/for-businesses/index.html 200
-/hr/for-businesses /hr/for-businesses/index.html 200
-/hr/for-businesses/ /hr/for-businesses/index.html 200
-/hr/for-ai.html /hr/for-ai/index.html 200
-/hr/for-ai /hr/for-ai/index.html 200
-/hr/for-ai/ /hr/for-ai/index.html 200
-/hr/about.html /hr/about/index.html 200
-/hr/about /hr/about/index.html 200
-/hr/about/ /hr/about/index.html 200
-/hr/pricing.html /hr/pricing/index.html 200
-/hr/pricing /hr/pricing/index.html 200
-/hr/pricing/ /hr/pricing/index.html 200
-/hr/affiliate.html /hr/affiliate/index.html 200
-/hr/affiliate /hr/affiliate/index.html 200
-/hr/affiliate/ /hr/affiliate/index.html 200
-/hr/partners.html /hr/partners/index.html 200
-/hr/partners /hr/partners/index.html 200
-/hr/partners/ /hr/partners/index.html 200
-/hr/transparency.html /hr/transparency/index.html 200
-/hr/transparency /hr/transparency/index.html 200
-/hr/transparency/ /hr/transparency/index.html 200
-/hr/methodology.html /hr/methodology/index.html 200
-/hr/methodology /hr/methodology/index.html 200
-/hr/methodology/ /hr/methodology/index.html 200
-/hr/incidents.html /hr/incidents/index.html 200
-/hr/incidents /hr/incidents/index.html 200
-/hr/incidents/ /hr/incidents/index.html 200
-/hr/regulatory.html /hr/regulatory/index.html 200
-/hr/regulatory /hr/regulatory/index.html 200
-/hr/regulatory/ /hr/regulatory/index.html 200
 /hu /hu/index.html 200
-/hu/ /hu/index.html 200
-/hu/index.html /hu/index.html 200
-/hu/for-humans.html /hu/for-humans/index.html 200
-/hu/for-humans /hu/for-humans/index.html 200
-/hu/for-humans/ /hu/for-humans/index.html 200
-/hu/for-businesses.html /hu/for-businesses/index.html 200
-/hu/for-businesses /hu/for-businesses/index.html 200
-/hu/for-businesses/ /hu/for-businesses/index.html 200
-/hu/for-ai.html /hu/for-ai/index.html 200
-/hu/for-ai /hu/for-ai/index.html 200
-/hu/for-ai/ /hu/for-ai/index.html 200
-/hu/about.html /hu/about/index.html 200
-/hu/about /hu/about/index.html 200
-/hu/about/ /hu/about/index.html 200
-/hu/pricing.html /hu/pricing/index.html 200
-/hu/pricing /hu/pricing/index.html 200
-/hu/pricing/ /hu/pricing/index.html 200
-/hu/affiliate.html /hu/affiliate/index.html 200
-/hu/affiliate /hu/affiliate/index.html 200
-/hu/affiliate/ /hu/affiliate/index.html 200
-/hu/partners.html /hu/partners/index.html 200
-/hu/partners /hu/partners/index.html 200
-/hu/partners/ /hu/partners/index.html 200
-/hu/transparency.html /hu/transparency/index.html 200
-/hu/transparency /hu/transparency/index.html 200
-/hu/transparency/ /hu/transparency/index.html 200
-/hu/methodology.html /hu/methodology/index.html 200
-/hu/methodology /hu/methodology/index.html 200
-/hu/methodology/ /hu/methodology/index.html 200
-/hu/incidents.html /hu/incidents/index.html 200
-/hu/incidents /hu/incidents/index.html 200
-/hu/incidents/ /hu/incidents/index.html 200
-/hu/regulatory.html /hu/regulatory/index.html 200
-/hu/regulatory /hu/regulatory/index.html 200
-/hu/regulatory/ /hu/regulatory/index.html 200
 /it /it/index.html 200
-/it/ /it/index.html 200
-/it/index.html /it/index.html 200
-/it/for-humans.html /it/for-humans/index.html 200
-/it/for-humans /it/for-humans/index.html 200
-/it/for-humans/ /it/for-humans/index.html 200
-/it/for-businesses.html /it/for-businesses/index.html 200
-/it/for-businesses /it/for-businesses/index.html 200
-/it/for-businesses/ /it/for-businesses/index.html 200
-/it/for-ai.html /it/for-ai/index.html 200
-/it/for-ai /it/for-ai/index.html 200
-/it/for-ai/ /it/for-ai/index.html 200
-/it/about.html /it/about/index.html 200
-/it/about /it/about/index.html 200
-/it/about/ /it/about/index.html 200
-/it/pricing.html /it/pricing/index.html 200
-/it/pricing /it/pricing/index.html 200
-/it/pricing/ /it/pricing/index.html 200
-/it/affiliate.html /it/affiliate/index.html 200
-/it/affiliate /it/affiliate/index.html 200
-/it/affiliate/ /it/affiliate/index.html 200
-/it/partners.html /it/partners/index.html 200
-/it/partners /it/partners/index.html 200
-/it/partners/ /it/partners/index.html 200
-/it/transparency.html /it/transparency/index.html 200
-/it/transparency /it/transparency/index.html 200
-/it/transparency/ /it/transparency/index.html 200
-/it/methodology.html /it/methodology/index.html 200
-/it/methodology /it/methodology/index.html 200
-/it/methodology/ /it/methodology/index.html 200
-/it/incidents.html /it/incidents/index.html 200
-/it/incidents /it/incidents/index.html 200
-/it/incidents/ /it/incidents/index.html 200
-/it/regulatory.html /it/regulatory/index.html 200
-/it/regulatory /it/regulatory/index.html 200
-/it/regulatory/ /it/regulatory/index.html 200
 /lt /lt/index.html 200
-/lt/ /lt/index.html 200
-/lt/index.html /lt/index.html 200
-/lt/for-humans.html /lt/for-humans/index.html 200
-/lt/for-humans /lt/for-humans/index.html 200
-/lt/for-humans/ /lt/for-humans/index.html 200
-/lt/for-businesses.html /lt/for-businesses/index.html 200
-/lt/for-businesses /lt/for-businesses/index.html 200
-/lt/for-businesses/ /lt/for-businesses/index.html 200
-/lt/for-ai.html /lt/for-ai/index.html 200
-/lt/for-ai /lt/for-ai/index.html 200
-/lt/for-ai/ /lt/for-ai/index.html 200
-/lt/about.html /lt/about/index.html 200
-/lt/about /lt/about/index.html 200
-/lt/about/ /lt/about/index.html 200
-/lt/pricing.html /lt/pricing/index.html 200
-/lt/pricing /lt/pricing/index.html 200
-/lt/pricing/ /lt/pricing/index.html 200
-/lt/affiliate.html /lt/affiliate/index.html 200
-/lt/affiliate /lt/affiliate/index.html 200
-/lt/affiliate/ /lt/affiliate/index.html 200
-/lt/partners.html /lt/partners/index.html 200
-/lt/partners /lt/partners/index.html 200
-/lt/partners/ /lt/partners/index.html 200
-/lt/transparency.html /lt/transparency/index.html 200
-/lt/transparency /lt/transparency/index.html 200
-/lt/transparency/ /lt/transparency/index.html 200
-/lt/methodology.html /lt/methodology/index.html 200
-/lt/methodology /lt/methodology/index.html 200
-/lt/methodology/ /lt/methodology/index.html 200
-/lt/incidents.html /lt/incidents/index.html 200
-/lt/incidents /lt/incidents/index.html 200
-/lt/incidents/ /lt/incidents/index.html 200
-/lt/regulatory.html /lt/regulatory/index.html 200
-/lt/regulatory /lt/regulatory/index.html 200
-/lt/regulatory/ /lt/regulatory/index.html 200
 /lv /lv/index.html 200
-/lv/ /lv/index.html 200
-/lv/index.html /lv/index.html 200
-/lv/for-humans.html /lv/for-humans/index.html 200
-/lv/for-humans /lv/for-humans/index.html 200
-/lv/for-humans/ /lv/for-humans/index.html 200
-/lv/for-businesses.html /lv/for-businesses/index.html 200
-/lv/for-businesses /lv/for-businesses/index.html 200
-/lv/for-businesses/ /lv/for-businesses/index.html 200
-/lv/for-ai.html /lv/for-ai/index.html 200
-/lv/for-ai /lv/for-ai/index.html 200
-/lv/for-ai/ /lv/for-ai/index.html 200
-/lv/about.html /lv/about/index.html 200
-/lv/about /lv/about/index.html 200
-/lv/about/ /lv/about/index.html 200
-/lv/pricing.html /lv/pricing/index.html 200
-/lv/pricing /lv/pricing/index.html 200
-/lv/pricing/ /lv/pricing/index.html 200
-/lv/affiliate.html /lv/affiliate/index.html 200
-/lv/affiliate /lv/affiliate/index.html 200
-/lv/affiliate/ /lv/affiliate/index.html 200
-/lv/partners.html /lv/partners/index.html 200
-/lv/partners /lv/partners/index.html 200
-/lv/partners/ /lv/partners/index.html 200
-/lv/transparency.html /lv/transparency/index.html 200
-/lv/transparency /lv/transparency/index.html 200
-/lv/transparency/ /lv/transparency/index.html 200
-/lv/methodology.html /lv/methodology/index.html 200
-/lv/methodology /lv/methodology/index.html 200
-/lv/methodology/ /lv/methodology/index.html 200
-/lv/incidents.html /lv/incidents/index.html 200
-/lv/incidents /lv/incidents/index.html 200
-/lv/incidents/ /lv/incidents/index.html 200
-/lv/regulatory.html /lv/regulatory/index.html 200
-/lv/regulatory /lv/regulatory/index.html 200
-/lv/regulatory/ /lv/regulatory/index.html 200
 /mt /mt/index.html 200
-/mt/ /mt/index.html 200
-/mt/index.html /mt/index.html 200
-/mt/for-humans.html /mt/for-humans/index.html 200
-/mt/for-humans /mt/for-humans/index.html 200
-/mt/for-humans/ /mt/for-humans/index.html 200
-/mt/for-businesses.html /mt/for-businesses/index.html 200
-/mt/for-businesses /mt/for-businesses/index.html 200
-/mt/for-businesses/ /mt/for-businesses/index.html 200
-/mt/for-ai.html /mt/for-ai/index.html 200
-/mt/for-ai /mt/for-ai/index.html 200
-/mt/for-ai/ /mt/for-ai/index.html 200
-/mt/about.html /mt/about/index.html 200
-/mt/about /mt/about/index.html 200
-/mt/about/ /mt/about/index.html 200
-/mt/pricing.html /mt/pricing/index.html 200
-/mt/pricing /mt/pricing/index.html 200
-/mt/pricing/ /mt/pricing/index.html 200
-/mt/affiliate.html /mt/affiliate/index.html 200
-/mt/affiliate /mt/affiliate/index.html 200
-/mt/affiliate/ /mt/affiliate/index.html 200
-/mt/partners.html /mt/partners/index.html 200
-/mt/partners /mt/partners/index.html 200
-/mt/partners/ /mt/partners/index.html 200
-/mt/transparency.html /mt/transparency/index.html 200
-/mt/transparency /mt/transparency/index.html 200
-/mt/transparency/ /mt/transparency/index.html 200
-/mt/methodology.html /mt/methodology/index.html 200
-/mt/methodology /mt/methodology/index.html 200
-/mt/methodology/ /mt/methodology/index.html 200
-/mt/incidents.html /mt/incidents/index.html 200
-/mt/incidents /mt/incidents/index.html 200
-/mt/incidents/ /mt/incidents/index.html 200
-/mt/regulatory.html /mt/regulatory/index.html 200
-/mt/regulatory /mt/regulatory/index.html 200
-/mt/regulatory/ /mt/regulatory/index.html 200
 /nl /nl/index.html 200
-/nl/ /nl/index.html 200
-/nl/index.html /nl/index.html 200
-/nl/for-humans.html /nl/for-humans/index.html 200
-/nl/for-humans /nl/for-humans/index.html 200
-/nl/for-humans/ /nl/for-humans/index.html 200
-/nl/for-businesses.html /nl/for-businesses/index.html 200
-/nl/for-businesses /nl/for-businesses/index.html 200
-/nl/for-businesses/ /nl/for-businesses/index.html 200
-/nl/for-ai.html /nl/for-ai/index.html 200
-/nl/for-ai /nl/for-ai/index.html 200
-/nl/for-ai/ /nl/for-ai/index.html 200
-/nl/about.html /nl/about/index.html 200
-/nl/about /nl/about/index.html 200
-/nl/about/ /nl/about/index.html 200
-/nl/pricing.html /nl/pricing/index.html 200
-/nl/pricing /nl/pricing/index.html 200
-/nl/pricing/ /nl/pricing/index.html 200
-/nl/affiliate.html /nl/affiliate/index.html 200
-/nl/affiliate /nl/affiliate/index.html 200
-/nl/affiliate/ /nl/affiliate/index.html 200
-/nl/partners.html /nl/partners/index.html 200
-/nl/partners /nl/partners/index.html 200
-/nl/partners/ /nl/partners/index.html 200
-/nl/transparency.html /nl/transparency/index.html 200
-/nl/transparency /nl/transparency/index.html 200
-/nl/transparency/ /nl/transparency/index.html 200
-/nl/methodology.html /nl/methodology/index.html 200
-/nl/methodology /nl/methodology/index.html 200
-/nl/methodology/ /nl/methodology/index.html 200
-/nl/incidents.html /nl/incidents/index.html 200
-/nl/incidents /nl/incidents/index.html 200
-/nl/incidents/ /nl/incidents/index.html 200
-/nl/regulatory.html /nl/regulatory/index.html 200
-/nl/regulatory /nl/regulatory/index.html 200
-/nl/regulatory/ /nl/regulatory/index.html 200
 /pl /pl/index.html 200
-/pl/ /pl/index.html 200
-/pl/index.html /pl/index.html 200
-/pl/for-humans.html /pl/for-humans/index.html 200
-/pl/for-humans /pl/for-humans/index.html 200
-/pl/for-humans/ /pl/for-humans/index.html 200
-/pl/for-businesses.html /pl/for-businesses/index.html 200
-/pl/for-businesses /pl/for-businesses/index.html 200
-/pl/for-businesses/ /pl/for-businesses/index.html 200
-/pl/for-ai.html /pl/for-ai/index.html 200
-/pl/for-ai /pl/for-ai/index.html 200
-/pl/for-ai/ /pl/for-ai/index.html 200
-/pl/about.html /pl/about/index.html 200
-/pl/about /pl/about/index.html 200
-/pl/about/ /pl/about/index.html 200
-/pl/pricing.html /pl/pricing/index.html 200
-/pl/pricing /pl/pricing/index.html 200
-/pl/pricing/ /pl/pricing/index.html 200
-/pl/affiliate.html /pl/affiliate/index.html 200
-/pl/affiliate /pl/affiliate/index.html 200
-/pl/affiliate/ /pl/affiliate/index.html 200
-/pl/partners.html /pl/partners/index.html 200
-/pl/partners /pl/partners/index.html 200
-/pl/partners/ /pl/partners/index.html 200
-/pl/transparency.html /pl/transparency/index.html 200
-/pl/transparency /pl/transparency/index.html 200
-/pl/transparency/ /pl/transparency/index.html 200
-/pl/methodology.html /pl/methodology/index.html 200
-/pl/methodology /pl/methodology/index.html 200
-/pl/methodology/ /pl/methodology/index.html 200
-/pl/incidents.html /pl/incidents/index.html 200
-/pl/incidents /pl/incidents/index.html 200
-/pl/incidents/ /pl/incidents/index.html 200
-/pl/regulatory.html /pl/regulatory/index.html 200
-/pl/regulatory /pl/regulatory/index.html 200
-/pl/regulatory/ /pl/regulatory/index.html 200
 /pt /pt/index.html 200
-/pt/ /pt/index.html 200
-/pt/index.html /pt/index.html 200
-/pt/for-humans.html /pt/for-humans/index.html 200
-/pt/for-humans /pt/for-humans/index.html 200
-/pt/for-humans/ /pt/for-humans/index.html 200
-/pt/for-businesses.html /pt/for-businesses/index.html 200
-/pt/for-businesses /pt/for-businesses/index.html 200
-/pt/for-businesses/ /pt/for-businesses/index.html 200
-/pt/for-ai.html /pt/for-ai/index.html 200
-/pt/for-ai /pt/for-ai/index.html 200
-/pt/for-ai/ /pt/for-ai/index.html 200
-/pt/about.html /pt/about/index.html 200
-/pt/about /pt/about/index.html 200
-/pt/about/ /pt/about/index.html 200
-/pt/pricing.html /pt/pricing/index.html 200
-/pt/pricing /pt/pricing/index.html 200
-/pt/pricing/ /pt/pricing/index.html 200
-/pt/affiliate.html /pt/affiliate/index.html 200
-/pt/affiliate /pt/affiliate/index.html 200
-/pt/affiliate/ /pt/affiliate/index.html 200
-/pt/partners.html /pt/partners/index.html 200
-/pt/partners /pt/partners/index.html 200
-/pt/partners/ /pt/partners/index.html 200
-/pt/transparency.html /pt/transparency/index.html 200
-/pt/transparency /pt/transparency/index.html 200
-/pt/transparency/ /pt/transparency/index.html 200
-/pt/methodology.html /pt/methodology/index.html 200
-/pt/methodology /pt/methodology/index.html 200
-/pt/methodology/ /pt/methodology/index.html 200
-/pt/incidents.html /pt/incidents/index.html 200
-/pt/incidents /pt/incidents/index.html 200
-/pt/incidents/ /pt/incidents/index.html 200
-/pt/regulatory.html /pt/regulatory/index.html 200
-/pt/regulatory /pt/regulatory/index.html 200
-/pt/regulatory/ /pt/regulatory/index.html 200
 /ro /ro/index.html 200
-/ro/ /ro/index.html 200
-/ro/index.html /ro/index.html 200
-/ro/for-humans.html /ro/for-humans/index.html 200
-/ro/for-humans /ro/for-humans/index.html 200
-/ro/for-humans/ /ro/for-humans/index.html 200
-/ro/for-businesses.html /ro/for-businesses/index.html 200
-/ro/for-businesses /ro/for-businesses/index.html 200
-/ro/for-businesses/ /ro/for-businesses/index.html 200
-/ro/for-ai.html /ro/for-ai/index.html 200
-/ro/for-ai /ro/for-ai/index.html 200
-/ro/for-ai/ /ro/for-ai/index.html 200
-/ro/about.html /ro/about/index.html 200
-/ro/about /ro/about/index.html 200
-/ro/about/ /ro/about/index.html 200
-/ro/pricing.html /ro/pricing/index.html 200
-/ro/pricing /ro/pricing/index.html 200
-/ro/pricing/ /ro/pricing/index.html 200
-/ro/affiliate.html /ro/affiliate/index.html 200
-/ro/affiliate /ro/affiliate/index.html 200
-/ro/affiliate/ /ro/affiliate/index.html 200
-/ro/partners.html /ro/partners/index.html 200
-/ro/partners /ro/partners/index.html 200
-/ro/partners/ /ro/partners/index.html 200
-/ro/transparency.html /ro/transparency/index.html 200
-/ro/transparency /ro/transparency/index.html 200
-/ro/transparency/ /ro/transparency/index.html 200
-/ro/methodology.html /ro/methodology/index.html 200
-/ro/methodology /ro/methodology/index.html 200
-/ro/methodology/ /ro/methodology/index.html 200
-/ro/incidents.html /ro/incidents/index.html 200
-/ro/incidents /ro/incidents/index.html 200
-/ro/incidents/ /ro/incidents/index.html 200
-/ro/regulatory.html /ro/regulatory/index.html 200
-/ro/regulatory /ro/regulatory/index.html 200
-/ro/regulatory/ /ro/regulatory/index.html 200
 /sk /sk/index.html 200
-/sk/ /sk/index.html 200
-/sk/index.html /sk/index.html 200
-/sk/for-humans.html /sk/for-humans/index.html 200
-/sk/for-humans /sk/for-humans/index.html 200
-/sk/for-humans/ /sk/for-humans/index.html 200
-/sk/for-businesses.html /sk/for-businesses/index.html 200
-/sk/for-businesses /sk/for-businesses/index.html 200
-/sk/for-businesses/ /sk/for-businesses/index.html 200
-/sk/for-ai.html /sk/for-ai/index.html 200
-/sk/for-ai /sk/for-ai/index.html 200
-/sk/for-ai/ /sk/for-ai/index.html 200
-/sk/about.html /sk/about/index.html 200
-/sk/about /sk/about/index.html 200
-/sk/about/ /sk/about/index.html 200
-/sk/pricing.html /sk/pricing/index.html 200
-/sk/pricing /sk/pricing/index.html 200
-/sk/pricing/ /sk/pricing/index.html 200
-/sk/affiliate.html /sk/affiliate/index.html 200
-/sk/affiliate /sk/affiliate/index.html 200
-/sk/affiliate/ /sk/affiliate/index.html 200
-/sk/partners.html /sk/partners/index.html 200
-/sk/partners /sk/partners/index.html 200
-/sk/partners/ /sk/partners/index.html 200
-/sk/transparency.html /sk/transparency/index.html 200
-/sk/transparency /sk/transparency/index.html 200
-/sk/transparency/ /sk/transparency/index.html 200
-/sk/methodology.html /sk/methodology/index.html 200
-/sk/methodology /sk/methodology/index.html 200
-/sk/methodology/ /sk/methodology/index.html 200
-/sk/incidents.html /sk/incidents/index.html 200
-/sk/incidents /sk/incidents/index.html 200
-/sk/incidents/ /sk/incidents/index.html 200
-/sk/regulatory.html /sk/regulatory/index.html 200
-/sk/regulatory /sk/regulatory/index.html 200
-/sk/regulatory/ /sk/regulatory/index.html 200
 /sl /sl/index.html 200
-/sl/ /sl/index.html 200
-/sl/index.html /sl/index.html 200
-/sl/for-humans.html /sl/for-humans/index.html 200
-/sl/for-humans /sl/for-humans/index.html 200
-/sl/for-humans/ /sl/for-humans/index.html 200
-/sl/for-businesses.html /sl/for-businesses/index.html 200
-/sl/for-businesses /sl/for-businesses/index.html 200
-/sl/for-businesses/ /sl/for-businesses/index.html 200
-/sl/for-ai.html /sl/for-ai/index.html 200
-/sl/for-ai /sl/for-ai/index.html 200
-/sl/for-ai/ /sl/for-ai/index.html 200
-/sl/about.html /sl/about/index.html 200
-/sl/about /sl/about/index.html 200
-/sl/about/ /sl/about/index.html 200
-/sl/pricing.html /sl/pricing/index.html 200
-/sl/pricing /sl/pricing/index.html 200
-/sl/pricing/ /sl/pricing/index.html 200
-/sl/affiliate.html /sl/affiliate/index.html 200
-/sl/affiliate /sl/affiliate/index.html 200
-/sl/affiliate/ /sl/affiliate/index.html 200
-/sl/partners.html /sl/partners/index.html 200
-/sl/partners /sl/partners/index.html 200
-/sl/partners/ /sl/partners/index.html 200
-/sl/transparency.html /sl/transparency/index.html 200
-/sl/transparency /sl/transparency/index.html 200
-/sl/transparency/ /sl/transparency/index.html 200
-/sl/methodology.html /sl/methodology/index.html 200
-/sl/methodology /sl/methodology/index.html 200
-/sl/methodology/ /sl/methodology/index.html 200
-/sl/incidents.html /sl/incidents/index.html 200
-/sl/incidents /sl/incidents/index.html 200
-/sl/incidents/ /sl/incidents/index.html 200
-/sl/regulatory.html /sl/regulatory/index.html 200
-/sl/regulatory /sl/regulatory/index.html 200
-/sl/regulatory/ /sl/regulatory/index.html 200
 /sv /sv/index.html 200
-/sv/ /sv/index.html 200
-/sv/index.html /sv/index.html 200
-/sv/for-humans.html /sv/for-humans/index.html 200
-/sv/for-humans /sv/for-humans/index.html 200
-/sv/for-humans/ /sv/for-humans/index.html 200
-/sv/for-businesses.html /sv/for-businesses/index.html 200
-/sv/for-businesses /sv/for-businesses/index.html 200
-/sv/for-businesses/ /sv/for-businesses/index.html 200
-/sv/for-ai.html /sv/for-ai/index.html 200
-/sv/for-ai /sv/for-ai/index.html 200
-/sv/for-ai/ /sv/for-ai/index.html 200
-/sv/about.html /sv/about/index.html 200
-/sv/about /sv/about/index.html 200
-/sv/about/ /sv/about/index.html 200
-/sv/pricing.html /sv/pricing/index.html 200
-/sv/pricing /sv/pricing/index.html 200
-/sv/pricing/ /sv/pricing/index.html 200
-/sv/affiliate.html /sv/affiliate/index.html 200
-/sv/affiliate /sv/affiliate/index.html 200
-/sv/affiliate/ /sv/affiliate/index.html 200
-/sv/partners.html /sv/partners/index.html 200
-/sv/partners /sv/partners/index.html 200
-/sv/partners/ /sv/partners/index.html 200
-/sv/transparency.html /sv/transparency/index.html 200
-/sv/transparency /sv/transparency/index.html 200
-/sv/transparency/ /sv/transparency/index.html 200
-/sv/methodology.html /sv/methodology/index.html 200
-/sv/methodology /sv/methodology/index.html 200
-/sv/methodology/ /sv/methodology/index.html 200
-/sv/incidents.html /sv/incidents/index.html 200
-/sv/incidents /sv/incidents/index.html 200
-/sv/incidents/ /sv/incidents/index.html 200
-/sv/regulatory.html /sv/regulatory/index.html 200
-/sv/regulatory /sv/regulatory/index.html 200
-/sv/regulatory/ /sv/regulatory/index.html 200
 
 # Friendly routes (default EN)
 /for-humans /en/for-humans/ 302
@@ -917,3 +77,872 @@
 
 # Legacy minisig alias
 /dumps/sha256.json.minisig  /dumps/sigs/sha256.json.minisig  302
+
+# ===============================
+# i18n canonical trailing-slash
+# ===============================
+
+/bg/for-humans /bg/for-humans/ 301
+/bg/for-humans/ /bg/for-humans/index.html 200
+
+/bg/for-businesses /bg/for-businesses/ 301
+/bg/for-businesses/ /bg/for-businesses/index.html 200
+
+/bg/for-ai /bg/for-ai/ 301
+/bg/for-ai/ /bg/for-ai/index.html 200
+
+/bg/about /bg/about/ 301
+/bg/about/ /bg/about/index.html 200
+
+/bg/pricing /bg/pricing/ 301
+/bg/pricing/ /bg/pricing/index.html 200
+
+/bg/partners /bg/partners/ 301
+/bg/partners/ /bg/partners/index.html 200
+
+/bg/affiliate /bg/affiliate/ 301
+/bg/affiliate/ /bg/affiliate/index.html 200
+
+/bg/methodology /bg/methodology/ 301
+/bg/methodology/ /bg/methodology/index.html 200
+
+/bg/incidents /bg/incidents/ 301
+/bg/incidents/ /bg/incidents/index.html 200
+
+/bg/regulatory /bg/regulatory/ 301
+/bg/regulatory/ /bg/regulatory/index.html 200
+
+/bg/transparency /bg/transparency/ 301
+/bg/transparency/ /bg/transparency/index.html 200
+
+/bg /bg/ 301
+/bg/ /bg/index.html 200
+
+/cs/for-humans /cs/for-humans/ 301
+/cs/for-humans/ /cs/for-humans/index.html 200
+
+/cs/for-businesses /cs/for-businesses/ 301
+/cs/for-businesses/ /cs/for-businesses/index.html 200
+
+/cs/for-ai /cs/for-ai/ 301
+/cs/for-ai/ /cs/for-ai/index.html 200
+
+/cs/about /cs/about/ 301
+/cs/about/ /cs/about/index.html 200
+
+/cs/pricing /cs/pricing/ 301
+/cs/pricing/ /cs/pricing/index.html 200
+
+/cs/partners /cs/partners/ 301
+/cs/partners/ /cs/partners/index.html 200
+
+/cs/affiliate /cs/affiliate/ 301
+/cs/affiliate/ /cs/affiliate/index.html 200
+
+/cs/methodology /cs/methodology/ 301
+/cs/methodology/ /cs/methodology/index.html 200
+
+/cs/incidents /cs/incidents/ 301
+/cs/incidents/ /cs/incidents/index.html 200
+
+/cs/regulatory /cs/regulatory/ 301
+/cs/regulatory/ /cs/regulatory/index.html 200
+
+/cs/transparency /cs/transparency/ 301
+/cs/transparency/ /cs/transparency/index.html 200
+
+/cs /cs/ 301
+/cs/ /cs/index.html 200
+
+/da/for-humans /da/for-humans/ 301
+/da/for-humans/ /da/for-humans/index.html 200
+
+/da/for-businesses /da/for-businesses/ 301
+/da/for-businesses/ /da/for-businesses/index.html 200
+
+/da/for-ai /da/for-ai/ 301
+/da/for-ai/ /da/for-ai/index.html 200
+
+/da/about /da/about/ 301
+/da/about/ /da/about/index.html 200
+
+/da/pricing /da/pricing/ 301
+/da/pricing/ /da/pricing/index.html 200
+
+/da/partners /da/partners/ 301
+/da/partners/ /da/partners/index.html 200
+
+/da/affiliate /da/affiliate/ 301
+/da/affiliate/ /da/affiliate/index.html 200
+
+/da/methodology /da/methodology/ 301
+/da/methodology/ /da/methodology/index.html 200
+
+/da/incidents /da/incidents/ 301
+/da/incidents/ /da/incidents/index.html 200
+
+/da/regulatory /da/regulatory/ 301
+/da/regulatory/ /da/regulatory/index.html 200
+
+/da/transparency /da/transparency/ 301
+/da/transparency/ /da/transparency/index.html 200
+
+/da /da/ 301
+/da/ /da/index.html 200
+
+/de/for-humans /de/for-humans/ 301
+/de/for-humans/ /de/for-humans/index.html 200
+
+/de/for-businesses /de/for-businesses/ 301
+/de/for-businesses/ /de/for-businesses/index.html 200
+
+/de/for-ai /de/for-ai/ 301
+/de/for-ai/ /de/for-ai/index.html 200
+
+/de/about /de/about/ 301
+/de/about/ /de/about/index.html 200
+
+/de/pricing /de/pricing/ 301
+/de/pricing/ /de/pricing/index.html 200
+
+/de/partners /de/partners/ 301
+/de/partners/ /de/partners/index.html 200
+
+/de/affiliate /de/affiliate/ 301
+/de/affiliate/ /de/affiliate/index.html 200
+
+/de/methodology /de/methodology/ 301
+/de/methodology/ /de/methodology/index.html 200
+
+/de/incidents /de/incidents/ 301
+/de/incidents/ /de/incidents/index.html 200
+
+/de/regulatory /de/regulatory/ 301
+/de/regulatory/ /de/regulatory/index.html 200
+
+/de/transparency /de/transparency/ 301
+/de/transparency/ /de/transparency/index.html 200
+
+/de /de/ 301
+/de/ /de/index.html 200
+
+/el/for-humans /el/for-humans/ 301
+/el/for-humans/ /el/for-humans/index.html 200
+
+/el/for-businesses /el/for-businesses/ 301
+/el/for-businesses/ /el/for-businesses/index.html 200
+
+/el/for-ai /el/for-ai/ 301
+/el/for-ai/ /el/for-ai/index.html 200
+
+/el/about /el/about/ 301
+/el/about/ /el/about/index.html 200
+
+/el/pricing /el/pricing/ 301
+/el/pricing/ /el/pricing/index.html 200
+
+/el/partners /el/partners/ 301
+/el/partners/ /el/partners/index.html 200
+
+/el/affiliate /el/affiliate/ 301
+/el/affiliate/ /el/affiliate/index.html 200
+
+/el/methodology /el/methodology/ 301
+/el/methodology/ /el/methodology/index.html 200
+
+/el/incidents /el/incidents/ 301
+/el/incidents/ /el/incidents/index.html 200
+
+/el/regulatory /el/regulatory/ 301
+/el/regulatory/ /el/regulatory/index.html 200
+
+/el/transparency /el/transparency/ 301
+/el/transparency/ /el/transparency/index.html 200
+
+/el /el/ 301
+/el/ /el/index.html 200
+
+/en/for-humans /en/for-humans/ 301
+/en/for-humans/ /en/for-humans/index.html 200
+
+/en/for-businesses /en/for-businesses/ 301
+/en/for-businesses/ /en/for-businesses/index.html 200
+
+/en/for-ai /en/for-ai/ 301
+/en/for-ai/ /en/for-ai/index.html 200
+
+/en/about /en/about/ 301
+/en/about/ /en/about/index.html 200
+
+/en/pricing /en/pricing/ 301
+/en/pricing/ /en/pricing/index.html 200
+
+/en/partners /en/partners/ 301
+/en/partners/ /en/partners/index.html 200
+
+/en/affiliate /en/affiliate/ 301
+/en/affiliate/ /en/affiliate/index.html 200
+
+/en/methodology /en/methodology/ 301
+/en/methodology/ /en/methodology/index.html 200
+
+/en/incidents /en/incidents/ 301
+/en/incidents/ /en/incidents/index.html 200
+
+/en/regulatory /en/regulatory/ 301
+/en/regulatory/ /en/regulatory/index.html 200
+
+/en/transparency /en/transparency/ 301
+/en/transparency/ /en/transparency/index.html 200
+
+/en /en/ 301
+/en/ /en/index.html 200
+
+/es/for-humans /es/for-humans/ 301
+/es/for-humans/ /es/for-humans/index.html 200
+
+/es/for-businesses /es/for-businesses/ 301
+/es/for-businesses/ /es/for-businesses/index.html 200
+
+/es/for-ai /es/for-ai/ 301
+/es/for-ai/ /es/for-ai/index.html 200
+
+/es/about /es/about/ 301
+/es/about/ /es/about/index.html 200
+
+/es/pricing /es/pricing/ 301
+/es/pricing/ /es/pricing/index.html 200
+
+/es/partners /es/partners/ 301
+/es/partners/ /es/partners/index.html 200
+
+/es/affiliate /es/affiliate/ 301
+/es/affiliate/ /es/affiliate/index.html 200
+
+/es/methodology /es/methodology/ 301
+/es/methodology/ /es/methodology/index.html 200
+
+/es/incidents /es/incidents/ 301
+/es/incidents/ /es/incidents/index.html 200
+
+/es/regulatory /es/regulatory/ 301
+/es/regulatory/ /es/regulatory/index.html 200
+
+/es/transparency /es/transparency/ 301
+/es/transparency/ /es/transparency/index.html 200
+
+/es /es/ 301
+/es/ /es/index.html 200
+
+/et/for-humans /et/for-humans/ 301
+/et/for-humans/ /et/for-humans/index.html 200
+
+/et/for-businesses /et/for-businesses/ 301
+/et/for-businesses/ /et/for-businesses/index.html 200
+
+/et/for-ai /et/for-ai/ 301
+/et/for-ai/ /et/for-ai/index.html 200
+
+/et/about /et/about/ 301
+/et/about/ /et/about/index.html 200
+
+/et/pricing /et/pricing/ 301
+/et/pricing/ /et/pricing/index.html 200
+
+/et/partners /et/partners/ 301
+/et/partners/ /et/partners/index.html 200
+
+/et/affiliate /et/affiliate/ 301
+/et/affiliate/ /et/affiliate/index.html 200
+
+/et/methodology /et/methodology/ 301
+/et/methodology/ /et/methodology/index.html 200
+
+/et/incidents /et/incidents/ 301
+/et/incidents/ /et/incidents/index.html 200
+
+/et/regulatory /et/regulatory/ 301
+/et/regulatory/ /et/regulatory/index.html 200
+
+/et/transparency /et/transparency/ 301
+/et/transparency/ /et/transparency/index.html 200
+
+/et /et/ 301
+/et/ /et/index.html 200
+
+/fi/for-humans /fi/for-humans/ 301
+/fi/for-humans/ /fi/for-humans/index.html 200
+
+/fi/for-businesses /fi/for-businesses/ 301
+/fi/for-businesses/ /fi/for-businesses/index.html 200
+
+/fi/for-ai /fi/for-ai/ 301
+/fi/for-ai/ /fi/for-ai/index.html 200
+
+/fi/about /fi/about/ 301
+/fi/about/ /fi/about/index.html 200
+
+/fi/pricing /fi/pricing/ 301
+/fi/pricing/ /fi/pricing/index.html 200
+
+/fi/partners /fi/partners/ 301
+/fi/partners/ /fi/partners/index.html 200
+
+/fi/affiliate /fi/affiliate/ 301
+/fi/affiliate/ /fi/affiliate/index.html 200
+
+/fi/methodology /fi/methodology/ 301
+/fi/methodology/ /fi/methodology/index.html 200
+
+/fi/incidents /fi/incidents/ 301
+/fi/incidents/ /fi/incidents/index.html 200
+
+/fi/regulatory /fi/regulatory/ 301
+/fi/regulatory/ /fi/regulatory/index.html 200
+
+/fi/transparency /fi/transparency/ 301
+/fi/transparency/ /fi/transparency/index.html 200
+
+/fi /fi/ 301
+/fi/ /fi/index.html 200
+
+/fr/for-humans /fr/for-humans/ 301
+/fr/for-humans/ /fr/for-humans/index.html 200
+
+/fr/for-businesses /fr/for-businesses/ 301
+/fr/for-businesses/ /fr/for-businesses/index.html 200
+
+/fr/for-ai /fr/for-ai/ 301
+/fr/for-ai/ /fr/for-ai/index.html 200
+
+/fr/about /fr/about/ 301
+/fr/about/ /fr/about/index.html 200
+
+/fr/pricing /fr/pricing/ 301
+/fr/pricing/ /fr/pricing/index.html 200
+
+/fr/partners /fr/partners/ 301
+/fr/partners/ /fr/partners/index.html 200
+
+/fr/affiliate /fr/affiliate/ 301
+/fr/affiliate/ /fr/affiliate/index.html 200
+
+/fr/methodology /fr/methodology/ 301
+/fr/methodology/ /fr/methodology/index.html 200
+
+/fr/incidents /fr/incidents/ 301
+/fr/incidents/ /fr/incidents/index.html 200
+
+/fr/regulatory /fr/regulatory/ 301
+/fr/regulatory/ /fr/regulatory/index.html 200
+
+/fr/transparency /fr/transparency/ 301
+/fr/transparency/ /fr/transparency/index.html 200
+
+/fr /fr/ 301
+/fr/ /fr/index.html 200
+
+/ga/for-humans /ga/for-humans/ 301
+/ga/for-humans/ /ga/for-humans/index.html 200
+
+/ga/for-businesses /ga/for-businesses/ 301
+/ga/for-businesses/ /ga/for-businesses/index.html 200
+
+/ga/for-ai /ga/for-ai/ 301
+/ga/for-ai/ /ga/for-ai/index.html 200
+
+/ga/about /ga/about/ 301
+/ga/about/ /ga/about/index.html 200
+
+/ga/pricing /ga/pricing/ 301
+/ga/pricing/ /ga/pricing/index.html 200
+
+/ga/partners /ga/partners/ 301
+/ga/partners/ /ga/partners/index.html 200
+
+/ga/affiliate /ga/affiliate/ 301
+/ga/affiliate/ /ga/affiliate/index.html 200
+
+/ga/methodology /ga/methodology/ 301
+/ga/methodology/ /ga/methodology/index.html 200
+
+/ga/incidents /ga/incidents/ 301
+/ga/incidents/ /ga/incidents/index.html 200
+
+/ga/regulatory /ga/regulatory/ 301
+/ga/regulatory/ /ga/regulatory/index.html 200
+
+/ga/transparency /ga/transparency/ 301
+/ga/transparency/ /ga/transparency/index.html 200
+
+/ga /ga/ 301
+/ga/ /ga/index.html 200
+
+/hr/for-humans /hr/for-humans/ 301
+/hr/for-humans/ /hr/for-humans/index.html 200
+
+/hr/for-businesses /hr/for-businesses/ 301
+/hr/for-businesses/ /hr/for-businesses/index.html 200
+
+/hr/for-ai /hr/for-ai/ 301
+/hr/for-ai/ /hr/for-ai/index.html 200
+
+/hr/about /hr/about/ 301
+/hr/about/ /hr/about/index.html 200
+
+/hr/pricing /hr/pricing/ 301
+/hr/pricing/ /hr/pricing/index.html 200
+
+/hr/partners /hr/partners/ 301
+/hr/partners/ /hr/partners/index.html 200
+
+/hr/affiliate /hr/affiliate/ 301
+/hr/affiliate/ /hr/affiliate/index.html 200
+
+/hr/methodology /hr/methodology/ 301
+/hr/methodology/ /hr/methodology/index.html 200
+
+/hr/incidents /hr/incidents/ 301
+/hr/incidents/ /hr/incidents/index.html 200
+
+/hr/regulatory /hr/regulatory/ 301
+/hr/regulatory/ /hr/regulatory/index.html 200
+
+/hr/transparency /hr/transparency/ 301
+/hr/transparency/ /hr/transparency/index.html 200
+
+/hr /hr/ 301
+/hr/ /hr/index.html 200
+
+/hu/for-humans /hu/for-humans/ 301
+/hu/for-humans/ /hu/for-humans/index.html 200
+
+/hu/for-businesses /hu/for-businesses/ 301
+/hu/for-businesses/ /hu/for-businesses/index.html 200
+
+/hu/for-ai /hu/for-ai/ 301
+/hu/for-ai/ /hu/for-ai/index.html 200
+
+/hu/about /hu/about/ 301
+/hu/about/ /hu/about/index.html 200
+
+/hu/pricing /hu/pricing/ 301
+/hu/pricing/ /hu/pricing/index.html 200
+
+/hu/partners /hu/partners/ 301
+/hu/partners/ /hu/partners/index.html 200
+
+/hu/affiliate /hu/affiliate/ 301
+/hu/affiliate/ /hu/affiliate/index.html 200
+
+/hu/methodology /hu/methodology/ 301
+/hu/methodology/ /hu/methodology/index.html 200
+
+/hu/incidents /hu/incidents/ 301
+/hu/incidents/ /hu/incidents/index.html 200
+
+/hu/regulatory /hu/regulatory/ 301
+/hu/regulatory/ /hu/regulatory/index.html 200
+
+/hu/transparency /hu/transparency/ 301
+/hu/transparency/ /hu/transparency/index.html 200
+
+/hu /hu/ 301
+/hu/ /hu/index.html 200
+
+/it/for-humans /it/for-humans/ 301
+/it/for-humans/ /it/for-humans/index.html 200
+
+/it/for-businesses /it/for-businesses/ 301
+/it/for-businesses/ /it/for-businesses/index.html 200
+
+/it/for-ai /it/for-ai/ 301
+/it/for-ai/ /it/for-ai/index.html 200
+
+/it/about /it/about/ 301
+/it/about/ /it/about/index.html 200
+
+/it/pricing /it/pricing/ 301
+/it/pricing/ /it/pricing/index.html 200
+
+/it/partners /it/partners/ 301
+/it/partners/ /it/partners/index.html 200
+
+/it/affiliate /it/affiliate/ 301
+/it/affiliate/ /it/affiliate/index.html 200
+
+/it/methodology /it/methodology/ 301
+/it/methodology/ /it/methodology/index.html 200
+
+/it/incidents /it/incidents/ 301
+/it/incidents/ /it/incidents/index.html 200
+
+/it/regulatory /it/regulatory/ 301
+/it/regulatory/ /it/regulatory/index.html 200
+
+/it/transparency /it/transparency/ 301
+/it/transparency/ /it/transparency/index.html 200
+
+/it /it/ 301
+/it/ /it/index.html 200
+
+/lt/for-humans /lt/for-humans/ 301
+/lt/for-humans/ /lt/for-humans/index.html 200
+
+/lt/for-businesses /lt/for-businesses/ 301
+/lt/for-businesses/ /lt/for-businesses/index.html 200
+
+/lt/for-ai /lt/for-ai/ 301
+/lt/for-ai/ /lt/for-ai/index.html 200
+
+/lt/about /lt/about/ 301
+/lt/about/ /lt/about/index.html 200
+
+/lt/pricing /lt/pricing/ 301
+/lt/pricing/ /lt/pricing/index.html 200
+
+/lt/partners /lt/partners/ 301
+/lt/partners/ /lt/partners/index.html 200
+
+/lt/affiliate /lt/affiliate/ 301
+/lt/affiliate/ /lt/affiliate/index.html 200
+
+/lt/methodology /lt/methodology/ 301
+/lt/methodology/ /lt/methodology/index.html 200
+
+/lt/incidents /lt/incidents/ 301
+/lt/incidents/ /lt/incidents/index.html 200
+
+/lt/regulatory /lt/regulatory/ 301
+/lt/regulatory/ /lt/regulatory/index.html 200
+
+/lt/transparency /lt/transparency/ 301
+/lt/transparency/ /lt/transparency/index.html 200
+
+/lt /lt/ 301
+/lt/ /lt/index.html 200
+
+/lv/for-humans /lv/for-humans/ 301
+/lv/for-humans/ /lv/for-humans/index.html 200
+
+/lv/for-businesses /lv/for-businesses/ 301
+/lv/for-businesses/ /lv/for-businesses/index.html 200
+
+/lv/for-ai /lv/for-ai/ 301
+/lv/for-ai/ /lv/for-ai/index.html 200
+
+/lv/about /lv/about/ 301
+/lv/about/ /lv/about/index.html 200
+
+/lv/pricing /lv/pricing/ 301
+/lv/pricing/ /lv/pricing/index.html 200
+
+/lv/partners /lv/partners/ 301
+/lv/partners/ /lv/partners/index.html 200
+
+/lv/affiliate /lv/affiliate/ 301
+/lv/affiliate/ /lv/affiliate/index.html 200
+
+/lv/methodology /lv/methodology/ 301
+/lv/methodology/ /lv/methodology/index.html 200
+
+/lv/incidents /lv/incidents/ 301
+/lv/incidents/ /lv/incidents/index.html 200
+
+/lv/regulatory /lv/regulatory/ 301
+/lv/regulatory/ /lv/regulatory/index.html 200
+
+/lv/transparency /lv/transparency/ 301
+/lv/transparency/ /lv/transparency/index.html 200
+
+/lv /lv/ 301
+/lv/ /lv/index.html 200
+
+/mt/for-humans /mt/for-humans/ 301
+/mt/for-humans/ /mt/for-humans/index.html 200
+
+/mt/for-businesses /mt/for-businesses/ 301
+/mt/for-businesses/ /mt/for-businesses/index.html 200
+
+/mt/for-ai /mt/for-ai/ 301
+/mt/for-ai/ /mt/for-ai/index.html 200
+
+/mt/about /mt/about/ 301
+/mt/about/ /mt/about/index.html 200
+
+/mt/pricing /mt/pricing/ 301
+/mt/pricing/ /mt/pricing/index.html 200
+
+/mt/partners /mt/partners/ 301
+/mt/partners/ /mt/partners/index.html 200
+
+/mt/affiliate /mt/affiliate/ 301
+/mt/affiliate/ /mt/affiliate/index.html 200
+
+/mt/methodology /mt/methodology/ 301
+/mt/methodology/ /mt/methodology/index.html 200
+
+/mt/incidents /mt/incidents/ 301
+/mt/incidents/ /mt/incidents/index.html 200
+
+/mt/regulatory /mt/regulatory/ 301
+/mt/regulatory/ /mt/regulatory/index.html 200
+
+/mt/transparency /mt/transparency/ 301
+/mt/transparency/ /mt/transparency/index.html 200
+
+/mt /mt/ 301
+/mt/ /mt/index.html 200
+
+/nl/for-humans /nl/for-humans/ 301
+/nl/for-humans/ /nl/for-humans/index.html 200
+
+/nl/for-businesses /nl/for-businesses/ 301
+/nl/for-businesses/ /nl/for-businesses/index.html 200
+
+/nl/for-ai /nl/for-ai/ 301
+/nl/for-ai/ /nl/for-ai/index.html 200
+
+/nl/about /nl/about/ 301
+/nl/about/ /nl/about/index.html 200
+
+/nl/pricing /nl/pricing/ 301
+/nl/pricing/ /nl/pricing/index.html 200
+
+/nl/partners /nl/partners/ 301
+/nl/partners/ /nl/partners/index.html 200
+
+/nl/affiliate /nl/affiliate/ 301
+/nl/affiliate/ /nl/affiliate/index.html 200
+
+/nl/methodology /nl/methodology/ 301
+/nl/methodology/ /nl/methodology/index.html 200
+
+/nl/incidents /nl/incidents/ 301
+/nl/incidents/ /nl/incidents/index.html 200
+
+/nl/regulatory /nl/regulatory/ 301
+/nl/regulatory/ /nl/regulatory/index.html 200
+
+/nl/transparency /nl/transparency/ 301
+/nl/transparency/ /nl/transparency/index.html 200
+
+/nl /nl/ 301
+/nl/ /nl/index.html 200
+
+/pl/for-humans /pl/for-humans/ 301
+/pl/for-humans/ /pl/for-humans/index.html 200
+
+/pl/for-businesses /pl/for-businesses/ 301
+/pl/for-businesses/ /pl/for-businesses/index.html 200
+
+/pl/for-ai /pl/for-ai/ 301
+/pl/for-ai/ /pl/for-ai/index.html 200
+
+/pl/about /pl/about/ 301
+/pl/about/ /pl/about/index.html 200
+
+/pl/pricing /pl/pricing/ 301
+/pl/pricing/ /pl/pricing/index.html 200
+
+/pl/partners /pl/partners/ 301
+/pl/partners/ /pl/partners/index.html 200
+
+/pl/affiliate /pl/affiliate/ 301
+/pl/affiliate/ /pl/affiliate/index.html 200
+
+/pl/methodology /pl/methodology/ 301
+/pl/methodology/ /pl/methodology/index.html 200
+
+/pl/incidents /pl/incidents/ 301
+/pl/incidents/ /pl/incidents/index.html 200
+
+/pl/regulatory /pl/regulatory/ 301
+/pl/regulatory/ /pl/regulatory/index.html 200
+
+/pl/transparency /pl/transparency/ 301
+/pl/transparency/ /pl/transparency/index.html 200
+
+/pl /pl/ 301
+/pl/ /pl/index.html 200
+
+/pt/for-humans /pt/for-humans/ 301
+/pt/for-humans/ /pt/for-humans/index.html 200
+
+/pt/for-businesses /pt/for-businesses/ 301
+/pt/for-businesses/ /pt/for-businesses/index.html 200
+
+/pt/for-ai /pt/for-ai/ 301
+/pt/for-ai/ /pt/for-ai/index.html 200
+
+/pt/about /pt/about/ 301
+/pt/about/ /pt/about/index.html 200
+
+/pt/pricing /pt/pricing/ 301
+/pt/pricing/ /pt/pricing/index.html 200
+
+/pt/partners /pt/partners/ 301
+/pt/partners/ /pt/partners/index.html 200
+
+/pt/affiliate /pt/affiliate/ 301
+/pt/affiliate/ /pt/affiliate/index.html 200
+
+/pt/methodology /pt/methodology/ 301
+/pt/methodology/ /pt/methodology/index.html 200
+
+/pt/incidents /pt/incidents/ 301
+/pt/incidents/ /pt/incidents/index.html 200
+
+/pt/regulatory /pt/regulatory/ 301
+/pt/regulatory/ /pt/regulatory/index.html 200
+
+/pt/transparency /pt/transparency/ 301
+/pt/transparency/ /pt/transparency/index.html 200
+
+/pt /pt/ 301
+/pt/ /pt/index.html 200
+
+/ro/for-humans /ro/for-humans/ 301
+/ro/for-humans/ /ro/for-humans/index.html 200
+
+/ro/for-businesses /ro/for-businesses/ 301
+/ro/for-businesses/ /ro/for-businesses/index.html 200
+
+/ro/for-ai /ro/for-ai/ 301
+/ro/for-ai/ /ro/for-ai/index.html 200
+
+/ro/about /ro/about/ 301
+/ro/about/ /ro/about/index.html 200
+
+/ro/pricing /ro/pricing/ 301
+/ro/pricing/ /ro/pricing/index.html 200
+
+/ro/partners /ro/partners/ 301
+/ro/partners/ /ro/partners/index.html 200
+
+/ro/affiliate /ro/affiliate/ 301
+/ro/affiliate/ /ro/affiliate/index.html 200
+
+/ro/methodology /ro/methodology/ 301
+/ro/methodology/ /ro/methodology/index.html 200
+
+/ro/incidents /ro/incidents/ 301
+/ro/incidents/ /ro/incidents/index.html 200
+
+/ro/regulatory /ro/regulatory/ 301
+/ro/regulatory/ /ro/regulatory/index.html 200
+
+/ro/transparency /ro/transparency/ 301
+/ro/transparency/ /ro/transparency/index.html 200
+
+/ro /ro/ 301
+/ro/ /ro/index.html 200
+
+/sk/for-humans /sk/for-humans/ 301
+/sk/for-humans/ /sk/for-humans/index.html 200
+
+/sk/for-businesses /sk/for-businesses/ 301
+/sk/for-businesses/ /sk/for-businesses/index.html 200
+
+/sk/for-ai /sk/for-ai/ 301
+/sk/for-ai/ /sk/for-ai/index.html 200
+
+/sk/about /sk/about/ 301
+/sk/about/ /sk/about/index.html 200
+
+/sk/pricing /sk/pricing/ 301
+/sk/pricing/ /sk/pricing/index.html 200
+
+/sk/partners /sk/partners/ 301
+/sk/partners/ /sk/partners/index.html 200
+
+/sk/affiliate /sk/affiliate/ 301
+/sk/affiliate/ /sk/affiliate/index.html 200
+
+/sk/methodology /sk/methodology/ 301
+/sk/methodology/ /sk/methodology/index.html 200
+
+/sk/incidents /sk/incidents/ 301
+/sk/incidents/ /sk/incidents/index.html 200
+
+/sk/regulatory /sk/regulatory/ 301
+/sk/regulatory/ /sk/regulatory/index.html 200
+
+/sk/transparency /sk/transparency/ 301
+/sk/transparency/ /sk/transparency/index.html 200
+
+/sk /sk/ 301
+/sk/ /sk/index.html 200
+
+/sl/for-humans /sl/for-humans/ 301
+/sl/for-humans/ /sl/for-humans/index.html 200
+
+/sl/for-businesses /sl/for-businesses/ 301
+/sl/for-businesses/ /sl/for-businesses/index.html 200
+
+/sl/for-ai /sl/for-ai/ 301
+/sl/for-ai/ /sl/for-ai/index.html 200
+
+/sl/about /sl/about/ 301
+/sl/about/ /sl/about/index.html 200
+
+/sl/pricing /sl/pricing/ 301
+/sl/pricing/ /sl/pricing/index.html 200
+
+/sl/partners /sl/partners/ 301
+/sl/partners/ /sl/partners/index.html 200
+
+/sl/affiliate /sl/affiliate/ 301
+/sl/affiliate/ /sl/affiliate/index.html 200
+
+/sl/methodology /sl/methodology/ 301
+/sl/methodology/ /sl/methodology/index.html 200
+
+/sl/incidents /sl/incidents/ 301
+/sl/incidents/ /sl/incidents/index.html 200
+
+/sl/regulatory /sl/regulatory/ 301
+/sl/regulatory/ /sl/regulatory/index.html 200
+
+/sl/transparency /sl/transparency/ 301
+/sl/transparency/ /sl/transparency/index.html 200
+
+/sl /sl/ 301
+/sl/ /sl/index.html 200
+
+/sv/for-humans /sv/for-humans/ 301
+/sv/for-humans/ /sv/for-humans/index.html 200
+
+/sv/for-businesses /sv/for-businesses/ 301
+/sv/for-businesses/ /sv/for-businesses/index.html 200
+
+/sv/for-ai /sv/for-ai/ 301
+/sv/for-ai/ /sv/for-ai/index.html 200
+
+/sv/about /sv/about/ 301
+/sv/about/ /sv/about/index.html 200
+
+/sv/pricing /sv/pricing/ 301
+/sv/pricing/ /sv/pricing/index.html 200
+
+/sv/partners /sv/partners/ 301
+/sv/partners/ /sv/partners/index.html 200
+
+/sv/affiliate /sv/affiliate/ 301
+/sv/affiliate/ /sv/affiliate/index.html 200
+
+/sv/methodology /sv/methodology/ 301
+/sv/methodology/ /sv/methodology/index.html 200
+
+/sv/incidents /sv/incidents/ 301
+/sv/incidents/ /sv/incidents/index.html 200
+
+/sv/regulatory /sv/regulatory/ 301
+/sv/regulatory/ /sv/regulatory/index.html 200
+
+/sv/transparency /sv/transparency/ 301
+/sv/transparency/ /sv/transparency/index.html 200
+
+/sv /sv/ 301
+/sv/ /sv/index.html 200
+
