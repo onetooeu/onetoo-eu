@@ -1,0 +1,45 @@
+{
+  "schema_version": "2.0",
+  "id": "tfws-v2-index",
+  "generated_at": "2025-12-25T00:00:00Z",
+  "publisher": {
+    "domain": "onetoo.eu",
+    "base_path": "/.well-known/tfws/v2"
+  },
+  "artifacts": {
+    "inventory_sha256": "inventory.sha256",
+    "inventory_minisig": "inventory.sha256.minisig",
+    "minisign_pub": "keys/minisign.pub",
+    "schemas": {
+      "trust_state": "schemas/trust-state.schema.json",
+      "incident": "schemas/incident.schema.json"
+    },
+    "examples": {
+      "trust_state": "examples/trust-state.example.json",
+      "incident": "examples/incident.example.json"
+    },
+    "decision_tree": "decision-tree.v2.json",
+    "simulations": "simulations.v2.json",
+    "policy": {
+      "agent_decision_contract": "policy/agent-decision-contract.json",
+      "trust_levels": "policy/trust-levels.json",
+      "trust_state_template": "policy/trust-state.template.json"
+    },
+    "docs": {
+      "agent_decision_tree": "docs/AGENT_DECISION_TREE.md",
+      "incident_playbooks": "docs/INCIDENT_PLAYBOOKS.md",
+      "release_gates": "docs/RELEASE_GATES.md",
+      "roadmap_10y": "docs/ROADMAP_10Y.md",
+      "release_notes_v2_0_0": "docs/RELEASE_NOTES_v2.0.0.md"
+    }
+  },
+  "discovery": {
+    "ai_trust_hub": "/.well-known/ai-trust-hub.json",
+    "ai_trust_hub_signature": "/.well-known/ai-trust-hub.json.minisig",
+    "minisign_public_key": "/.well-known/minisign.pub",
+    "minisign_public_keys": [
+      "/.well-known/keys/minisign/8AEA22755B13216C.pub",
+      "/.well-known/keys/minisign/A8444D66A337F633.pub"
+    ]
+  }
+}

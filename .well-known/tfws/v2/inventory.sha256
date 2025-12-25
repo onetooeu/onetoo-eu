@@ -7,6 +7,7 @@ e3a5e4b2a19a9e6625a0aea3193d50af3ac6a0fde6ba93fdecebef85a40ff8ed *./docs/RELEASE
 47db807b0198f94bda78213dca8d07493a2f3b109f45468d43f3d1b48d75abd7 *./docs/ROADMAP_10Y.md
 33bc1a7ae9eba2080df63e91be6d676a3a10f9a0fc5d6175a4458c914a2c08e6 *./examples/incident.example.json
 9fe885bad3d282fc1fccfd3d47ce781bc86d052571f6bf282f58955e39df50d9 *./examples/trust-state.example.json
+2c4656798864a8abcbf1de1024342f04803b73254e0cff4160e35789882444ed *./index.json
 4a208da58bb0a4c87dae63e37cdb181427812e028cd6f38d350e64b78b1a518e *./keys/minisign.pub
 40d65836283e5e66889a8179e0c3cd08cc42eaa34ee6fd526b09cc18463d8866 *./policy/agent-decision-contract.json
 5202a57d488be5054afc36b3e2ac60bed668529ebbb244d664e26f1a1163c7d1 *./policy/trust-levels.json
