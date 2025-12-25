@@ -894,3 +894,8 @@
 # TFWS v2 changelog canonical
 /.well-known/tfws/v2/changelog  /.well-known/tfws/v2/changelog.json  301
 /.well-known/tfws/v2/feed  /.well-known/tfws/v2/changelog.feed.xml  301
+
+# TFWS v2 release-notes + releases canonical
+/.well-known/tfws/v2/release-notes  /.well-known/tfws/v2/docs/RELEASE_NOTES_v2.0.4.md  301
+/.well-known/tfws/v2/releases  /.well-known/tfws/v2/releases/latest.json  301
+/.well-known/tfws/v2/releases/v2.0.4  /.well-known/tfws/v2/releases/v2.0.4.json  301
