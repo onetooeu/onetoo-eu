@@ -57,14 +57,16 @@
             "/.well-known/keys/minisign/8AEA22755B13216C.pub",
             "/.well-known/keys/minisign/A8444D66A337F633.pub"
         ],
-        "minisign_public_keys_dir": "/.well-known/keys/minisign/"
+        "minisign_public_keys_dir": "/.well-known/keys/minisign/",
+        "tfws_v2_version": "2.0.4",
+        "tfws_v2_release_tag": "v2.0.4"
     },
-    "last_updated": "2025-12-25T10:12:00Z",
+    "last_updated": "2025-12-25T15:38:44Z",
     "manifest": {
         "name": "ONETOO Trust Hub",
         "domain": "onetoo.eu",
         "stability": "final",
-        "updated": "2025-12-25T10:12:00Z",
+        "updated": "2025-12-25T15:38:44Z",
         "notes": "Long-lived trust & governance endpoints for humans and AI agents.",
         "version": "2025.12-final"
     },
