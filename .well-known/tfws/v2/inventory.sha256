@@ -12,6 +12,10 @@ e3a5e4b2a19a9e6625a0aea3193d50af3ac6a0fde6ba93fdecebef85a40ff8ed *./docs/RELEASE
 40d65836283e5e66889a8179e0c3cd08cc42eaa34ee6fd526b09cc18463d8866 *./policy/agent-decision-contract.json
 5202a57d488be5054afc36b3e2ac60bed668529ebbb244d664e26f1a1163c7d1 *./policy/trust-levels.json
 ecdc1953a7e00e893d650fa6880f88c2bc00da39abf1663a34d5b8f97a722cf6 *./policy/trust-state.template.json
+c5d949c2017b32151fd2dc83fa4e640e5ecd74934554c04314db06d3068cd60e *./releases/latest.json
+fcd687a9e3ff376ee8869161b7b4f2cdf1acb8d6f9b956b4bacfc8c8bcd9d70a *./releases/latest.json.minisig
+eac882dfb5f56b6e04c8b0099e510d812ac0de0360be3eeab45afee149fa1df8 *./releases/v2.0.4.json
+77426d5c9dcc1555bd042950e225d295f3e381721db38d084ab03a77424d90d9 *./releases/v2.0.4.json.minisig
 cbdad22d7da514360ad70a5be0a2c9a171432673d4001497c1069ea21c38e44c *./schemas/incident.schema.json
 8f183603cff307628fcddfccadad041d9a978330e4a4689ad947284d9bf844f3 *./schemas/trust-state.schema.json
 7b9c20a84c67c4ff39b5237fb2b4c2c758f21c7f4a7e8625dfd9c5e5db8c0d3f *./simulations.v2.json
