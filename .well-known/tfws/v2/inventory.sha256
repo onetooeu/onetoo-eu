@@ -7,6 +7,8 @@ e3a5e4b2a19a9e6625a0aea3193d50af3ac6a0fde6ba93fdecebef85a40ff8ed *./docs/RELEASE
 47db807b0198f94bda78213dca8d07493a2f3b109f45468d43f3d1b48d75abd7 *./docs/ROADMAP_10Y.md
 33bc1a7ae9eba2080df63e91be6d676a3a10f9a0fc5d6175a4458c914a2c08e6 *./examples/incident.example.json
 9fe885bad3d282fc1fccfd3d47ce781bc86d052571f6bf282f58955e39df50d9 *./examples/trust-state.example.json
+ca2c7aa3f6f24a56a025d33c26bcc6490a32a41ee1f8bc04dcb5acd5bcfb28ef *./index.json
+4a208da58bb0a4c87dae63e37cdb181427812e028cd6f38d350e64b78b1a518e *./keys/minisign.pub
 cbdad22d7da514360ad70a5be0a2c9a171432673d4001497c1069ea21c38e44c *./schemas/incident.schema.json
 8f183603cff307628fcddfccadad041d9a978330e4a4689ad947284d9bf844f3 *./schemas/trust-state.schema.json
 7b9c20a84c67c4ff39b5237fb2b4c2c758f21c7f4a7e8625dfd9c5e5db8c0d3f *./simulations.v2.json
