@@ -8,10 +8,12 @@ f8a7de3b05b040dcdaf9f1443234044061f285ea9c518daa67ee4bc62e954df8 *./docs/AGENT_D
 13a412feb7af1a09d038ea6d010e2c03c5a0db8024f275a4732ee50ad93834f5 *./docs/INCIDENT_PLAYBOOKS.md
 e3a5e4b2a19a9e6625a0aea3193d50af3ac6a0fde6ba93fdecebef85a40ff8ed *./docs/RELEASE_GATES.md
 424f4e2ff88798dc54b0dddfcaca8e1adf24e132374729a99fab11066ee2521f *./docs/RELEASE_NOTES_v2.0.0.md
+0b4fb623994a89b955c66430c38135d126928ae84de69c18ed4efe2209ec0cc3 *./docs/RELEASE_NOTES_v2.0.4.md
+a9e75d457b02cf76c0829da088b01df22ebde4659994fea100c3a4ba8d6bf9b8 *./docs/RELEASE_NOTES_v2.0.4.md.minisig
 47db807b0198f94bda78213dca8d07493a2f3b109f45468d43f3d1b48d75abd7 *./docs/ROADMAP_10Y.md
 33bc1a7ae9eba2080df63e91be6d676a3a10f9a0fc5d6175a4458c914a2c08e6 *./examples/incident.example.json
 9fe885bad3d282fc1fccfd3d47ce781bc86d052571f6bf282f58955e39df50d9 *./examples/trust-state.example.json
-1080b668140b9e31a389f7fb83a6dcf185df490cc653f7e7951c8cdc5afbf540 *./index.json
+b78d5bae1d071df3d3b558c92014045f606169aeb5a2707a05f2eeffff1a6097 *./index.json
 4a208da58bb0a4c87dae63e37cdb181427812e028cd6f38d350e64b78b1a518e *./keys/minisign.pub
 40d65836283e5e66889a8179e0c3cd08cc42eaa34ee6fd526b09cc18463d8866 *./policy/agent-decision-contract.json
 5202a57d488be5054afc36b3e2ac60bed668529ebbb244d664e26f1a1163c7d1 *./policy/trust-levels.json

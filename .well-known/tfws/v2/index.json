@@ -30,13 +30,21 @@
       "incident_playbooks": "docs/INCIDENT_PLAYBOOKS.md",
       "release_gates": "docs/RELEASE_GATES.md",
       "roadmap_10y": "docs/ROADMAP_10Y.md",
-      "release_notes_v2_0_0": "docs/RELEASE_NOTES_v2.0.0.md"
+      "release_notes_v2_0_0": "docs/RELEASE_NOTES_v2.0.0.md",
+      "release_notes_v2_0_4": "docs/RELEASE_NOTES_v2.0.4.md",
+      "release_notes_v2_0_4_signature": "docs/RELEASE_NOTES_v2.0.4.md.minisig"
     },
     "changelog": {
       "json": "changelog.json",
       "json_signature": "changelog.json.minisig",
       "feed": "changelog.feed.xml",
       "feed_signature": "changelog.feed.xml.minisig"
+    },
+    "releases": {
+      "latest": "releases/latest.json",
+      "latest_signature": "releases/latest.json.minisig",
+      "v2_0_4": "releases/v2.0.4.json",
+      "v2_0_4_signature": "releases/v2.0.4.json.minisig"
     }
   },
   "discovery": {
