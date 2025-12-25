@@ -6,6 +6,8 @@
 /.well-known/tfws/releases/latest  /.well-known/tfws/v2/releases/latest.json  301
 /.well-known/tfws/releases/latest/  /.well-known/tfws/v2/releases/latest.json  301
 /.well-known/tfws/releases/latest/*  /.well-known/tfws/v2/releases/latest.json  301
+# TFWS root latest aliases (MUST be above any tfws/* 200)
+
 # TFWS root latest aliases (MUST be above /.well-known/tfws/* 200)
 
 /hub /ai-trust-hub.html 302
