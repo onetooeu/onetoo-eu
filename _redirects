@@ -899,3 +899,7 @@
 /.well-known/tfws/v2/release-notes  /.well-known/tfws/v2/docs/RELEASE_NOTES_v2.0.4.md  301
 /.well-known/tfws/v2/releases  /.well-known/tfws/v2/releases/latest.json  301
 /.well-known/tfws/v2/releases/v2.0.4  /.well-known/tfws/v2/releases/v2.0.4.json  301
+
+# TFWS root canonical
+/.well-known/tfws  /.well-known/tfws/  301
+/.well-known/tfws/v2  /.well-known/tfws/v2/  301
