@@ -14,5 +14,10 @@
       "release_latest": "/.well-known/tfws/v2/releases/latest.json",
       "changelog": "/.well-known/tfws/v2/changelog.json"
     }
+  },
+  "default_version": "v2",
+  "recommended": {
+    "index": "/.well-known/tfws/v2/index.json",
+    "release_latest": "/.well-known/tfws/v2/releases/latest.json"
   }
 }
