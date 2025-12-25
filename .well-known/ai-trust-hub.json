@@ -56,7 +56,8 @@
         "minisign_public_keys": [
             "/.well-known/keys/minisign/8AEA22755B13216C.pub",
             "/.well-known/keys/minisign/A8444D66A337F633.pub"
-        ]
+        ],
+        "minisign_public_keys_dir": "/.well-known/keys/minisign/"
     },
     "last_updated": "2025-12-25T10:12:00Z",
     "manifest": {
