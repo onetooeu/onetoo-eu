@@ -903,3 +903,7 @@
 # TFWS root canonical
 /.well-known/tfws  /.well-known/tfws/  301
 /.well-known/tfws/v2  /.well-known/tfws/v2/  301
+
+# TFWS root latest aliases
+/.well-known/tfws/latest  /.well-known/tfws/v2/  301
+/.well-known/tfws/releases/latest  /.well-known/tfws/v2/releases/latest.json  301
