@@ -27,5 +27,14 @@
       "roadmap_10y": "docs/ROADMAP_10Y.md",
       "release_notes_v2_0_0": "docs/RELEASE_NOTES_v2.0.0.md"
     }
+  },
+  "discovery": {
+    "ai_trust_hub": "/.well-known/ai-trust-hub.json",
+    "ai_trust_hub_signature": "/.well-known/ai-trust-hub.json.minisig",
+    "minisign_public_key": "/.well-known/minisign.pub",
+    "minisign_public_keys": [
+      "/.well-known/keys/minisign/8AEA22755B13216C.pub",
+      "/.well-known/keys/minisign/A8444D66A337F633.pub"
+    ]
   }
 }
