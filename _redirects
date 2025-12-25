@@ -1,4 +1,3 @@
-# TFWS root latest aliases (canonical)
 /.well-known/tfws/latest  /.well-known/tfws/v2/index.json  301
 /.well-known/tfws/latest/  /.well-known/tfws/v2/index.json  301
 /.well-known/tfws/latest/*  /.well-known/tfws/v2/index.json  301
@@ -6,11 +5,9 @@
 /.well-known/tfws/releases/latest  /.well-known/tfws/v2/releases/latest.json  301
 /.well-known/tfws/releases/latest/  /.well-known/tfws/v2/releases/latest.json  301
 /.well-known/tfws/releases/latest/*  /.well-known/tfws/v2/releases/latest.json  301
-# TFWS root latest aliases
 
 
 
-# TFWS root latest aliases (MUST be above /.well-known/tfws/* 200)
 
 /hub /ai-trust-hub.html 302
 /trust /ai-trust-hub.html 302
@@ -918,11 +915,8 @@
 /.well-known/tfws  /.well-known/tfws/  301
 /.well-known/tfws/v2  /.well-known/tfws/v2/  301
 
-# TFWS root latest aliases
 
-# TFWS root latest aliases (trailing slash)
 
-# TFWS root latest aliases (splat safety)
 
 # TFWS root index (serve file)
 /.well-known/tfws/index.json  /.well-known/tfws/index.json  200
