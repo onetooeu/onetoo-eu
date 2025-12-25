@@ -1,0 +1,103 @@
+{
+  "schema_version": "2.0",
+  "id": "tfws-v2-agent-decision-tree",
+  "generated_at": "2025-12-25T00:00:00Z",
+  "purpose": "Deterministic verification + response flow for TFWS v2 agents.",
+  "inputs": {
+    "domain": "string",
+    "endpoints": {
+      "minisign_pub": "/.well-known/minisign.pub",
+      "key_history": "/.well-known/key-history.json",
+      "key_history_sig": "/.well-known/key-history.json.minisig",
+      "trust_state": "/.well-known/trust-state.json",
+      "trust_state_sig": "/.well-known/trust-state.json.minisig"
+    }
+  },
+  "steps": [
+    {
+      "id": "S1_fetch_pubkey",
+      "title": "Fetch minisign.pub",
+      "action": "http_get",
+      "target": "endpoints.minisign_pub",
+      "on_success": "S2_fetch_key_history",
+      "on_fail": "F_NET"
+    },
+    {
+      "id": "S2_fetch_key_history",
+      "title": "Fetch key-history + signature",
+      "action": "http_get_multi",
+      "targets": ["endpoints.key_history", "endpoints.key_history_sig"],
+      "on_success": "S3_verify_key_history",
+      "on_fail": "F_NET"
+    },
+    {
+      "id": "S3_verify_key_history",
+      "title": "Verify key-history.json with minisign.pub",
+      "action": "minisign_verify",
+      "pubkey": "endpoints.minisign_pub",
+      "message": "endpoints.key_history",
+      "signature": "endpoints.key_history_sig",
+      "on_success": "S4_extract_epoch_and_pin",
+      "on_fail": "F_KEY_MISMATCH"
+    },
+    {
+      "id": "S4_extract_epoch_and_pin",
+      "title": "Extract epoch_utc and pinned pubkey",
+      "action": "json_extract",
+      "from": "endpoints.key_history",
+      "extract": ["keys[0].epoch_utc", "keys[0].public_key_pinned", "keys[0].public_key_url"],
+      "on_success": "S5_fetch_trust_state_optional",
+      "on_fail": "F_SCHEMA"
+    },
+    {
+      "id": "S5_fetch_trust_state_optional",
+      "title": "Fetch trust-state if present (optional)",
+      "action": "http_get_optional_multi",
+      "targets": ["endpoints.trust_state", "endpoints.trust_state_sig"],
+      "on_present": "S6_verify_trust_state",
+      "on_missing": "OK_GREEN_MINIMAL"
+    },
+    {
+      "id": "S6_verify_trust_state",
+      "title": "Verify trust-state.json with minisign.pub",
+      "action": "minisign_verify",
+      "pubkey": "endpoints.minisign_pub",
+      "message": "endpoints.trust_state",
+      "signature": "endpoints.trust_state_sig",
+      "on_success": "OK_GREEN_FULL",
+      "on_fail": "F_TRUSTSTATE_MISMATCH"
+    }
+  ],
+  "outcomes": {
+    "OK_GREEN_MINIMAL": {
+      "state_level": "green",
+      "reason": "Key-history verified; trust-state not published.",
+      "next_actions": ["cache_result:300s"]
+    },
+    "OK_GREEN_FULL": {
+      "state_level": "green",
+      "reason": "Key-history and trust-state verified.",
+      "next_actions": ["cache_result:300s", "emit_trust_state"]
+    },
+    "F_NET": {
+      "state_level": "unknown",
+      "reason": "Network/HTTP failure fetching artifacts.",
+      "next_actions": ["retry_backoff", "log_event"]
+    },
+    "F_SCHEMA": {
+      "state_level": "orange",
+      "reason": "Schema/format error in published JSON.",
+      "next_actions": ["log_event", "raise_incident:format"]
+    },
+    "F_KEY_MISMATCH": {
+      "state_level": "red",
+      "reason": "key-history signature mismatch vs minisign.pub.",
+      "next_actions": ["raise_incident:key_mismatch", "halt_trust", "recommend_key_rotation_check"]
+    },
+    "F_TRUSTSTATE_MISMATCH": {
+      "state_level": "red",
+      "reason": "trust-state signature mismatch.",
+      "next_actions": ["raise_incident:truststate_mismatch", "halt_trust"]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "2.0",
+  "incident_id": "INC-20251225-KEYMISMATCH",
+  "created_at": "2025-12-25T07:10:00Z",
+  "updated_at": "2025-12-25T08:05:00Z",
+  "severity": "high",
+  "status": "resolved",
+  "summary": "Key-history signature mismatch detected and corrected",
+  "affected": {
+    "domains": ["onetoo.eu", "onetoo-eu.pages.dev"],
+    "artifacts": ["/.well-known/key-history.json", "/.well-known/key-history.json.minisig"]
+  },
+  "actions": [
+    { "time": "2025-12-25T07:12:00Z", "type": "detect", "note": "minisign verify returned key-id mismatch" },
+    { "time": "2025-12-25T07:55:00Z", "type": "rotate_keys", "note": "re-signed key-history with active minisign key" },
+    { "time": "2025-12-25T08:05:00Z", "type": "verify", "note": "pages+prod hashes match and minisign verify = 0" }
+  ]
+}

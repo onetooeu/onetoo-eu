@@ -1,0 +1,19 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2025-12-25T08:30:00Z",
+  "subject": { "domain": "onetoo.eu", "environment": "prod" },
+  "state": { "level": "green", "reason": "All integrity artifacts verified", "expires_at": "2026-01-01T00:00:00Z" },
+  "signals": {
+    "keys": {
+      "minisign_pubkey_url": "/.well-known/minisign.pub",
+      "key_history_url": "/.well-known/key-history.json"
+    },
+    "artifacts": {
+      "release_url": "/dumps/release.json",
+      "sha256_url": "/dumps/sha256.json",
+      "targets_url": "/dumps/targets.json"
+    }
+  },
+  "integrity": { "sig": { "type": "minisign", "url": "/.well-known/trust-state.json.minisig" } },
+  "notes": "Example only"
+}
