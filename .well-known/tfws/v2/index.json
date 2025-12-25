@@ -31,6 +31,12 @@
       "release_gates": "docs/RELEASE_GATES.md",
       "roadmap_10y": "docs/ROADMAP_10Y.md",
       "release_notes_v2_0_0": "docs/RELEASE_NOTES_v2.0.0.md"
+    },
+    "changelog": {
+      "json": "changelog.json",
+      "json_signature": "changelog.json.minisig",
+      "feed": "changelog.feed.xml",
+      "feed_signature": "changelog.feed.xml.minisig"
     }
   },
   "discovery": {

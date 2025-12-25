@@ -1,4 +1,8 @@
 d62c649874245dc5f44c413ce48743e24148c8296ce5083cd0a6a9dfc25db9b2 *./README.md
+a23c687fc0883fdbee5baabe91b3eb25227071be2dee40967888a0508da817ad *./changelog.feed.xml
+522a6689885043a0ba697b1e8617ee53d23d41f140252fe16a8e63bcd8c3a53d *./changelog.feed.xml.minisig
+74f146370aa7fa57a63bda2eccdcd63993817e4aaf1d86c6954930e45ad9253a *./changelog.json
+2f628fe4d7b86b0325ed8644473b44e74e515a7b00a610af3c8f14936e56a026 *./changelog.json.minisig
 d68e397a8fb83990e9ac14c3182d44c96ad18ce91ebaa7c5347728274e37e37e *./decision-tree.v2.json
 f8a7de3b05b040dcdaf9f1443234044061f285ea9c518daa67ee4bc62e954df8 *./docs/AGENT_DECISION_TREE.md
 13a412feb7af1a09d038ea6d010e2c03c5a0db8024f275a4732ee50ad93834f5 *./docs/INCIDENT_PLAYBOOKS.md
@@ -7,7 +11,7 @@ e3a5e4b2a19a9e6625a0aea3193d50af3ac6a0fde6ba93fdecebef85a40ff8ed *./docs/RELEASE
 47db807b0198f94bda78213dca8d07493a2f3b109f45468d43f3d1b48d75abd7 *./docs/ROADMAP_10Y.md
 33bc1a7ae9eba2080df63e91be6d676a3a10f9a0fc5d6175a4458c914a2c08e6 *./examples/incident.example.json
 9fe885bad3d282fc1fccfd3d47ce781bc86d052571f6bf282f58955e39df50d9 *./examples/trust-state.example.json
-2c4656798864a8abcbf1de1024342f04803b73254e0cff4160e35789882444ed *./index.json
+1080b668140b9e31a389f7fb83a6dcf185df490cc653f7e7951c8cdc5afbf540 *./index.json
 4a208da58bb0a4c87dae63e37cdb181427812e028cd6f38d350e64b78b1a518e *./keys/minisign.pub
 40d65836283e5e66889a8179e0c3cd08cc42eaa34ee6fd526b09cc18463d8866 *./policy/agent-decision-contract.json
 5202a57d488be5054afc36b3e2ac60bed668529ebbb244d664e26f1a1163c7d1 *./policy/trust-levels.json
