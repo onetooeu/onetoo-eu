@@ -884,3 +884,6 @@
 
 # TFWS v2 (serve files, no redirects)
 /.well-known/tfws/*  /.well-known/tfws/:splat  200
+
+# TFWS v2 canonical
+/.well-known/tfws/v2  /.well-known/tfws/v2/  301
