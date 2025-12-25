@@ -1,0 +1,93 @@
+{
+  "schema_version": "2.0",
+  "type": "agent-decision-contract",
+  "id": "tfws-v2-agent-decision-contract",
+  "order": [
+    "fetch_index",
+    "fetch_inventory",
+    "verify_inventory_signature",
+    "download_artifacts",
+    "verify_hashes",
+    "evaluate_trust_state",
+    "apply_policy",
+    "emit_decision_result"
+  ],
+  "required_inputs": {
+    "index_json": "index.json",
+    "inventory_sha256": "inventory.sha256",
+    "inventory_minisig": "inventory.sha256.minisig",
+    "minisign_pub": "keys/minisign.pub",
+    "policy_trust_levels": "policy/trust-levels.json"
+  },
+  "optional_inputs": {
+    "trust_state": "policy/trust-state.template.json",
+    "ai_trust_hub": "/.well-known/ai-trust-hub.json",
+    "ai_trust_hub_signature": "/.well-known/ai-trust-hub.json.minisig",
+    "pinned_minisign_keys_dir": "/.well-known/keys/minisign/"
+  },
+  "fail_closed": true,
+  "decision_result": {
+    "fields": [
+      "decision",
+      "trust_level",
+      "reasons",
+      "evidence",
+      "timestamps",
+      "cache"
+    ],
+    "decision_values": [
+      "allow",
+      "allow_with_caution",
+      "deny",
+      "deny_and_quarantine"
+    ]
+  },
+  "mapping": {
+    "trusted": {
+      "decision": "allow",
+      "allow_automation": true,
+      "allow_propagation": true
+    },
+    "probation": {
+      "decision": "allow_with_caution",
+      "allow_automation": true,
+      "allow_propagation": false
+    },
+    "degraded": {
+      "decision": "deny",
+      "allow_automation": false,
+      "allow_propagation": false
+    },
+    "revoked": {
+      "decision": "deny_and_quarantine",
+      "allow_automation": false,
+      "allow_propagation": false
+    }
+  },
+  "verification": {
+    "inventory_signature": {
+      "must_verify": true,
+      "accept_key_sources": [
+        "keys/minisign.pub",
+        "/.well-known/minisign.pub",
+        "/.well-known/keys/minisign/<KEYID>.pub"
+      ]
+    },
+    "hashes": {
+      "must_match": true,
+      "algorithm": "sha256"
+    }
+  },
+  "logging": {
+    "must_log": true,
+    "fields": [
+      "domain",
+      "index_etag",
+      "inventory_etag",
+      "inventory_signature_keyid",
+      "trust_level",
+      "decision",
+      "reasons"
+    ]
+  }
+}

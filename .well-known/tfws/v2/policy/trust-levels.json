@@ -1,0 +1,10 @@
+{
+  "schema_version": "2.0",
+  "type": "trust-levels",
+  "levels": {
+    "trusted": { "severity": 0, "allow_automation": true, "allow_propagation": true },
+    "probation": { "severity": 1, "allow_automation": true, "allow_propagation": false },
+    "degraded": { "severity": 2, "allow_automation": false, "allow_propagation": false },
+    "revoked": { "severity": 3, "allow_automation": false, "allow_propagation": false, "must_ignore": true }
+  }
+}
