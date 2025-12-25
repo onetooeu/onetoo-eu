@@ -881,3 +881,6 @@
 /sv/incidents.html /sv/incidents/ 301
 /sv/regulatory.html /sv/regulatory/ 301
 /sv/transparency.html /sv/transparency/ 301
+
+# TFWS v2 (serve files, no redirects)
+/.well-known/tfws/*  /.well-known/tfws/:splat  200
