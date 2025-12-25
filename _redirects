@@ -891,7 +891,7 @@
 /sv/transparency.html /sv/transparency/ 301
 
 # TFWS v2 (serve files, no redirects)
-/.well-known/tfws/*  /.well-known/tfws/:splat  200
+/.well-known/tfws/v2/*  /.well-known/tfws/v2/:splat  200
 
 # TFWS v2 canonical
 /.well-known/tfws/v2  /.well-known/tfws/v2/  301
@@ -923,3 +923,6 @@
 # TFWS root latest aliases (splat safety)
 /.well-known/tfws/latest/*  /.well-known/tfws/v2/  301
 /.well-known/tfws/releases/latest/*  /.well-known/tfws/v2/releases/latest.json  301
+
+# TFWS root index (serve file)
+/.well-known/tfws/index.json  /.well-known/tfws/index.json  200
