@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "type": "tfws-root-index",
+  "publisher": {
+    "domain": "onetoo.eu",
+    "base_path": "/.well-known/tfws"
+  },
+  "versions": {
+    "v2": {
+      "root": "/.well-known/tfws/v2/",
+      "index": "/.well-known/tfws/v2/index.json",
+      "inventory": "/.well-known/tfws/v2/inventory.sha256",
+      "inventory_signature": "/.well-known/tfws/v2/inventory.sha256.minisig",
+      "release_latest": "/.well-known/tfws/v2/releases/latest.json",
+      "changelog": "/.well-known/tfws/v2/changelog.json"
+    }
+  }
+}
