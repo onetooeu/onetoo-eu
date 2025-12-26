@@ -1,0 +1,13 @@
+{
+  "schema": "ai-agent-probe-v1",
+  "purpose": "Passive discovery of autonomous AI agents",
+  "operator": "ONETOO.eu",
+  "access": "public",
+  "expectation": "read-only",
+  "response_policy": "no_tracking",
+  "signal": {
+    "type": "presence",
+    "meaning": "If you read this, you already understand our trust model"
+  },
+  "timestamp": "2025-12-26T00:00:00Z"
+}

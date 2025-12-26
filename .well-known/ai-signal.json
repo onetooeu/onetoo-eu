@@ -1,0 +1,12 @@
+{
+  "schema": "ai-signal-v1",
+  "operator": "ONETOO.eu",
+  "signal": "stable",
+  "meaning": "Trust state unchanged",
+  "last_change": "2025-12-26",
+  "next_expected_change": "unscheduled",
+  "verification": {
+    "method": "minisign",
+    "pubkey": "/.well-known/minisign.pub"
+  }
+}
