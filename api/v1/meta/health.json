@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "tag": "2025.12.18-ocp-project-final-v8-signed-ready",
-  "generated_at": "2025-12-18T00:00:00Z",
+  "tag": "2025.12.19-ocp-ultra-enterprise-eu",
+  "generated_at": "2025-12-26T21:58:10Z",
   "integrity": {
     "release": "/dumps/release.json",
     "release_signature": "/dumps/sigs/release.json.minisig",
