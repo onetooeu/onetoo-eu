@@ -19,5 +19,7 @@
     "max_inbox_bytes": 67108864
   },
   "build_commit": "d08ef9e867ff28b9379422ed17c544edc9256d6f",
-  "build_published_at": "2025-12-26T23:06:43Z"
+  "build_published_at": "2025-12-26T23:06:43Z",
+  "meta_commit": "139f0427559aabdf8c2f09b6a788da786f15858d",
+  "meta_published_at": "2025-12-26T23:08:53Z"
 }
