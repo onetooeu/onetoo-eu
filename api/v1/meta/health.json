@@ -1,7 +1,8 @@
 {
   "status": "ok",
   "tag": "2025.12.19-ocp-ultra-enterprise-eu",
-  "generated_at": "2025-12-26T21:58:10Z",
+  "generated_at": "2025-12-19T00:00:00Z",
+  "deployed_at": "2025-12-26T21:22:07Z",
   "integrity": {
     "release": "/dumps/release.json",
     "release_signature": "/dumps/sigs/release.json.minisig",
