@@ -5,9 +5,11 @@
     "note": "Counters start after production onboarding."
   },
   "affiliate_redirects": {
+    "status": "disabled",
     "total": 0,
-    "verified": 0,
-    "blocked": 0
+    "window": "none",
+    "last_observed": null,
+    "notes": "No affiliate traffic, redirects, tracking, or monetization are active. Field retained for compatibility."
   },
   "top_reason_codes": [],
   "policy_changes": [
