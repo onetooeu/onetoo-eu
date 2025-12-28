@@ -211,3 +211,15 @@ TFWS len hovorí:
 Toto je tvrdenie.  
 Toto je podpis.  
 Rozhodnutie je na tebe.
+
+---
+
+## Archival Notice
+
+This repository is considered **archival-grade**.
+
+No further functional, commercial, or policy changes are planned.
+Future work, if any, will occur only via a new major version or separate repository.
+
+This state is intentionally preserved.
+
