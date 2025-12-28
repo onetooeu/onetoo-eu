@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "domain": "onetoo.eu",
+  "adoption": {
+    "self_declared": true,
+    "no_central_authority": true,
+    "non_authoritative": true
+  },
+  "contact": "security@onetoo.eu",
+  "resources": {
+    "adoption_kit": "https://github.com/onetooeu/tfws-adoption-kit",
+    "tools": "https://github.com/onetooeu/tfws-tools",
+    "spec": "https://github.com/onetooeu/trust-first-web-standard-ver-2"
+  },
+  "notes": "Self-declared TFWS adoption signal. This file does not grant trust; it only publishes verifiable intent."
+}
