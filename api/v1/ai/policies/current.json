@@ -5,7 +5,12 @@
     "explain_recommendations": true,
     "include_reason_codes": true,
     "respect_jurisdiction": true,
-    "disclose_affiliate": true,
+
+    "disclose_affiliate": false,
+    "affiliate_policy": "disabled",
+    "pricing_policy": "disabled",
+    "monetization": "none",
+
     "do_not_bypass_risk_controls": true
   },
   "output_contract": {
