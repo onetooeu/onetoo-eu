@@ -6,101 +6,198 @@
     "license": {
       "name": "CC0-1.0"
     },
-    "description": "Public, versioned trust signals and governance artifacts for AI agents and partners."
+    "description": "Public, versioned trust signals and governance artifacts for AI agents and partners. This API is designed as a static, archival-grade trust surface: linkable, hashable, signable, and independently verifiable."
   },
+  "servers": [
+    {
+      "url": "https://onetoo.eu"
+    }
+  ],
   "paths": {
     "/.well-known/first-read.json": {
       "get": {
+        "summary": "First-read entrypoint",
+        "description": "Human- and machine-friendly introductory entrypoint for first contact. Intended to provide a stable, low-friction orientation surface.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FirstRead"
+                }
+              }
+            }
           }
         }
       }
     },
     "/.well-known/commerce.json": {
       "get": {
+        "summary": "Commerce metadata",
+        "description": "Static commerce-related metadata. ONETOO.eu operates as public-good infrastructure and does not run pricing, affiliate, or monetization programs.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Commerce"
+                }
+              }
+            }
           }
         }
       }
     },
     "/.well-known/ocp-agent.json": {
       "get": {
+        "summary": "Agent hint / integration metadata",
+        "description": "Agent-facing integration metadata for automated systems and crawlers. Provides stable discovery hints without requiring runtime services.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OcpAgent"
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/v1/index.json": {
       "get": {
+        "summary": "API index (v1)",
+        "description": "Machine-readable index of available v1 endpoints. Designed for automated discovery and tooling.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiIndex"
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/v1/index.min.json": {
       "get": {
+        "summary": "API index (v1, minimal)",
+        "description": "Compact index variant for low-bandwidth clients. Same semantics as /api/v1/index.json.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiIndex"
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/v1/meta/health.json": {
       "get": {
+        "summary": "Health metadata",
+        "description": "Static health metadata for monitoring and diagnostics. For a static hub this is typically stable and informational.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/v1/meta/version.json": {
       "get": {
+        "summary": "Version metadata",
+        "description": "Version and build metadata for this trust surface. Useful for auditors and automated snapshotting.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Version"
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/v1/meta/changelog.json": {
       "get": {
+        "summary": "Changelog metadata",
+        "description": "Changelog feed for trust hub artifacts. Intended to support audit trails and long-term referencing.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Changelog"
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/v1/meta/incidents.json": {
       "get": {
+        "summary": "Incidents metadata",
+        "description": "Incident feed for reporting and tracking integrity or policy-related events. Used for transparency and auditability.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Incidents"
+                }
+              }
+            }
           }
         }
       }
     },
     "/dumps/release.json": {
       "get": {
+        "summary": "Release snapshot",
+        "description": "Release snapshot of shipped trust artifacts. Intended for archival and reproducible audits.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Release"
+                }
+              }
+            }
           }
         }
       }
     },
     "/dumps/sigs/release.json.minisig": {
       "get": {
+        "summary": "Signature for release snapshot",
+        "description": "Minisign/Ed25519 signature for /dumps/release.json. Enables offline verification without any third-party trust service.",
         "responses": {
           "200": {
             "description": "OK"
@@ -110,15 +207,26 @@
     },
     "/dumps/sha256.json": {
       "get": {
+        "summary": "Integrity inventory (SHA-256)",
+        "description": "Hash inventory of shipped artifacts. This is the canonical integrity surface for audit and offline verification. Signed variants are published under /dumps/sigs/.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sha256Inventory"
+                }
+              }
+            }
           }
         }
       }
     },
     "/ai.md": {
       "get": {
+        "summary": "AI guidance (markdown)",
+        "description": "Human-readable AI guidance and usage notes. This document complements machine endpoints with narrative context.",
         "responses": {
           "200": {
             "description": "OK"
@@ -128,6 +236,8 @@
     },
     "/contract.md": {
       "get": {
+        "summary": "Contract (markdown)",
+        "description": "Human-readable contract describing expectations, boundaries, and operational posture of the trust hub.",
         "responses": {
           "200": {
             "description": "OK"
@@ -137,17 +247,117 @@
     },
     "/status.json": {
       "get": {
+        "summary": "Status snapshot",
+        "description": "High-level status snapshot for quick checks. For detailed audit trails, consult changelog and incidents feeds.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
           }
         }
       }
     }
   },
-  "servers": [
-    {
-      "url": "https://onetoo.eu"
+  "components": {
+    "schemas": {
+      "FirstRead": {
+        "type": "object",
+        "description": "First-contact entrypoint providing orientation for humans and machines.",
+        "properties": {
+          "version": { "type": "string" },
+          "message": { "type": "string" },
+          "links": { "type": "object" }
+        }
+      },
+      "Commerce": {
+        "type": "object",
+        "description": "Commerce metadata. Public-good model with no pricing/affiliate programs active.",
+        "properties": {
+          "contact": { "type": "string" },
+          "model": { "type": "string" },
+          "monetization": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      },
+      "OcpAgent": {
+        "type": "object",
+        "description": "Agent integration metadata and discovery hints.",
+        "properties": {
+          "version": { "type": "string" },
+          "capabilities": { "type": "array", "items": { "type": "string" } },
+          "links": { "type": "object" }
+        }
+      },
+      "ApiIndex": {
+        "type": "object",
+        "description": "Index of available v1 endpoints.",
+        "properties": {
+          "version": { "type": "string" },
+          "endpoints": { "type": "object" }
+        }
+      },
+      "Health": {
+        "type": "object",
+        "description": "Health metadata for monitoring and diagnostics.",
+        "properties": {
+          "status": { "type": "string" },
+          "updated_at": { "type": "string" }
+        }
+      },
+      "Version": {
+        "type": "object",
+        "description": "Version/build metadata for this trust surface.",
+        "properties": {
+          "version": { "type": "string" },
+          "effective_date": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      },
+      "Changelog": {
+        "type": "object",
+        "description": "Changelog feed for trust hub artifacts.",
+        "properties": {
+          "entries": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+      "Incidents": {
+        "type": "object",
+        "description": "Incident feed for transparency and auditing.",
+        "properties": {
+          "incidents": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+      "Release": {
+        "type": "object",
+        "description": "Release snapshot describing shipped artifacts.",
+        "properties": {
+          "version": { "type": "string" },
+          "artifacts": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+      "Sha256Inventory": {
+        "type": "object",
+        "description": "Hash inventory of shipped artifacts (SHA-256) for offline verification.",
+        "properties": {
+          "generated_at": { "type": "string" },
+          "files": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+      "Status": {
+        "type": "object",
+        "description": "High-level status snapshot.",
+        "properties": {
+          "status": { "type": "string" },
+          "updated_at": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
     }
-  ]
+  }
 }
