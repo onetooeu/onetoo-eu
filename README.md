@@ -35,3 +35,18 @@ bash scripts/verify_local.sh
 ## CI signing
 
 See `docs/CI-SIGNING.md`.
+## TFWS Adoption Kit
+
+To support independent adoption of Trust-First Web Standard (TFWS v2),
+we publish the **TFWS Adoption Kit** — a static, self-service toolkit.
+
+The kit provides ready-to-use `.well-known` templates, validation scripts,
+and platform guides for adopting TFWS signals on any domain.
+
+No registration.  
+No approval.  
+No central authority.
+
+**Stable release:** v0.1.0  
+https://github.com/onetooeu/tfws-adoption-kit/releases/tag/v0.1.0
+
