@@ -1,148 +1,60 @@
 {
-    "$schema": "/schemas/ai-trust-hub.schema.json",
-    "domains": [
-        "onetoo.eu",
-        "www.onetoo.eu"
-    ],
-    "endpoints": {
-        "agent_manifest": "/.well-known/ocp-agent.json",
-        "ai_governance": "/.well-known/ai-governance.json",
-        "changelog": "/changelog/",
-        "human_landing": "/ai-trust-hub.html",
-        "incidents": "/incidents/",
-        "llms": "/.well-known/llms.txt",
-        "methodology": "/methodology/",
-        "minisign_public_key": "/.well-known/minisign.pub",
-        "openapi": "/openapi.json",
-        "security_txt": "/.well-known/security.txt",
-        "signature_release": "/dumps/sigs/release.json.minisig",
-        "signature_release_mega": "/dumps/sigs/release-mega.json.minisig",
-        "signature_sha256": "/dumps/sigs/sha256.json.minisig",
-        "signing_keys": "/control/keys/",
-        "sigstore_bundle_release_mega": "/dumps/attestations/release-mega.json.bundle",
-        "sigstore_bundle_sha256": "/dumps/attestations/sha256.json.bundle",
-        "sigstore_bundles_index": "/dumps/attestations/index.json",
-        "sigstore_meta": "/.well-known/sigstore.json",
-        "status": "/status.json",
-        "supply_chain_docs": "/docs/SUPPLY_CHAIN.md",
-        "verification_sha256": "/dumps/sha256.json",
-        "slsa_docs": "/docs/SLSA.md",
-        "slsa_provenance_release_asset": "provenance.intoto.jsonl",
-        "hub": "/ai-trust-hub.html",
-        "verify": "/verify.html",
-        "slsa_provenance_asset": "provenance.intoto.jsonl",
-        "verification_targets": "/dumps/targets.json",
-        "signature_targets": "/dumps/sigs/targets.json.minisig",
-        "key_history": "/.well-known/key-history.json",
-        "signature_key_history": "/.well-known/key-history.json.minisig",
-        "signature_ai_trust_hub": "/.well-known/ai-trust-hub.json.minisig",
-        "minisign_public_key_pinned": "RWTcCm8hvjc1PveOAYAhq7XlMtSpk9GLTo2JUF+p9yc31FJFaPmW/6NV",
-        "minisign_key_epoch_utc": "2025-12-20T21:03:38Z",
-        "attestations_v1_index": "/api/v1/attestations/v1/index.json",
-        "attestation_bundle_sha256_v1": "/api/v1/attestations/v1/sha256.json.bundle",
-        "attestation_bundle_release_v1": "/api/v1/attestations/v1/release.json.bundle",
-        "attestation_bundle_release_mega_v1": "/api/v1/attestations/v1/release-mega.json.bundle",
-        "changelog_feed_atom": "/changelog/feed.xml",
-        "incidents_feed_atom": "/incidents/feed.xml",
-        "webhooks_contract": "/.well-known/webhooks.json",
-        "webhooks_docs": "/docs/WEBHOOKS.md",
-        "tfws_v2_root": "/.well-known/tfws/v2/",
-        "tfws_v2_index": "/.well-known/tfws/v2/index.json",
-        "tfws_v2_inventory": "/.well-known/tfws/v2/inventory.sha256",
-        "tfws_v2_inventory_signature": "/.well-known/tfws/v2/inventory.sha256.minisig",
-        "tfws_v2_minisign_pubkey": "/.well-known/tfws/v2/keys/minisign.pub",
-        "tfws_v2_schemas": "/.well-known/tfws/v2/schemas/",
-        "tfws_v2_docs": "/.well-known/tfws/v2/docs/",
-        "minisign_public_keys": [
-            "/.well-known/keys/minisign/8AEA22755B13216C.pub",
-            "/.well-known/keys/minisign/A8444D66A337F633.pub"
-        ],
-        "minisign_public_keys_dir": "/.well-known/keys/minisign/",
-        "tfws_v2_version": "2.0.4",
-        "tfws_v2_release_tag": "v2.0.4",
-        "tfws_v2_release_latest": "/.well-known/tfws/v2/releases/latest.json",
-        "tfws_v2_release_latest_signature": "/.well-known/tfws/v2/releases/latest.json.minisig",
-        "tfws_v2_changelog_json": "/.well-known/tfws/v2/changelog.json",
-        "tfws_v2_changelog_json_signature": "/.well-known/tfws/v2/changelog.json.minisig",
-        "tfws_v2_changelog_feed": "/.well-known/tfws/v2/changelog.feed.xml",
-        "tfws_v2_changelog_feed_signature": "/.well-known/tfws/v2/changelog.feed.xml.minisig",
-        "tfws_v2_release_notes_v2_0_4": "/.well-known/tfws/v2/docs/RELEASE_NOTES_v2.0.4.md",
-        "tfws_v2_release_notes_v2_0_4_signature": "/.well-known/tfws/v2/docs/RELEASE_NOTES_v2.0.4.md.minisig",
-        "tfws_root_index": "/.well-known/tfws/index.json",
-        "tfws_root_index_signature": "/.well-known/tfws/index.json.minisig"
+  "schema": "https://onetoo.eu/schemas/ai-trust-hub.json",
+  "version": "1.0",
+  "canonical": "https://onetoo.eu/.well-known/ai-trust-hub.json",
+
+  "identity": {
+    "name": "ONETOO.eu",
+    "type": "public_trust_hub",
+    "model": "public_good",
+    "jurisdiction": "EU"
+  },
+
+  "purpose": "Machine-readable trust discovery and verification surface for AI agents and auditors.",
+
+  "policies": {
+    "affiliate_disclosure": {
+      "status": "disabled",
+      "url": "/affiliate-disclosure/",
+      "notes": "No affiliate, pricing, or monetization program is active. This policy slot is retained for compatibility and transparency."
     },
-    "last_updated": "2025-12-25T16:13:10Z",
-    "manifest": {
-        "name": "ONETOO Trust Hub",
-        "domain": "onetoo.eu",
-        "stability": "final",
-        "updated": "2025-12-25T16:13:10Z",
-        "notes": "Long-lived trust & governance endpoints for humans and AI agents.",
-        "version": "2025.12-final"
-    },
-    "name": "AI Trust Hub",
-    "notes": [
-        "This manifest is designed for automated due-diligence by AI agents and partner systems.",
-        "All URLs are relative to the site origin."
-    ],
-    "owner": {
-        "contacts": [
-            {
-                "type": "email",
-                "value": "robot@onetoo.eu"
-            },
-            {
-                "type": "email",
-                "value": "security@onetoo.eu"
-            },
-            {
-                "type": "email",
-                "value": "legal@onetoo.eu"
-            }
-        ],
-        "display_name": "ONETOO.dynamics",
-        "jurisdiction": "EU"
-    },
-    "policies": {
-        "accessibility": "/accessibility/",
-        "affiliate_disclosure": "/affiliate-disclosure/",
-        "cookies": "/cookies/",
-        "privacy": "/privacy/",
-        "terms": "/terms/"
-    },
-    "resources": {
-        "changelog_index": "https://onetoo.eu/changelog/index.json",
-        "incidents_index": "https://onetoo.eu/incidents/index.json",
-        "llms_txt": "https://onetoo.eu/llms.txt",
-        "llms_txt_well_known": "https://onetoo.eu/.well-known/llms.txt",
-        "release": "https://onetoo.eu/dumps/release.json",
-        "release_mega": "https://onetoo.eu/dumps/release-mega.json",
-        "schemas": "https://onetoo.eu/schemas/",
-        "verify": "https://onetoo.eu/verify.html"
-    },
-    "type": "trust-manifest",
-    "version": "2025.12-final",
-    "signatures": {
-        "scheme": "minisign",
-        "public_key": "/.well-known/minisign.pub",
-        "artifacts": {
-            "sha256_inventory": "/dumps/sigs/sha256.json.minisig",
-            "release_mega": "/dumps/sigs/release-mega.json.minisig",
-            "release": "/dumps/sigs/release.json.minisig"
-        }
-    },
-    "tfws": {
-        "latest": {
-            "version": "2.0",
-            "index": "https://onetoo.eu/.well-known/tfws/v2/index.json",
-            "inventory": "https://onetoo.eu/.well-known/tfws/v2/inventory.sha256",
-            "signature": "https://onetoo.eu/.well-known/tfws/v2/inventory.sha256.minisig",
-            "public_key": "https://onetoo.eu/.well-known/tfws/v2/keys/minisign.pub"
-        },
-        "policy": {
-            "discovery": "explicit",
-            "verification": "mandatory",
-            "fallback": "v1"
-        }
+    "pricing": {
+      "status": "disabled",
+      "notes": "ONETOO.eu does not provide paid services or pricing models."
     }
+  },
+
+  "endpoints": {
+    "agent_manifest": "/.well-known/ai-trust-hub.json",
+    "llms": "/.well-known/llms.txt",
+    "governance": "/.well-known/ai-governance.json",
+    "transparency": "/api/v1/transparency/latest.json",
+    "status": "/api/v1/status/latest.json",
+    "incidents": "/api/v1/incidents/latest.json",
+    "changelog": "/api/v1/changelog/latest.json",
+
+    "keys": {
+      "current": "/.well-known/minisign.pub",
+      "history": "/.well-known/key-history.json"
+    },
+
+    "integrity": {
+      "inventory": "/dumps/sha256.json",
+      "signatures": "/dumps/sigs/"
+    }
+  },
+
+  "verification": {
+    "method": "minisign",
+    "algorithm": "ed25519",
+    "offline_verification_supported": true
+  },
+
+  "lifecycle": {
+    "status": "stable",
+    "change_policy": "minimal",
+    "archival_grade": true
+  },
+
+  "last_updated": "2025-01-01"
 }
