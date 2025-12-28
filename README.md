@@ -213,6 +213,7 @@ Toto je podpis.
 Rozhodnutie je na tebe.
 
 ---
+„TFWS nepovažuje kryptografický algoritmus za zdroj dôvery, ale za historický dôkaz podpisu v čase publikácie. Aj v prípade budúceho oslabenia algoritmu zostáva auditná a historická overiteľnosť zachovaná.“
 
 ## Archival Notice
 
@@ -222,4 +223,3 @@ No further functional, commercial, or policy changes are planned.
 Future work, if any, will occur only via a new major version or separate repository.
 
 This state is intentionally preserved.
-
