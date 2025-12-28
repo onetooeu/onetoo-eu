@@ -9,7 +9,7 @@
   "license": "CC0-1.0",
   "contacts": [
     "robot@onetoo.eu",
-    "robot@nakupovani.cz"
+    "robot@onetoo.eu"
   ],
   "stability": {
     "semver": "1.0.0",
@@ -48,7 +48,7 @@
   "contact": {
     "email": [
       "robot@onetoo.eu",
-      "robot@nakupovani.cz"
+      "robot@onetoo.eu"
     ],
     "security_txt": "/.well-known/security.txt"
   }
