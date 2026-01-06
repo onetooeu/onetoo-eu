@@ -5,12 +5,23 @@
     {
       "kid": "3E3537BE216F0ADC",
       "status": "retired",
-      "notes": "Previous public key published on onetoo.eu. Secret key not available on this host."
+      "notes": "Legacy signing key observed in production dumps (sha256.json.minisig)."
+    },
+    {
+      "kid": "8AEA22755B13216C",
+      "status": "retired",
+      "notes": "Legacy signing key observed in production dumps (release.json.minisig)."
     },
     {
       "kid": "A8444D66A337F633",
+      "status": "retired",
+      "notes": "Previously published as active; replaced after mixed-signature incident."
+    },
+    {
+      "kid": "BEAF18316BE2FC65",
       "status": "active",
-      "notes": "Rotated key. Used to sign dumps and accepted-set for AI search."
+      "notes": "Clean rotation 2026-01-06. Sole signing key for onetoo.eu dumps and trust artifacts."
     }
   ]
 }
+
