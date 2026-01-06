@@ -1,0 +1,17 @@
+{
+  "schema": "onetoo-ai-search-accepted/v1",
+  "generated_at": "2026-01-06T00:00:00Z",
+  "items": [
+    {
+      "name": "Claude (Anthropic AI Assistant)",
+      "url": "https://claude.ai",
+      "description": "Constitutional AI assistant by Anthropic",
+      "categories": ["AI", "Assistant", "Chat", "Research"],
+      "source": {
+        "type": "genesis",
+        "submitted_by": "maintainer",
+        "method": "manual"
+      }
+    }
+  ]
+}
