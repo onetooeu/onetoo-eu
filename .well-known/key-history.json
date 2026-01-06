@@ -1,32 +1,16 @@
 {
-  "schema_version": "1.0",
-  "keys": [
-    {
-      "type": "minisign",
-      "status": "active",
-      "public_key_pinned": "RWTcCm8hvjc1PveOAYAhq7XlMtSpk9GLTo2JUF+p9yc31FJFaPmW/6NV",
-      "public_key_url": "/.well-known/minisign.pub",
-      "epoch_utc": "2025-12-20T20:52:47Z",
-      "note": "Key rotation performed; this key signs hub integrity artifacts."
-    }
-  ]
-}
-{
   "schema": "tfws-key-history/v1",
-  "trust_root": "https://onetoo.eu",
+  "updated_at": "2026-01-06T00:00:00Z",
   "keys": [
     {
+      "kid": "3E3537BE216F0ADC",
       "status": "retired",
-      "key_id": "3E3537BE216F0ADC",
-      "purpose": "minisign",
-      "notes": "Legacy public key previously published on trust root. Private key unavailable for new signatures."
+      "notes": "Previous public key published on onetoo.eu. Secret key not available on this host."
     },
     {
+      "kid": "A8444D66A337F633",
       "status": "active",
-      "key_id": "A8444D66A337F633",
-      "purpose": "minisign",
-      "since": "2026-01-06",
-      "notes": "Rotated to key with available private key for ongoing signing."
+      "notes": "Rotated key. Used to sign dumps and accepted-set for AI search."
     }
   ]
 }
