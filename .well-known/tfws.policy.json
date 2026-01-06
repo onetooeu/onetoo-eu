@@ -1,0 +1,169 @@
+{
+  "schema": "tfws.v2.policy",
+  "id": "onetoo-ai-autopilot",
+  "policy_version": "0.1.9",
+  "updated": "2026-01-06",
+  "mode": "deterministic",
+  "scope": {
+    "domain": "search.onetoo.eu",
+    "purpose": "evaluate contributed links and metadata for inclusion",
+    "runtime_dependency": "none"
+  },
+  "inputs": {
+    "required": [
+      "url",
+      "title",
+      "description"
+    ],
+    "optional": [
+      "categories",
+      "language",
+      "source",
+      "submitted_at"
+    ],
+    "constraints": {
+      "url": {
+        "schemes_allowed": [
+          "https"
+        ],
+        "max_length": 2048
+      },
+      "title": {
+        "min_length": 3,
+        "max_length": 120
+      },
+      "description": {
+        "min_length": 10,
+        "max_length": 600
+      },
+      "categories": {
+        "max_items": 16,
+        "max_item_length": 32
+      }
+    }
+  },
+  "normalization": {
+    "url": {
+      "lowercase_host": true,
+      "strip_fragment": true,
+      "strip_default_ports": true,
+      "remove_trailing_slash_consistency": "canonicalize",
+      "punycode": "normalize"
+    },
+    "text": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "normalize_unicode": "NFKC"
+    },
+    "categories": {
+      "trim": true,
+      "dedupe_case_insensitive": true,
+      "sort": "lexicographic"
+    }
+  },
+  "scoring": {
+    "scale": "0..100",
+    "decision_thresholds": {
+      "accept": 80,
+      "review": 50,
+      "reject": 0
+    },
+    "rules": [
+      {
+        "id": "R01_HTTPS_ONLY",
+        "description": "Reject if URL scheme is not https",
+        "type": "hard_reject",
+        "condition": "url.scheme != 'https'",
+        "effect": {
+          "decision": "reject",
+          "score": 0
+        }
+      },
+      {
+        "id": "R02_MIN_TEXT",
+        "description": "Reject if title/description too short",
+        "type": "hard_reject",
+        "condition": "title.length < 3 OR description.length < 10",
+        "effect": {
+          "decision": "reject",
+          "score": 0
+        }
+      },
+      {
+        "id": "R10_BASE_SCORE",
+        "description": "Base score for a well-formed submission",
+        "type": "score_add",
+        "condition": "url.valid AND title.valid AND description.valid",
+        "effect": {
+          "add": 35
+        }
+      },
+      {
+        "id": "R11_CATEGORY_BONUS",
+        "description": "Bonus for having categories",
+        "type": "score_add",
+        "condition": "categories.count >= 1",
+        "effect": {
+          "add": 10
+        }
+      },
+      {
+        "id": "R12_DESCRIPTION_QUALITY",
+        "description": "Bonus for description length in preferred range",
+        "type": "score_add",
+        "condition": "description.length >= 60 AND description.length <= 220",
+        "effect": {
+          "add": 15
+        }
+      },
+      {
+        "id": "R13_TITLE_QUALITY",
+        "description": "Bonus for title length in preferred range",
+        "type": "score_add",
+        "condition": "title.length >= 12 AND title.length <= 80",
+        "effect": {
+          "add": 10
+        }
+      },
+      {
+        "id": "R20_DUPLICATE_GUARD",
+        "description": "Penalty if submission appears duplicate by canonical URL match",
+        "type": "score_sub",
+        "condition": "canonical_url_already_exists == true",
+        "effect": {
+          "sub": 60
+        }
+      }
+    ],
+    "clamp": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  "outputs": {
+    "decision": [
+      "accept",
+      "review",
+      "reject"
+    ],
+    "audit_fields": [
+      "canonical_url",
+      "score",
+      "decision",
+      "matched_rules",
+      "policy_version",
+      "timestamp_utc"
+    ],
+    "format": "json"
+  },
+  "guarantees": [
+    "same input -> same output",
+    "policy version is part of audit output",
+    "no network required to interpret the policy"
+  ],
+  "non_goals": [
+    "runtime self-validation",
+    "revocation endpoints",
+    "central authority registry"
+  ]
+}

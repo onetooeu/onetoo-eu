@@ -1,0 +1,44 @@
+{
+  "schema": "tfws.v2.identity",
+  "id": "onetoo-ai-autopilot",
+  "type": "ai-agent",
+  "version": "0.1.9",
+  "status": "sealed",
+  "maintainer": "onetoo.eu",
+  "intent": "deterministic policy-based trust evaluation",
+  "updated": "2026-01-06",
+  "canonical": {
+    "well_known_base": "/.well-known/",
+    "identity": "/.well-known/tfws.json",
+    "policy": "/.well-known/tfws.policy.json",
+    "keys": "/.well-known/tfws.keys.json"
+  },
+  "signing": {
+    "method": "minisign",
+    "signature_type": "detached",
+    "signature_suffix": ".minisig",
+    "key_ref": {
+      "keys_document": "/.well-known/tfws.keys.json",
+      "active_key_id": "KID_AUTOPILOT_V2_0001"
+    }
+  },
+  "artifact": {
+    "name": "onetoo-ai-autopilot",
+    "artifact_type": "source-and-release",
+    "release_model": "deterministic",
+    "public_claims": [
+      "no secrets in repository",
+      "release artifacts signed",
+      "offline verifiable",
+      "archival-grade intent"
+    ]
+  },
+  "compat": {
+    "tfws_major": 2,
+    "profiles": [
+      "identity",
+      "policy",
+      "keys"
+    ]
+  }
+}
