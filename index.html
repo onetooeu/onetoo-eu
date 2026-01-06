@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ONETOO.eu — Pan‑EU Trust & Decision Infrastructure</title>
-  <link rel="canonical" href="https://www.onetoo.eu/">
+  <link rel="canonical" href="https://onetoo.eu/">
   <meta name="description" content="Pan-European trust and decision infrastructure for commerce and AI. Transparent, explainable, audit‑ready." />
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f19;color:#e7eaf3}
@@ -19,11 +19,33 @@
   </style>
 
   <link rel="stylesheet" href="/assets/site.css"> 
-  <script defer src="/assets/site.js"></script>
+    <link rel="stylesheet" href="/assets/ai-search.css">
+<script defer src="/assets/site.js"></script>
 </head>
 <body>
   <div class="wrap">
-    <div class="pill">EU 27/27 coverage</div>
+    <!-- ONETOO AI Search (thin client) -->
+    <section class="ai-search" aria-label="ONETOO AI Search">
+      <h2>ONETOO AI Search</h2>
+      <p class="muted">Trust-first discovery. Queries are served by <code>search.onetoo.eu</code>.</p>
+
+      <form id="aiSearchForm" class="ai-search-form">
+        <input id="aiSearchQuery" type="search" inputmode="search" autocomplete="off"
+               placeholder="Search verified trust artifacts…" aria-label="Search query" />
+        <button type="submit">Search</button>
+      </form>
+
+      <div id="aiSearchMeta" class="ai-search-meta">Ready.</div>
+      <div id="aiSearchResults" class="ai-search-results"></div>
+
+      <p class="ai-search-links">
+        <a href="/.well-known/ai-search.json">ai-search</a> ·
+        <a href="/.well-known/ai-trust-hub.json">ai-trust-hub</a> ·
+        <a href="/verify.html">verify</a>
+      </p>
+    </section>
+    <!-- /ONETOO AI Search -->
+<div class="pill">EU 27/27 coverage</div>
     <div class="pill">Explainable</div>
     <div class="pill">Signed & versioned</div>
     <h1>ONETOO.eu</h1>
@@ -56,6 +78,7 @@
   </div>
 
 <script src="/assets/lang-redirect.js" defer></script>
+  <script defer src="/assets/ai-search.js"></script>
 </body>
 </html>
 

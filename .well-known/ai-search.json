@@ -1,0 +1,13 @@
+{
+  "api_base": "https://search.onetoo.eu",
+  "endpoints": {
+    "health": "/health",
+    "search_v1": "/search/v1"
+  },
+  "name": "ONETOO AI Search",
+  "notes": "Thin UI is hosted on onetoo.eu; search API runs separately as a Worker. Results may include proof bundles.",
+  "openapi": "https://search.onetoo.eu/openapi.json",
+  "schema": "onetoo-ai-search-pointer/v1",
+  "schemas": "https://search.onetoo.eu/schemas/",
+  "trust_root": "https://onetoo.eu/.well-known/ai-trust-hub.json"
+}

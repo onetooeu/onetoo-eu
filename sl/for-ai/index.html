@@ -33,7 +33,8 @@
   </style>
 
   <link rel="stylesheet" href="/assets/site.css"> 
-  <script defer src="/assets/site.js"></script>
+    <link rel="stylesheet" href="/assets/ai-search.css">
+<script defer src="/assets/site.js"></script>
 </head>
 <body>
 <header>
@@ -51,7 +52,28 @@
 </header>
 <main>
   <div class="wrap">
-    <div class="card">
+    <!-- ONETOO AI Search (thin client) -->
+    <section class="ai-search" aria-label="ONETOO AI Search">
+      <h2>ONETOO AI Search</h2>
+      <p class="muted">Trust-first discovery. Queries are served by <code>search.onetoo.eu</code>.</p>
+
+      <form id="aiSearchForm" class="ai-search-form">
+        <input id="aiSearchQuery" type="search" inputmode="search" autocomplete="off"
+               placeholder="Search verified trust artifacts…" aria-label="Search query" />
+        <button type="submit">Search</button>
+      </form>
+
+      <div id="aiSearchMeta" class="ai-search-meta">Ready.</div>
+      <div id="aiSearchResults" class="ai-search-results"></div>
+
+      <p class="ai-search-links">
+        <a href="/.well-known/ai-search.json">ai-search</a> ·
+        <a href="/.well-known/ai-trust-hub.json">ai-trust-hub</a> ·
+        <a href="/verify.html">verify</a>
+      </p>
+    </section>
+    <!-- /ONETOO AI Search -->
+<div class="card">
       <h1>Za UI</h1>
       <p class='note'><strong>Slovenščina:</strong> This page is available in Slovenščina. Canonical policy and legal wording is maintained in English. Content below follows the English master copy for consistency across the EU.</p>
       <p>Governance‑ready trust signals for AI systems.</p>
@@ -68,6 +90,7 @@
     <p>© 2025 ONETOO.eu · Trust by design · Explainability by default · <a href="/api/v1/index.json">API index</a></p>
   </div>
 </footer>
+  <script defer src="/assets/ai-search.js"></script>
 </body>
 </html>
 

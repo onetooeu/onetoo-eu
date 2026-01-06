@@ -1,20 +1,14 @@
 {
   "platform": "onetoo.eu",
   "scope": "EU",
-  "purpose": "Trust & decision signals for AI and public digital infrastructure",
+  "purpose": "Trust & decision signals for commerce and AI",
   "principles": [
     "explainability",
     "auditability",
     "jurisdiction_respect",
-    "safety_first",
-    "no_monetization"
+    "affiliate_transparency",
+    "safety_first"
   ],
-  "governance": {
-    "affiliate_transparency": {
-      "status": "disabled",
-      "notes": "No affiliate, pricing, or monetization program is active. This field is retained solely for compatibility with standard governance schemas."
-    }
-  },
   "docs": [
     "/en/for-ai",
     "/api/v1/ai/policies/current.json",
@@ -23,5 +17,5 @@
   ],
   "signed_data": [
     "/dumps/sha256.json"
-  ],
-  "status": "
+  ]
+}

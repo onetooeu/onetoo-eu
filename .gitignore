@@ -14,7 +14,3 @@ onetoo-keys/
 *.zip
 *.zip.sha256
 *-workingtree-*.sha256
-
-# local audit/backups (do not commit)
-AUDIT_*.txt
-_backup_*/
