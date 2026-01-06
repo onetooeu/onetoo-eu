@@ -1,21 +1,34 @@
-minisign.key
-
+# ===============================
 # minisign private keys (DO NOT COMMIT)
+# ===============================
 *.key
 *.key.*
 /onetoo.key
 
+# ===============================
 # secrets
+# ===============================
 *.sec
 *minisign*key*
 onetoo-keys/
 
-# build artifacts
+# ===============================
+# build artifacts (default: ignored)
+# ===============================
 *.zip
 *.zip.sha256
 *-workingtree-*.sha256
 
+# ===============================
+# ALLOW RELEASE ARTIFACTS (EXCEPTIONS)
+# ===============================
+!public/downloads/*.zip
+!public/downloads/*.zip.sha256
+!public/downloads/*.zip.minisig
+
+# ===============================
 # local backups (do not commit)
+# ===============================
 AUDIT_BOD5_BEFORE.txt
 _backup_bod5/
 _backup_openapi/
