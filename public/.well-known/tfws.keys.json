@@ -1,0 +1,29 @@
+{
+  "schema": "tfws.v2.keys",
+  "id": "onetoo-ai-autopilot",
+  "updated": "2026-01-06",
+  "method": "minisign",
+  "active_key_id": "KID_AUTOPILOT_V2_0001",
+  "keys": [
+    {
+      "key_id": "KID_AUTOPILOT_V2_0001",
+      "status": "active",
+      "created": "2026-01-06",
+      "valid_from": "2026-01-06",
+      "valid_to": null,
+      "public_key": "RWScIT1tm/Q7jY0+IgxfYrGhSh8WOTkSGPGaFTLK/t/MTbtKrhrNwXqa",
+      "notes": "v2 rotated keypair; secret key stored outside repository"
+    }
+  ],
+  "rotation_policy": {
+    "rotation_allowed": true,
+    "rotation_model": "superseding_declaration",
+    "revocation": "none",
+    "compromise_handling": [
+      "publish new key entry with status=active",
+      "set previous key status=superseded",
+      "publish updated tfws.keys.json and sign it",
+      "optionally publish tfws.json updated field updated=<date>"
+    ]
+  }
+}
