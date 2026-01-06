@@ -14,3 +14,8 @@ onetoo-keys/
 *.zip
 *.zip.sha256
 *-workingtree-*.sha256
+
+# local backups (do not commit)
+AUDIT_BOD5_BEFORE.txt
+_backup_bod5/
+_backup_openapi/
