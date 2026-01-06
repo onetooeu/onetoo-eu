@@ -22,9 +22,15 @@ onetoo-keys/
 # ===============================
 # ALLOW RELEASE ARTIFACTS (EXCEPTIONS)
 # ===============================
+# Cloudflare Pages output (public/)
 !public/downloads/*.zip
 !public/downloads/*.zip.sha256
 !public/downloads/*.zip.minisig
+
+# Root-level fallback for Pages compatibility
+!downloads/*.zip
+!downloads/*.zip.sha256
+!downloads/*.zip.minisig
 
 # ===============================
 # local backups (do not commit)
