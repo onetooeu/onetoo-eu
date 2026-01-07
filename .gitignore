@@ -49,3 +49,5 @@ _verify/
 submit*.json
 ai-search.json
 ai-search.json.minisig
+*.zip
+_backup_*/
