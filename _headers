@@ -36,18 +36,16 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=60
 
-/.well-known/minisign.pub
-  Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=60
+# (Removed explicit /.well-known/minisign.pub header block to prevent Cache-Control duplication.
+# It inherits cache from /.well-known/* and MIME is typically fine. If you ever need explicit MIME,
+# prefer handling it via file extension or a single dedicated rule.)
 
+# Optional alias key endpoint (only keep if you REALLY publish /minisign.pub as a real file)
 /minisign.pub
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=60
 
 # Downloads: long cache for immutable artifacts
-/downloads/*
-  X-Content-Type-Options: nosniff
-
 /downloads/*.zip
   Content-Type: application/zip
   Cache-Control: public, max-age=31536000, immutable
