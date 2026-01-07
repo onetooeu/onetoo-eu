@@ -1,2 +1,3 @@
-c89fd990cf489ad5fae17ecb0765057f2f75bc66
-2025-12-26T21:42:13Z
+DEPLOY-PROBE ROOT _deploy.txt
+commit: eecd9ba
+time: 2026-01-07T22:45:00Z
