@@ -1,13 +1,35 @@
 {
-  "api_base": "https://search.onetoo.eu",
-  "endpoints": {
-    "health": "/health",
-    "search_v1": "/search/v1"
-  },
+  "type": "ai-search",
+  "version": "1.0",
   "name": "ONETOO AI Search",
-  "notes": "Thin UI is hosted on onetoo.eu; search API runs separately as a Worker. Results may include proof bundles.",
-  "openapi": "https://search.onetoo.eu/openapi.json",
+  "publisher": "onetoo.eu",
   "schema": "onetoo-ai-search-pointer/v1",
-  "schemas": "https://search.onetoo.eu/schemas/",
-  "trust_root": "https://onetoo.eu/.well-known/ai-trust-hub.json"
+  "trust_root": "https://onetoo.eu/.well-known/ai-trust-hub.json",
+
+  "api": {
+    "api_base": "https://search.onetoo.eu",
+    "openapi": "https://search.onetoo.eu/openapi.json",
+    "schemas": "https://search.onetoo.eu/schemas/",
+    "endpoints": {
+      "health": "/health",
+      "search_v1": "/search/v1"
+    }
+  },
+
+  "reference_builds": [
+    {
+      "name": "holy-grail",
+      "version": "1.0.7",
+      "description": "Trust-First AI Search reference index (Holy Grail build) – free forever reference build",
+      "index_url": "https://onetoo.eu/downloads/ai-search/holy-grail/index-v1/",
+      "archive_url": "https://onetoo.eu/downloads/ai-search/holy-grail/index-v1.zip",
+      "integrity": {
+        "sha256": "d13d4192a537a07b55f31aee2d130edb976673e1a29d3eb9d54afa6895572ccf",
+        "minisign": "index-v1.zip.minisig",
+        "pubkey": "https://onetoo.eu/.well-known/minisign.pub"
+      }
+    }
+  ],
+
+  "notes": "Thin UI is hosted on onetoo.eu; search API runs separately as a Worker. Results may include proof bundles. The Holy Grail reference build is a static, free-forever reference artifact."
 }
