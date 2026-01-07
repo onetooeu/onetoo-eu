@@ -4,9 +4,9 @@
 /*
   Cache-Control: public, max-age=300
 
-# Trust entrypoints
+# Trust entrypoints (polish: 1h, removes Cache-Control duplication)
 /.well-known/*
-  Cache-Control: public, max-age=300
+  Cache-Control: public, max-age=3600
 
 /api/*
   Cache-Control: public, max-age=300
@@ -31,34 +31,20 @@
 /manifest.webmanifest
   Cache-Control: public, max-age=86400
 
-# Public keys: explicit MIME + explicit cache (prevents edge duplication)
+# Public keys: explicit MIME + explicit cache
 /control/keys/maintainers.pub
   Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=300
+  Cache-Control: public, max-age=3600
 
 /.well-known/minisign.pub
   Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=300
+  Cache-Control: public, max-age=3600
 
 /minisign.pub
   Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=300
+  Cache-Control: public, max-age=3600
 
-/downloads/*
-  X-Content-Type-Options: nosniff
-
-/downloads/*.zip
-  Content-Type: application/zip
-  Cache-Control: public, max-age=31536000, immutable
-
-/downloads/*.minisig
-  Content-Type: application/octet-stream
-  Cache-Control: public, max-age=31536000, immutable
-
-/downloads/*.txt
-  Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=31536000, immutable
-
+# Downloads: security + long cache for immutable artifacts
 /downloads/*
   X-Content-Type-Options: nosniff
 
@@ -74,14 +60,15 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=31536000, immutable
 
-# --- Polish: stable caching for Holy Grail landing ---
+# Holy Grail landing (polish)
+/downloads/ai-search/holy-grail/
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=86400
+
 /downloads/ai-search/holy-grail/index.html
   Cache-Control: public, max-age=86400
 
-# --- Polish: verification snippet ---
+# Verification snippet (polish)
 /.well-known/ai-search.verify.txt
-  Cache-Control: public, max-age=3600
   Content-Type: text/plain; charset=utf-8
-
-
-
+  Cache-Control: public, max-age=3600
