@@ -1,6 +1,9 @@
 # Cloudflare Pages _headers (canonical)
 
-# Default: security baseline (NO default Cache-Control to avoid duplicates)
+# --------------------------------------------------------------------
+# Default: security baseline
+# (NO default Cache-Control here to avoid duplication)
+# --------------------------------------------------------------------
 /*
   X-Content-Type-Options: nosniff
 
@@ -8,13 +11,12 @@
 # Trust entrypoints + MIME fixes
 # --------------------------------------------------------------------
 
-# Force correct MIME for .pub (Cloudflare sometimes maps .pub -> application/x-mspublisher)
-# IMPORTANT: Do NOT set Cache-Control here to avoid duplicates; it inherits from /.well-known/*
+# Force correct MIME for .pub files
+# Cloudflare sometimes maps .pub -> application/x-mspublisher
+# IMPORTANT:
+# - Content-Type is defined ONLY here
+# - Cache-Control is inherited from /.well-known/*
 /.well-known/*.pub
-  Content-Type: text/plain; charset=utf-8
-
-# Explicit (in case wildcard matching behaves differently)
-/.well-known/minisign.pub
   Content-Type: text/plain; charset=utf-8
 
 # Trust entrypoints (polish: 1h; enforce edge caching)
@@ -58,13 +60,14 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=60
 
-# Optional alias key endpoint (only keep if you REALLY publish /minisign.pub as a real file)
+# Optional alias key endpoint
+# (keep ONLY if /minisign.pub is a real published file)
 /minisign.pub
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=60
 
 # --------------------------------------------------------------------
-# Downloads: long cache for immutable artifacts
+# Downloads: immutable artifacts
 # --------------------------------------------------------------------
 
 /downloads/*.zip
