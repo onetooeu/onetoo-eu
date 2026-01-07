@@ -1,3 +1,5 @@
+/downloads/ai-search/holy-grail/ /downloads/ai-search/holy-grail/index.html 200
+/.well-known/ai-search.verify.txt /.well-known/ai-search.verify.txt 200
 /downloads/* /downloads/:splat 200
 /.well-known/* /.well-known/:splat 200
 /hub /ai-trust-hub.html 302
