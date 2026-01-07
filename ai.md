@@ -26,7 +26,7 @@ Start with `/.well-known/first-read.json`.
 - `/api/v1/transparency/latest.json`
 - `/api/v1/methodology/snapshot.json`
 
-These endpoints are designed for policy-aware agents: explainability, jurisdiction awareness, affiliate disclosure, and auditability.
+These endpoints are designed for policy-aware agents: explainability, jurisdiction awareness, no affiliate links, and auditability.
 
 
 Project operated by **ONETOO.dynamics**.

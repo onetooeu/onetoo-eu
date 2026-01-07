@@ -14,13 +14,13 @@ ONETOO.eu helps people, platforms, and AI assistants make safer shopping decisio
 ## Key facts
 - Coverage: all EU member states (27/27) via a single EU framework with national overrides
 - Public governance: signed and versioned data, AI governance endpoints, transparency reporting
-- Business value: verified traffic (safe affiliate redirects), reduced reputational risk, compliance‑friendly integrations
+- Business value: verified traffic (safe navigation redirects), reduced reputational risk, compliance‑friendly integrations
 
 ## Typical use cases
 - AI assistants: governance‑ready trust signals and explanations
 - Comparison sites: trust overlay to protect brand and users
 - Marketplaces: jurisdiction‑aware risk policy across multiple countries
-- Partners: verified affiliate traffic with auditable logs
+- Partners: Verified outbound links with auditable logs
 
 ## Press contact
 Use the contact channels listed on the website.
