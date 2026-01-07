@@ -74,4 +74,14 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=31536000, immutable
 
+# --- Polish: stable caching for Holy Grail landing ---
+/downloads/ai-search/holy-grail/index.html
+  Cache-Control: public, max-age=86400
+
+# --- Polish: verification snippet ---
+/.well-known/ai-search.verify.txt
+  Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
+
+
 
