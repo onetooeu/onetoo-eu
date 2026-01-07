@@ -39,3 +39,9 @@ AUDIT_BOD5_BEFORE.txt
 _backup_bod5/
 _backup_openapi/
 onetoo-eu-v2.0.0-trusthub-archival-2026-01-06.zip.minisig
+
+# Allow publishing this specific Holy Grail artifact (reference-only)
+!downloads/ai-search/holy-grail/index-v1.zip
+!downloads/ai-search/holy-grail/index-v1.zip.minisig
+!downloads/ai-search/holy-grail/index-v1.zip.sha256.txt
+
