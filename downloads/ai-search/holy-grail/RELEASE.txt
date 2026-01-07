@@ -1,0 +1,22 @@
+ONETOO AI Search — Holy Grail Reference Build
+Release: 1.0.7
+Date: 2026-01-07
+
+Summary:
+- Published static reference index build.
+- Added cryptographic integrity (SHA256 + minisign).
+- Aligned trust root and key history.
+- Ensured raw static delivery (no HTML fallback).
+- Added explicit integrity URLs in ai-search.json.
+
+Scope:
+- Reference and verification only.
+- Not an authoritative or mutable index.
+
+Stability:
+- URLs intended to remain stable long-term.
+- No further updates planned for this build.
+
+Related:
+- https://www.onetoo.eu/.well-known/ai-search.json
+- https://www.onetoo.eu/.well-known/key-history.json

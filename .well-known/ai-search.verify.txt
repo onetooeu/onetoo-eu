@@ -1,0 +1,24 @@
+ONETOO AI Search — Holy Grail Reference Build
+Verification snippet (offline-friendly)
+
+1) Download artifacts
+   - index-v1.zip
+   - index-v1.zip.minisig
+   - minisign.pub
+
+URLs:
+https://www.onetoo.eu/downloads/ai-search/holy-grail/index-v1.zip
+https://www.onetoo.eu/downloads/ai-search/holy-grail/index-v1.zip.minisig
+https://www.onetoo.eu/.well-known/minisign.pub
+
+2) Verify signature
+minisign -V -p minisign.pub -m index-v1.zip -x index-v1.zip.minisig
+
+3) Optional: verify SHA256
+sha256sum index-v1.zip
+(compare with index-v1.zip.sha256.txt)
+
+Notes:
+- This is a reference-only build.
+- No runtime trust is implied.
+- Trust is established by cryptographic verification, not authority.
