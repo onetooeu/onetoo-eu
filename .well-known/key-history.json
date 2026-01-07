@@ -24,4 +24,13 @@
     }
   ]
 }
+{
+  "system": "minisign",
+  "event": "key-rotation",
+  "date": "2026-01-07",
+  "from_key_id": "BEAF18316BE2FC65",
+  "to_key_id": "A8444D66A337F633",
+  "reason": "Signing continued with A844... secret key; published trust root updated to match verifiable signatures. Old public key archived under /.well-known/keys/minisign/."
+}
+
 
