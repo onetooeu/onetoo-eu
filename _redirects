@@ -1,3 +1,5 @@
+/downloads/* /downloads/:splat 200
+/.well-known/* /.well-known/:splat 200
 /hub /ai-trust-hub.html 302
 /trust /ai-trust-hub.html 302
 /verify.html /verify/index.html 200

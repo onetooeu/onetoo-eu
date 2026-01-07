@@ -43,3 +43,19 @@
 /minisign.pub
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=300
+
+/downloads/*
+  X-Content-Type-Options: nosniff
+
+/downloads/*.zip
+  Content-Type: application/zip
+  Cache-Control: public, max-age=31536000, immutable
+
+/downloads/*.minisig
+  Content-Type: application/octet-stream
+  Cache-Control: public, max-age=31536000, immutable
+
+/downloads/*.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
