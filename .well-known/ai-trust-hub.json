@@ -81,7 +81,6 @@
     },
     "policies": {
         "accessibility": "/accessibility/",
-        "affiliate_disclosure": "/affiliate-disclosure/",
         "cookies": "/cookies/",
         "privacy": "/privacy/",
         "terms": "/terms/"
