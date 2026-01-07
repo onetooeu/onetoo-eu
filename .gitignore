@@ -45,3 +45,7 @@ onetoo-eu-v2.0.0-trusthub-archival-2026-01-06.zip.minisig
 !downloads/ai-search/holy-grail/index-v1.zip.minisig
 !downloads/ai-search/holy-grail/index-v1.zip.sha256.txt
 
+_verify/
+submit*.json
+ai-search.json
+ai-search.json.minisig

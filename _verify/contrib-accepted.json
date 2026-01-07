@@ -1,8 +1,0 @@
-{
-  "schema": "onetoo-ai-search-accepted-set/v1",
-  "version": "1.0",
-  "updated_at": "2026-01-07T00:00:00Z",
-  "lane": "stable",
-  "note": "Initial empty accepted set. New items appear here only after maintainer verification + signing.",
-  "items": []
-}
