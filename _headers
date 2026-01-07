@@ -1,10 +1,10 @@
 # Cloudflare Pages _headers (canonical)
 
-# Default: keep pages fresh-ish
+# Default: security baseline (NO default Cache-Control to avoid duplicates)
 /*
-  Cache-Control: public, max-age=300
+  X-Content-Type-Options: nosniff
 
-# Trust entrypoints (polish: 1h, removes Cache-Control duplication)
+# Trust entrypoints (polish: 1h)
 /.well-known/*
   Cache-Control: public, max-age=3600
 
@@ -44,7 +44,7 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600
 
-# Downloads: security + long cache for immutable artifacts
+# Downloads: long cache for immutable artifacts
 /downloads/*
   X-Content-Type-Options: nosniff
 
