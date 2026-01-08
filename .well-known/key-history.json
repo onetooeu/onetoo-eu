@@ -1,11 +1,12 @@
 {
   "schema": "tfws-key-history/v1",
-  "updated_at": "2026-01-06T00:00:00Z",
+  "updated_at": "2026-01-08T00:00:00Z",
+  "system": "minisign",
   "keys": [
     {
       "kid": "3E3537BE216F0ADC",
       "status": "retired",
-      "notes": "Legacy signing key observed in production dumps (sha256.json.minisig)."
+      "notes": "Legacy signing key observed in production dumps (targets.json.minisig)."
     },
     {
       "kid": "8AEA22755B13216C",
@@ -13,24 +14,23 @@
       "notes": "Legacy signing key observed in production dumps (release.json.minisig)."
     },
     {
-      "kid": "A8444D66A337F633",
+      "kid": "BEAF18316BE2FC65",
       "status": "retired",
-      "notes": "Previously published as active; replaced after mixed-signature incident."
+      "notes": "Legacy signing key observed in production dumps (sha256.json.minisig)."
     },
     {
-      "kid": "BEAF18316BE2FC65",
+      "kid": "A8444D66A337F633",
       "status": "active",
-      "notes": "Clean rotation 2026-01-06. Sole signing key for onetoo.eu dumps and trust artifacts."
+      "notes": "Current published trust root key (/.well-known/minisign.pub)."
+    }
+  ],
+  "events": [
+    {
+      "event": "key-rotation",
+      "date": "2026-01-07",
+      "from_key_id": "BEAF18316BE2FC65",
+      "to_key_id": "A8444D66A337F633",
+      "reason": "Signing continued with A844... secret key; published trust root updated to match verifiable signatures. Old public key archived under /.well-known/keys/minisign/."
     }
   ]
 }
-{
-  "system": "minisign",
-  "event": "key-rotation",
-  "date": "2026-01-07",
-  "from_key_id": "BEAF18316BE2FC65",
-  "to_key_id": "A8444D66A337F633",
-  "reason": "Signing continued with A844... secret key; published trust root updated to match verifiable signatures. Old public key archived under /.well-known/keys/minisign/."
-}
-
-
