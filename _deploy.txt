@@ -1,4 +1,4 @@
 DEPLOY-MARKER ROOT
-commit: 437a139
-time: 2026-01-08T06:33:53Z
-nonce: sha-437a139-2026-01-08T06:33:53Z
+commit: f59e571
+time: 2026-01-08T13:48:55Z
+nonce: manual-force
