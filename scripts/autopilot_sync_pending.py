@@ -105,11 +105,12 @@ def main():
         item = dict(body)
         item["added_from_pending"] = pid
         out_doc["items"].append(item)
-
     safe_write("dumps/contrib-accepted.json", out_doc)
     safe_write("public/dumps/contrib-accepted.json", out_doc)
 
-    print(f"autopilot: wrote {len(out_doc[items])} items to contrib-accepted.json (stable)")return 0
+    print(f"autopilot: wrote {len(out_doc['items'])} items to contrib-accepted.json (stable)")
+    return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
