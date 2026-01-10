@@ -42,6 +42,7 @@ jobs:
         env:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
           ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
+          ONETOO_AUTOPILOT_ENABLED: "1"
           MINISIGN_PASS: ${{ secrets.MINISIGN_PASS }}
         run: |
           python scripts/autopilot_sync_pending.py
