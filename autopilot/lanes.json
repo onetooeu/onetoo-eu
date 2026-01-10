@@ -1,0 +1,10 @@
+{
+  "schema": "onetoo-autopilot-lanes/v1",
+  "updated_at": "AUTO",
+  "lanes": [
+    { "name": "sandbox", "description": "Auto-accepted but not trusted; visible as contrib-autopilot/sandbox." },
+    { "name": "stable",  "description": "Accepted set used by search; requires rules + signatures." },
+    { "name": "trusted", "description": "High trust: continuity + multi-source trust + time-based reputation." },
+    { "name": "archived","description": "Frozen, historical snapshots for decade-grade reproducibility." }
+  ]
+}
