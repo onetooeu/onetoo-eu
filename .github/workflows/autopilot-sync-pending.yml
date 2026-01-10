@@ -37,5 +37,9 @@ jobs:
           git config user.name "onetoo-autopilot"
           git config user.email "autopilot@onetoo.eu"
           git add dumps/contrib-accepted.json public/dumps/contrib-accepted.json \
+            dumps/contrib-accepted.json.minisig public/dumps/contrib-accepted.json.minisig
+          if [ -d autopilot/logs ]; then git add -A autopilot/logs; fi
+          if [ -d autopilot/state ]; then git add -A autopilot/state; fi
+          if [ -f autopilot/ledgers/ledger.jsonl ]; then git add autopilot/ledgers/ledger.jsonl; fi
             dumps/contrib-accepted.json.minisig public/dumps/contrib-accepted.json.minisig \
             autopilot/logs/*.jsonl autopilot/ledgers/ledger.jsonl autopilot/state/*.json
