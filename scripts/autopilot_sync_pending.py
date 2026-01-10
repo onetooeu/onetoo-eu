@@ -146,12 +146,12 @@ def decide(score, hard_fail, heur):
 def main():
     if os.getenv("ONETOO_AUTOPILOT_ENABLED", "").strip() != "1":
         print('autopilot: disabled (set ONETOO_AUTOPILOT_ENABLED=1 to enable). No changes.')
-        return 0
+    return 0
 
     token = os.getenv("ONETOO_MAINTAINER_TOKEN", "").strip()
     if not token:
         print("autopilot: missing ONETOO_MAINTAINER_TOKEN. No changes.")
-        return 0
+    return 0
 
     base = normalize_base(os.getenv("ONETOO_SEARCH_BASE", "https://search.onetoo.eu"))
     heur = load_heuristics()
@@ -167,7 +167,7 @@ def main():
     except Exception as e:
         print("autopilot: could not discover pending list endpoint (safe exit).")
         print(f"autopilot: last error: {repr(e)}")
-        return 0
+    return 0
 
     items = (pend.get("items") or [])[:max_pending]
     pending_ids = [x.get("id") for x in items if x.get("id")]
@@ -221,10 +221,26 @@ def main():
     for doc in (accepted, sandbox, rejected):
         doc["updated_at"] = ts
 
-    safe_write_json("dumps/contrib-accepted.json", accepted)
-    safe_write_json("public/dumps/contrib-accepted.json", accepted)
+    
+    # force lane identity (do not inherit stale values from existing files)
+    accepted["lane"] = "stable"
+    accepted["note"] = "Stable accepted-set used by search (autopilot-managed)."
+    sandbox["lane"] = "sandbox"
+    sandbox["note"] = "Autopilot sandbox set (unsigned)."
+    rejected["lane"] = "rejected"
+    rejected["note"] = "Autopilot rejected set."
+
+    if os.getenv("ONETOO_WRITE_STABLE","").strip() == "1":
+        safe_write_json("dumps/contrib-accepted.json", accepted)
+    else:
+        print("autopilot: ONETOO_WRITE_STABLE!=1, not touching contrib-accepted.json (stable lane).")
+    if os.getenv("ONETOO_WRITE_STABLE","").strip() == "1":
+        safe_write_json("public/dumps/contrib-accepted.json", accepted)
+    else:
+        pass
     safe_write_json("dumps/contrib-sandbox.json", sandbox)
     safe_write_json("public/dumps/contrib-sandbox.json", sandbox)
+    # publish sandbox alias for convenience (keeps old clients working)
     safe_write_json("dumps/contrib-autopilot.json", sandbox)
     safe_write_json("public/dumps/contrib-autopilot.json", sandbox)
     safe_write_json("dumps/contrib-rejected.json", rejected)
@@ -239,15 +255,8 @@ def main():
         sum(1 for d in decisions if d["decision"]=="sandbox"),
         sum(1 for d in decisions if d["decision"]=="reject"),
     ))
-    
-    # force lane identity (do not inherit stale values from existing files)
-    accepted["lane"] = "stable"
-    accepted["note"] = "Stable accepted-set used by search (autopilot-managed)."
-    sandbox["lane"] = "sandbox"
-    sandbox["note"] = "Autopilot sandbox set (unsigned)."
-    rejected["lane"] = "rejected"
-    rejected["note"] = "Autopilot rejected set."
-return 0
+
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())
