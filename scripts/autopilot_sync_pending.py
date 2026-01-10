@@ -6,7 +6,13 @@ def now_z():
     return datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
 
 def http_get_json(url, headers=None, timeout=20):
+    # default headers to match curl behavior
+    base_headers = {
+        "Accept": "application/json",
+        "Cache-Control": "no-cache",
+    }
     headers = headers or {}
+    base_headers.update(headers)
     req = Request(url, headers=headers, method="GET")
     with urlopen(req, timeout=timeout) as r:
         data = r.read().decode("utf-8", errors="replace")
@@ -39,7 +45,7 @@ def main():
     list_urls = [
         f"{base}/contrib/v2/pending/list",
         f"{base}/contrib/v2/pending/index",
-        f"{base}/contrib/v2/pending/index.json",
+        f"{base}/contrib/v2/pending",
     ]
 
     pending_ids = None

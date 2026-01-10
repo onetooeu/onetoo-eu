@@ -1,16 +1,17 @@
 {
   "schema": "onetoo-ai-search-accepted-set/v1",
   "version": "1.0",
-  "updated_at": "2026-01-10T16:46:27Z",
-  "lane": "stable",
-  "note": "Initial empty accepted set. New items appear here only after maintainer verification + signing.",
+  "updated_at": "2026-01-10T20:09:46Z",
+  "lane": "sandbox",
+  "note": "Autopilot sandbox set (unsigned). Stable accepted-set stays maintainer-signed.",
   "items": [
     {
       "kind": "publisher",
       "url": "https://www.hgpedu.eu/",
       "wellKnown": "https://www.hgpedu.eu/.well-known/",
+      "timestamp": "2026-01-10T16:14:45Z",
       "title": "HGP EDU Portal",
-      "description": "Research portal for HGP – technical notes, hypotheses, experiments, and signed TFWS artifacts.",
+      "description": "Research portal for HGP � technical notes, hypotheses, experiments, and signed TFWS artifacts.",
       "languages": [
         "sk",
         "en"
@@ -23,6 +24,7 @@
       ],
       "repo": "https://github.com/onetooeu/HGP",
       "contact": "https://www.hgpedu.eu/pages/contact",
+      "notes": "TFWS v2 verified publisher � HGP EDU portal",
       "added_from_pending": "27e7550a00f999f692f0b2ae567a9cc9a83076971afc72bbbbd130d16ef1bd0a"
     }
   ]
