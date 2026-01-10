@@ -225,6 +225,8 @@ def main():
     safe_write_json("public/dumps/contrib-accepted.json", accepted)
     safe_write_json("dumps/contrib-sandbox.json", sandbox)
     safe_write_json("public/dumps/contrib-sandbox.json", sandbox)
+    safe_write_json("dumps/contrib-autopilot.json", sandbox)
+    safe_write_json("public/dumps/contrib-autopilot.json", sandbox)
     safe_write_json("dumps/contrib-rejected.json", rejected)
     safe_write_json("public/dumps/contrib-rejected.json", rejected)
 
@@ -237,7 +239,15 @@ def main():
         sum(1 for d in decisions if d["decision"]=="sandbox"),
         sum(1 for d in decisions if d["decision"]=="reject"),
     ))
-    return 0
+    
+    # force lane identity (do not inherit stale values from existing files)
+    accepted["lane"] = "stable"
+    accepted["note"] = "Stable accepted-set used by search (autopilot-managed)."
+    sandbox["lane"] = "sandbox"
+    sandbox["note"] = "Autopilot sandbox set (unsigned)."
+    rejected["lane"] = "rejected"
+    rejected["note"] = "Autopilot rejected set."
+return 0
 
 if __name__ == "__main__":
     sys.exit(main())
