@@ -1,4 +1,4 @@
 DEPLOY-MARKER ROOT
-commit: cdb0770
-time: 2026-01-10T17:46:10Z
-nonce: git-cdb0770-2026-01-10T17:46:10Z
+commit: 578c0c0
+time: 2026-01-10T17:54:50Z
+nonce: git-578c0c0-2026-01-10T17:54:50Z
