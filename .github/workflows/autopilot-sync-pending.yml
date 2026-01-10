@@ -36,6 +36,8 @@ jobs:
           fi
           git config user.name "onetoo-autopilot"
           git config user.email "autopilot@onetoo.eu"
-          git add             dumps/contrib-accepted.json public/dumps/contrib-accepted.json             dumps/contrib-sandbox.json public/dumps/contrib-sandbox.json             dumps/contrib-rejected.json public/dumps/contrib-rejected.json             dumps/autopilot/decisions.json public/dumps/autopilot-decisions.json             dumps/autopilot/audit-log.jsonl             autopilot/heuristics.json             scripts/autopilot_sync_pending.py
+          git add dumps/contrib-accepted.json public/dumps/contrib-accepted.json \
+            dumps/contrib-accepted.json.minisig public/dumps/contrib-accepted.json.minisig \
+            autopilot/logs/*.jsonl autopilot/ledgers/ledger.jsonl autopilot/state/*.json
           git commit -m "autopilot: decisions (accept/sandbox/reject)"
           git push
