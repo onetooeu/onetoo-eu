@@ -1,0 +1,59 @@
+name: autopilot-sync-pending
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install minisign
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y minisign
+
+      - name: Write minisign key
+        env:
+          MINISIGN_KEY: ${{ secrets.MINISIGN_KEY }}
+          MINISIGN_PUB: ${{ secrets.MINISIGN_PUB }}
+        run: |
+          mkdir -p ~/.minisign
+          echo "$MINISIGN_KEY" > ~/.minisign/minisign.key
+          chmod 600 ~/.minisign/minisign.key
+          if [ -n "$MINISIGN_PUB" ]; then
+            echo "$MINISIGN_PUB" > ~/.minisign/minisign.pub
+            chmod 644 ~/.minisign/minisign.pub
+          fi
+
+      - name: Sync pending → accepted (autopilot)
+        env:
+          ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
+          ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
+          MINISIGN_PASS: ${{ secrets.MINISIGN_PASS }}
+        run: |
+          python scripts/autopilot_sync_pending.py
+
+      - name: Commit & push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "onetoo-autopilot"
+          git config user.email "autopilot@onetoo.eu"
+          git add dumps/contrib-accepted.json dumps/contrib-accepted.json.minisig                   public/dumps/contrib-accepted.json public/dumps/contrib-accepted.json.minisig
+          git commit -m "autopilot: sync pending → accepted"
+          git push
