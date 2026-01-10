@@ -1,7 +1,7 @@
 {
   "schema": "onetoo-ai-search-accepted-set/v1",
   "version": "1.0",
-  "updated_at": "2026-01-10T21:19:30Z",
+  "updated_at": "2026-01-10T21:22:11Z",
   "lane": "sandbox",
   "note": "Autopilot sandbox set (unsigned). Stable accepted-set stays maintainer-signed.",
   "items": [
