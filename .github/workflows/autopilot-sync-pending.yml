@@ -20,30 +20,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install minisign
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y minisign
-
-      - name: Write minisign key
-        env:
-          MINISIGN_KEY: ${{ secrets.MINISIGN_KEY }}
-          MINISIGN_PUB: ${{ secrets.MINISIGN_PUB }}
-        run: |
-          mkdir -p ~/.minisign
-          echo "$MINISIGN_KEY" > ~/.minisign/minisign.key
-          chmod 600 ~/.minisign/minisign.key
-          if [ -n "$MINISIGN_PUB" ]; then
-            echo "$MINISIGN_PUB" > ~/.minisign/minisign.pub
-            chmod 644 ~/.minisign/minisign.pub
-          fi
-
-      - name: Sync pending → accepted (autopilot)
+      - name: Sync pending → lanes (accept/sandbox/reject)
         env:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
-          ONETOO_SEARCH_BASE: "https://search.onetoo.eu"
+          ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
           ONETOO_AUTOPILOT_ENABLED: "1"
-          MINISIGN_PASS: ${{ secrets.MINISIGN_PASS }}
         run: |
           python scripts/autopilot_sync_pending.py
 
@@ -55,6 +36,6 @@ jobs:
           fi
           git config user.name "onetoo-autopilot"
           git config user.email "autopilot@onetoo.eu"
-          git add dumps/contrib-accepted.json dumps/contrib-accepted.json.minisig                   public/dumps/contrib-accepted.json public/dumps/contrib-accepted.json.minisig
-          git commit -m "autopilot: sync pending → accepted"
+          git add             dumps/contrib-accepted.json public/dumps/contrib-accepted.json             dumps/contrib-sandbox.json public/dumps/contrib-sandbox.json             dumps/contrib-rejected.json public/dumps/contrib-rejected.json             dumps/autopilot/decisions.json public/dumps/autopilot-decisions.json             dumps/autopilot/audit-log.jsonl             autopilot/heuristics.json             scripts/autopilot_sync_pending.py
+          git commit -m "autopilot: decisions (accept/sandbox/reject)"
           git push

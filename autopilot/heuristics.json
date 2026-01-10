@@ -1,0 +1,100 @@
+{
+  "schema": "onetoo-autopilot-heuristics/v1",
+  "version": "1.0",
+  "updated_at": "2026-01-10T00:00:00Z",
+  "defaults": {
+    "action": "sandbox",
+    "min_score_to_accept": 70,
+    "min_score_to_sandbox": 40
+  },
+  "hard_fail": [
+    {
+      "id": "deny_private_ips",
+      "desc": "Reject private/loopback/local hosts",
+      "match": {
+        "url_host_in": [
+          "localhost",
+          "127.0.0.1",
+          "0.0.0.0"
+        ]
+      },
+      "action": "reject"
+    },
+    {
+      "id": "require_https",
+      "desc": "Reject non-HTTPS URLs",
+      "match": {
+        "url_scheme_not_in": [
+          "https"
+        ]
+      },
+      "action": "reject"
+    },
+    {
+      "id": "deny_file_urls",
+      "desc": "Reject file:/ data: javascript:",
+      "match": {
+        "url_scheme_in": [
+          "file",
+          "data",
+          "javascript"
+        ]
+      },
+      "action": "reject"
+    }
+  ],
+  "soft_rules": [
+    {
+      "id": "has_well_known",
+      "desc": "Publisher provides wellKnown URL",
+      "score": 10,
+      "when": "wellKnown_present"
+    },
+    {
+      "id": "well_known_reachable",
+      "desc": ".well-known reachable (HTTP 200)",
+      "score": 15,
+      "when": "wellKnown_http_200"
+    },
+    {
+      "id": "minisign_pub_present",
+      "desc": "minisign.pub reachable under wellKnown",
+      "score": 10,
+      "when": "minisign_pub_200"
+    },
+    {
+      "id": "sha256_manifest_present",
+      "desc": "sha256.json reachable under wellKnown",
+      "score": 10,
+      "when": "sha256_json_200"
+    },
+    {
+      "id": "tfws_security_txt",
+      "desc": "security.txt reachable",
+      "score": 5,
+      "when": "security_txt_200"
+    },
+    {
+      "id": "repo_github",
+      "desc": "GitHub repo link present",
+      "score": 5,
+      "when": "repo_github"
+    }
+  ],
+  "allowlist": {
+    "hosts": [
+      "www.onetoo.eu",
+      "onetoo.eu",
+      "www.hgpedu.eu",
+      "hgpedu.eu"
+    ],
+    "repos": [
+      "https://github.com/onetooeu/"
+    ]
+  },
+  "rate_limits": {
+    "max_pending_per_run": 25,
+    "http_timeout_seconds": 15,
+    "max_http_requests": 120
+  }
+}
