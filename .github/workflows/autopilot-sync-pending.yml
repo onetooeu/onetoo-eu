@@ -8,28 +8,93 @@ on:
 permissions:
   contents: write
 
+
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    # Self-hosted runner is intentional (your machine).
+    # We enforce bash because the commands are POSIX-style.
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        shell: '"C:\Program Files\Git\bin\bash.exe" --noprofile --norc -e -o pipefail {0}'
+
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      # ===============================
+      # PRE-FLIGHT – verify runner basics
+      # ===============================
+      - name: Preflight (bash + python + curl)
+        run: |
+          set -euo pipefail
+          echo "Runner: $(uname -a || true)"
 
+          command -v bash >/dev/null 2>&1 || {
+            echo "ERROR: bash not found. Install Git Bash (Windows) or bash (Linux).";
+            exit 1;
+          }
+          command -v curl >/dev/null 2>&1 || {
+            echo "ERROR: curl not found on runner.";
+            exit 1;
+          }
+
+          if command -v python3 >/dev/null 2>&1; then
+            PY=python3
+          elif command -v python >/dev/null 2>&1; then
+            PY=python
+          else
+            echo "ERROR: Python not found. Install Python 3.11+ on the self-hosted runner.";
+            exit 1;
+          fi
+
+          echo "Using: $PY"
+          $PY --version
+
+      # ===============================
+      # DEBUG STEP – show what pending endpoint returns
+      # ===============================
+      - name: DEBUG pending endpoint (headers + body snippet)
+        env:
+          ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
+          ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
+        run: |
+          set -euo pipefail
+          echo "DEBUG BASE=$ONETOO_SEARCH_BASE"
+          echo "DEBUG TOKEN present? $([[ -n \"$ONETOO_MAINTAINER_TOKEN\" ]] && echo yes || echo no)"
+
+          echo "---- HEADERS ----"
+          curl -sS -D - "$ONETOO_SEARCH_BASE/contrib/v2/pending" \
+            -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" \
+            -o /dev/null | head -n 80
+
+          echo "---- BODY ----"
+          curl -sS "$ONETOO_SEARCH_BASE/contrib/v2/pending" \
+            -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" \
+            | head -c 900
+          echo
+
+      # ===============================
+      # AUTOPILOT SYNC
+      # ===============================
       - name: Sync pending → lanes (accept/sandbox/reject)
         env:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
           ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
           ONETOO_AUTOPILOT_ENABLED: "1"
         run: |
-          python scripts/autopilot_sync_pending.py
+          set -euo pipefail
+          if command -v python3 >/dev/null 2>&1; then PY=python3; else PY=python; fi
+          $PY scripts/autopilot_sync_pending.py
 
+      # ===============================
+      # COMMIT & PUSH (if changed)
+      # ===============================
       - name: Commit & push if changed
         run: |
+          set -euo pipefail
           if git diff --quiet; then
             echo "No changes."
             exit 0
@@ -38,16 +103,12 @@ jobs:
           git config user.name "onetoo-autopilot"
           git config user.email "autopilot@onetoo.eu"
 
-          # Add files only if they exist (avoid glob/pathspec failures)
-          [ -f dumps/contrib-accepted.json ] && git add dumps/contrib-accepted.json || true
-          [ -f public/dumps/contrib-accepted.json ] && git add public/dumps/contrib-accepted.json || true
-          [ -f dumps/contrib-accepted.json.minisig ] && git add dumps/contrib-accepted.json.minisig || true
-          [ -f public/dumps/contrib-accepted.json.minisig ] && git add public/dumps/contrib-accepted.json.minisig || true
-
-          # Optional future: autopilot artifacts (safe if absent)
+          # Keep commits deterministic + minimal: only generated dumps + autopilot audit.
+          [ -d dumps ] && git add dumps || true
+          [ -d public/dumps ] && git add public/dumps || true
           [ -d autopilot ] && git add autopilot || true
 
-          git commit -m "autopilot: sync pending → accepted" || {
+          git commit -m "autopilot: sync pending → lanes" || {
             echo "Nothing to commit."
             exit 0
           }

@@ -51,3 +51,7 @@ ai-search.json
 ai-search.json.minisig
 *.zip
 _backup_*/
+
+# Python cache
+__pycache__/
+*.pyc
