@@ -1,7 +1,7 @@
 {
   "schema": "onetoo:sha256-inventory:v1",
-  "updated_at": "2026-01-11T20:01:50Z",
-  "commit": "44d834d",
+  "updated_at": "2026-01-11T20:36:15Z",
+  "commit": "4e82b45",
   "items": [
     {
       "path": "/.well-known/ai-agent-probe.json",
@@ -100,7 +100,7 @@
     },
     {
       "path": "/.well-known/deploy.txt",
-      "sha256": "578f4f8d6e63675025211a762f515bded921ab89c9bb5c4804639cbc08991386",
+      "sha256": "1e27bac1a940e2854f44d5232795cdcfd73f0c0ffba6062f0372390bc4dcc29b",
       "bytes": 107
     },
     {
@@ -235,8 +235,8 @@
     },
     {
       "path": "/.well-known/sha256.json",
-      "sha256": "7cff8ffb17ea07f2e0d3463f12e5463ca4e7c78735d0283f47235b96acf763e6",
-      "bytes": 18353
+      "sha256": "f020d8e4df43f0a472949e5280b6826340ea2e69a4cb86f20d03fc1befc10921",
+      "bytes": 18355
     },
     {
       "path": "/.well-known/sigstore.json",
@@ -460,7 +460,7 @@
     },
     {
       "path": "/_deploy.txt",
-      "sha256": "578f4f8d6e63675025211a762f515bded921ab89c9bb5c4804639cbc08991386",
+      "sha256": "1e27bac1a940e2854f44d5232795cdcfd73f0c0ffba6062f0372390bc4dcc29b",
       "bytes": 107
     },
     {
