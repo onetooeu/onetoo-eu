@@ -10,6 +10,6 @@
   "shards": [],
   "how_to_verify": [
     "Fetch accepted-set and verify minisign signature using https://www.onetoo.eu/.well-known/minisign.pub",
-    "Fetch dumps/sha256.json and verify its signature (if published) to pin artifact hashes"
+    "Fetch https://www.onetoo.eu/dumps/sha256.json and verify its signature (if published) to pin artifact hashes"
   ]
 }
