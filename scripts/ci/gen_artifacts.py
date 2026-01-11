@@ -104,7 +104,15 @@ def write_deploy_marker() -> None:
         f"time: {utc_now()}\n"
         "nonce: ci-autogen\n"
     )
-    (PUBLIC_DIR / "_deploy.txt").write_text(content, encoding="utf-8")
+    ().write_text(content, encoding="utf-8")
+
+    # Also publish deploy marker under .well-known (canonical trust location)
+    PUBLIC_WELLKNOWN.mkdir(parents=True, exist_ok=True)
+    (PUBLIC_WELLKNOWN / "deploy.txt").write_text(content, encoding="utf-8")
+
+    # Mirror to root .well-known for tooling parity
+    ROOT_WELLKNOWN.mkdir(parents=True, exist_ok=True)
+    (ROOT_WELLKNOWN / "deploy.txt").write_text(content, encoding="utf-8")
 
 def main() -> None:
     if not PUBLIC_DIR.exists():
