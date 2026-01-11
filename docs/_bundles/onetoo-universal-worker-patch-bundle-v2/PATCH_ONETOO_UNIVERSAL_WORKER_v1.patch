@@ -1,0 +1,356 @@
+diff --git a/worker/onetoo-universal/README.md b/worker/onetoo-universal/README.md
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/worker/onetoo-universal/README.md
+@@ -0,0 +1,26 @@
++# ONETOO Universal Backend (Cloudflare Worker)
++
++This Worker is the **missing runtime layer** for the ONETOO ecosystem.
++It is designed to make `https://search.onetoo.eu` respond **deterministically**
++(without breaking the "publish & forget" trust-root).
++
++## Goals
++- Provide a stable **/health** endpoint (always 200 when deployed)
++- Provide **/openapi.json** (machine-readable contract)
++- Provide **/search/v1** as a **stable, explicit** API surface:
++  - today: returns 501 with a clear message (until search index exists)
++  - later: can be extended to real search
++- Provide **/trust/v1/** utilities that help agents:
++  - fetch and verify canonical trust-root data from `www.onetoo.eu/.well-known/*`
++
++## Non-goals (by design)
++- This does NOT change the trust-root content or signing model.
++- This does NOT require secrets to be committed (use `wrangler secret put`).
++
++## Deploy overview (short)
++1. Install wrangler: `npm i -g wrangler`
++2. Login: `wrangler login`
++3. Copy config: `cp wrangler.toml.example wrangler.toml` and fill `account_id`.
++4. Deploy: `wrangler deploy`
++
++See `APPLY_UNIVERSAL_WORKER_v1.txt` in the patch zip for a step-by-step procedure.
+
+diff --git a/worker/onetoo-universal/wrangler.toml.example b/worker/onetoo-universal/wrangler.toml.example
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/worker/onetoo-universal/wrangler.toml.example
+@@ -0,0 +1,35 @@
++# Copy to wrangler.toml and fill in your values.
++# IMPORTANT: Do NOT commit wrangler.toml with secrets.
++
++name = "onetoo-universal"
++main = "src/index.ts"
++compatibility_date = "2026-01-11"
++
++# You MUST set account_id (Cloudflare dashboard).
++account_id = "PUT_YOUR_ACCOUNT_ID_HERE"
++
++# If you deploy to a Workers subdomain, you can keep `workers_dev = true`.
++# For custom domain routing (search.onetoo.eu), you will add a route in the dashboard
++# OR enable routes here once you know your zone_id.
++workers_dev = true
++
++# Optional: if you prefer defining routes in wrangler.toml (advanced),
++# uncomment and set `zone_id` + `route`.
++#
++# zone_id = "PUT_YOUR_ZONE_ID_HERE"
++# routes = [
++#   { pattern = "search.onetoo.eu/*", zone_id = "PUT_YOUR_ZONE_ID_HERE" }
++# ]
++
++[vars]
++# Canonical trust-root host (static site)
++TRUST_ROOT_BASE = "https://www.onetoo.eu"
++
++# Public message shown when search is not implemented
++SEARCH_NOT_READY_MESSAGE = "search.onetoo.eu runtime is deployed, but search index is not enabled yet."
++
++# Optional: enable strict CORS for browsers (default: permissive GET only)
++CORS_ALLOW_ORIGIN = "*"
++
++# Optional: if you later add maintainer-only endpoints:
++# MAINTAINER_HEADER = "X-ONETOO-MAINTAINER"
+
+diff --git a/worker/onetoo-universal/src/index.ts b/worker/onetoo-universal/src/index.ts
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/worker/onetoo-universal/src/index.ts
+@@ -0,0 +1,222 @@
++/**
++ * ONETOO Universal Backend Worker
++ * - makes search.onetoo.eu non-404
++ * - provides stable contracts for AI agents
++ *
++ * Endpoints:
++ *   GET  /health
++ *   GET  /openapi.json
++ *   GET  /search/v1?q=...
++ *   GET  /trust/v1/deploy
++ *   GET  /trust/v1/sha256
++ *
++ * Design notes:
++ * - Deterministic outputs
++ * - No external dependencies
++ * - Safe defaults (no secrets required)
++ */
++
++export interface Env {
++  TRUST_ROOT_BASE: string;
++  SEARCH_NOT_READY_MESSAGE: string;
++  CORS_ALLOW_ORIGIN: string;
++  // MAINTAINER_HEADER?: string;
++}
++
++function json(data: unknown, status = 200, env?: Env): Response {
++  const headers = new Headers({
++    "content-type": "application/json; charset=utf-8",
++    "x-content-type-options": "nosniff",
++    "cache-control": "no-store",
++  });
++
++  // Minimal CORS (GET-only use cases)
++  const origin = env?.CORS_ALLOW_ORIGIN ?? "*";
++  headers.set("access-control-allow-origin", origin);
++  headers.set("access-control-allow-methods", "GET, OPTIONS");
++  headers.set("access-control-allow-headers", "content-type");
++
++  return new Response(JSON.stringify(data, null, 2) + "\n", { status, headers });
++}
++
++function text(body: string, status = 200, env?: Env): Response {
++  const headers = new Headers({
++    "content-type": "text/plain; charset=utf-8",
++    "x-content-type-options": "nosniff",
++    "cache-control": "no-store",
++  });
++
++  const origin = env?.CORS_ALLOW_ORIGIN ?? "*";
++  headers.set("access-control-allow-origin", origin);
++  headers.set("access-control-allow-methods", "GET, OPTIONS");
++  headers.set("access-control-allow-headers", "content-type");
++
++  return new Response(body, { status, headers });
++}
++
++function notFound(env?: Env): Response {
++  return json(
++    {
++      ok: false,
++      error: "not_found",
++      message: "Unknown endpoint.",
++      hint: "Try /health or /openapi.json",
++    },
++    404,
++    env
++  );
++}
++
++async function proxyWellKnown(path: string, env: Env): Promise<Response> {
++  // Strictly proxy only these two stable artifacts (reduces attack surface).
++  const allow = new Set(["/\.well-known/deploy.txt", "/\.well-known/sha256.json"]);
++  const key = path.startsWith("/") ? path : `/${path}`;
++  if (!allow.has(key)) {
++    return json(
++      { ok: false, error: "forbidden", message: "Only deploy.txt and sha256.json are proxy-allowed." },
++      403,
++      env
++    );
++  }
++
++  const url = new URL(env.TRUST_ROOT_BASE);
++  url.pathname = key;
++
++  const res = await fetch(url.toString(), {
++    method: "GET",
++    headers: { "accept": "application/json,text/plain;q=0.9,*/*;q=0.1" },
++  });
++
++  // Pass through body but normalize caching for safety.
++  const headers = new Headers(res.headers);
++  headers.set("cache-control", "no-store");
++  headers.set("x-content-type-options", "nosniff");
++  headers.set("access-control-allow-origin", env.CORS_ALLOW_ORIGIN ?? "*");
++  headers.set("access-control-allow-methods", "GET, OPTIONS");
++  headers.set("access-control-allow-headers", "content-type");
++
++  return new Response(res.body, { status: res.status, headers });
++}
++
++function openapi(env: Env): Response {
++  const spec = {
++    openapi: "3.0.3",
++    info: {
++      title: "ONETOO Universal Backend",
++      version: "1.0.0",
++      description:
++        "Universal backend runtime for ONETOO. Provides non-404 endpoints for search.onetoo.eu and trust-root helpers.",
++    },
++    servers: [{ url: "https://search.onetoo.eu" }],
++    paths: {
++      "/health": {
++        get: {
++          summary: "Healthcheck",
++          responses: { "200": { description: "OK" } },
++        },
++      },
++      "/openapi.json": {
++        get: { summary: "OpenAPI spec", responses: { "200": { description: "JSON spec" } } },
++      },
++      "/search/v1": {
++        get: {
++          summary: "Search (v1)",
++          description:
++            "Stable placeholder endpoint. Returns 501 until search index is enabled.",
++          parameters: [
++            { name: "q", in: "query", required: false, schema: { type: "string" } },
++          ],
++          responses: {
++            "200": { description: "Search results" },
++            "501": { description: "Not implemented (index not enabled)" },
++          },
++        },
++      },
++      "/trust/v1/deploy": {
++        get: { summary: "Proxy deploy.txt", responses: { "200": { description: "deploy.txt" } } },
++      },
++      "/trust/v1/sha256": {
++        get: { summary: "Proxy sha256.json", responses: { "200": { description: "sha256.json" } } },
++      },
++    },
++  };
++
++  return json(spec, 200, env);
++}
++
++function searchPlaceholder(req: Request, env: Env): Response {
++  const u = new URL(req.url);
++  const q = u.searchParams.get("q") ?? "";
++
++  // Deterministic placeholder response so clients can integrate now.
++  return json(
++    {
++      ok: false,
++      implemented: false,
++      error: "not_implemented",
++      message: env.SEARCH_NOT_READY_MESSAGE || "Search index not enabled.",
++      query: q,
++      results: [],
++    },
++    501,
++    env
++  );
++}
++
++export default {
++  async fetch(req: Request, env: Env): Promise<Response> {
++    if (req.method === "OPTIONS") {
++      // Simple CORS preflight
++      return new Response(null, {
++        status: 204,
++        headers: {
++          "access-control-allow-origin": env.CORS_ALLOW_ORIGIN ?? "*",
++          "access-control-allow-methods": "GET, OPTIONS",
++          "access-control-allow-headers": "content-type",
++          "cache-control": "no-store",
++        },
++      });
++    }
++
++    const url = new URL(req.url);
++    const path = url.pathname;
++
++    if (req.method !== "GET") {
++      return json({ ok: false, error: "method_not_allowed" }, 405, env);
++    }
++
++    if (path === "/" ) {
++      return json(
++        {
++          ok: true,
++          service: "onetoo-universal",
++          hint: "Try /health or /openapi.json",
++        },
++        200,
++        env
++      );
++    }
++
++    if (path === "/health") {
++      return json({ ok: true, status: "ok" }, 200, env);
++    }
++
++    if (path === "/openapi.json") {
++      return openapi(env);
++    }
++
++    if (path === "/search/v1") {
++      return searchPlaceholder(req, env);
++    }
++
++    if (path === "/trust/v1/deploy") {
++      return proxyWellKnown("/.well-known/deploy.txt", env);
++    }
++
++    if (path === "/trust/v1/sha256") {
++      return proxyWellKnown("/.well-known/sha256.json", env);
++    }
++
++    return notFound(env);
++  },
++};
+
+diff --git a/docs/architecture/universal-backend.md b/docs/architecture/universal-backend.md
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/docs/architecture/universal-backend.md
+@@ -0,0 +1,22 @@
++# Universal Backend (Worker/API) – Architecture Note
++
++## Why this exists
++`search.onetoo.eu` returned 404 because there was **no runtime** deployed.
++The trust-root remains valid without it, but for **ecosystem completeness** we provide
++a **small universal backend** that:
++
++- gives AI agents a stable API entry point
++- exposes OpenAPI (`/openapi.json`)
++- provides healthcheck (`/health`)
++- offers a deterministic placeholder for search (`/search/v1`)
++- proxies canonical trust-root artifacts (`/trust/v1/*`) from `www.onetoo.eu`
++
++## Security posture
++- No secrets required for the base version.
++- No write endpoints.
++- Proxies only a tiny allowlist (`deploy.txt`, `sha256.json`).
++
++## Upgrade path (later)
++- Add real indexing/search (KV/D1/R2)
++- Add maintainer-only endpoints (secrets via `wrangler secret put`)
++- Split into microservices if needed
+
+diff --git a/scripts/local/dev-universal-worker.sh b/scripts/local/dev-universal-worker.sh
+new file mode 100755
+index 0000000..1111111
+--- /dev/null
++++ b/scripts/local/dev-universal-worker.sh
+@@ -0,0 +1,5 @@
++#!/usr/bin/env bash
++set -euo pipefail
++cd "$(dirname "$0")/../../worker/onetoo-universal"
++echo "== dev: onetoo-universal =="
++wrangler dev
+
+diff --git a/scripts/local/dev-universal-worker.ps1 b/scripts/local/dev-universal-worker.ps1
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/scripts/local/dev-universal-worker.ps1
+@@ -0,0 +1,5 @@
++Set-StrictMode -Version Latest
++$ErrorActionPreference = "Stop"
++Set-Location (Join-Path $PSScriptRoot "..\..\worker\onetoo-universal")
++Write-Host "== dev: onetoo-universal =="
++wrangler dev

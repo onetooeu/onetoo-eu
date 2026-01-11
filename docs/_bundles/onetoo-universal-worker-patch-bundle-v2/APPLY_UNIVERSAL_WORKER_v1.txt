@@ -1,0 +1,45 @@
+APPLY – ONETOO Universal Backend Worker (v1)
+
+Goal: make https://search.onetoo.eu stop returning 404 by deploying a small Worker.
+
+Step 1) Apply patch
+   git apply --whitespace=nowarn PATCH_ONETOO_UNIVERSAL_WORKER_v1.patch
+
+Step 2) Commit
+   git add -A
+   git commit -m "feat: add onetoo universal backend worker (search runtime + OpenAPI + trust proxy)"
+
+Step 3) Push
+   git push
+
+Step 4) Install wrangler (if missing)
+   npm i -g wrangler
+
+Step 5) Login
+   wrangler login
+
+Step 6) Configure
+   cd worker/onetoo-universal
+   cp wrangler.toml.example wrangler.toml
+   # edit wrangler.toml and set account_id
+
+Step 7) Deploy
+   wrangler deploy
+
+Step 8) Route search.onetoo.eu to this Worker
+Option A (dashboard): Workers & Pages → your worker → Triggers → Routes:
+   search.onetoo.eu/*
+
+Option B (wrangler.toml): set zone_id + routes (advanced), then deploy again.
+
+Step 9) Verify (must be 200 now)
+   curl -i https://search.onetoo.eu/health
+   curl -i https://search.onetoo.eu/openapi.json
+   curl -i "https://search.onetoo.eu/search/v1?q=test"
+
+Expected:
+- /health -> 200
+- /openapi.json -> 200
+- /search/v1 -> 501 (deterministic placeholder, not 404)
+
+If you want /search/v1 to return real results later, we can extend it with KV/D1.

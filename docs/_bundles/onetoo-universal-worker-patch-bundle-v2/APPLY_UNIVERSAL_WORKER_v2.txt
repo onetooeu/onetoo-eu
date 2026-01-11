@@ -1,0 +1,71 @@
+============================================================
+APPLY: ONETOO Universal Backend (Worker/API) — Phase 2 Bundle
+============================================================
+
+This bundle contains:
+  - a full git patch that adds the universal Worker skeleton and docs
+  - a ready-to-apply "golden path" checklist
+
+Target repository (example):
+  onetoo-eu-production-noredirect-prettyurls-2025-12-21 (main)
+
+------------------------------------------------------------
+1) Apply the patch
+------------------------------------------------------------
+cd /path/to/your/repo
+git checkout main
+git pull --ff-only
+
+# dry-run first (recommended)
+git apply --check PATCH_ONETOO_UNIVERSAL_WORKER_v2.patch
+
+# apply
+git apply --whitespace=nowarn PATCH_ONETOO_UNIVERSAL_WORKER_v2.patch
+
+------------------------------------------------------------
+2) Commit
+------------------------------------------------------------
+git add worker/ scripts/local/ docs/architecture/
+git commit -m "feat(worker): add onetoo-universal + docs + local dev scripts"
+
+------------------------------------------------------------
+3) Configure wrangler.toml
+------------------------------------------------------------
+cd worker/onetoo-universal
+
+# start from example
+cp -f wrangler.toml.example wrangler.toml
+
+# set account_id (Cloudflare Dashboard → Account → Overview)
+# optionally enable route:
+# routes = [
+#   { pattern = "search.onetoo.eu/*", zone_name = "onetoo.eu" }
+# ]
+
+------------------------------------------------------------
+4) Deploy
+------------------------------------------------------------
+wrangler login
+wrangler deploy
+
+------------------------------------------------------------
+5) Sanity checks (production)
+------------------------------------------------------------
+curl -i https://search.onetoo.eu/health
+curl -i https://search.onetoo.eu/openapi.json
+curl -i "https://search.onetoo.eu/search/v1?q=test"
+curl -i https://search.onetoo.eu/trust/v1/deploy
+curl -sS https://search.onetoo.eu/trust/v1/sha256 | wc -c
+
+Expected:
+  /health → 200
+  /openapi.json → 200
+  /search/v1 → 501 with controlled JSON
+  /trust/v1/* → 200 proxy
+  sha256 length → non-zero
+
+------------------------------------------------------------
+Notes
+------------------------------------------------------------
+- If you see "already exists" errors, the Worker files are already in repo.
+  In that case, DO NOT apply patch; just commit the existing files.

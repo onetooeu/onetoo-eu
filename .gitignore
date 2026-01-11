@@ -1,57 +1,34 @@
-# ===============================
-# minisign private keys (DO NOT COMMIT)
-# ===============================
-*.key
-*.key.*
-/onetoo.key
+# Local bundle artifacts (kept only under docs/_bundles/)
+*.log
+.DS_Store
+
+# Wrangler local caches / state
+.wrangler/
+.dev.vars
 
 # ===============================
-# secrets
+# Local backups / verification
 # ===============================
-*.sec
-*minisign*key*
-onetoo-keys/
-
-# ===============================
-# build artifacts (default: ignored)
-# ===============================
-*.zip
-*.zip.sha256
-*-workingtree-*.sha256
-
-# ===============================
-# ALLOW RELEASE ARTIFACTS (EXCEPTIONS)
-# ===============================
-# Cloudflare Pages output (public/)
-!public/downloads/*.zip
-!public/downloads/*.zip.sha256
-!public/downloads/*.zip.minisig
-
-# Root-level fallback for Pages compatibility
-!downloads/*.zip
-!downloads/*.zip.sha256
-!downloads/*.zip.minisig
-
-# ===============================
-# local backups (do not commit)
-# ===============================
-AUDIT_BOD5_BEFORE.txt
 _backup_bod5/
 _backup_openapi/
-onetoo-eu-v2.0.0-trusthub-archival-2026-01-06.zip.minisig
-
-# Allow publishing this specific Holy Grail artifact (reference-only)
-!downloads/ai-search/holy-grail/index-v1.zip
-!downloads/ai-search/holy-grail/index-v1.zip.minisig
-!downloads/ai-search/holy-grail/index-v1.zip.sha256.txt
-
 _verify/
+
+# ===============================
+# Python / cache
+# ===============================
+__pycache__/
+*.pyc
+
+# ===============================
+# Local experiments / WIP
+# ===============================
 submit*.json
 ai-search.json
 ai-search.json.minisig
-*.zip
-_backup_*/
 
-# Python cache
-__pycache__/
-*.pyc
+# ===============================
+# Local build artifacts
+# ===============================
+*.zip
+*.zip.sha256
+*.zip.minisig

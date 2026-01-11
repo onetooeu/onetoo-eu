@@ -1,0 +1,46 @@
+{
+  "schema": "onetoo:bundle-sha256:v1",
+  "generated_at": "2026-01-11T22:48:54Z",
+  "items": {
+    "APPLY_UNIVERSAL_WORKER_v2.txt": {
+      "sha256": "d955ae026fbb1cda4b3cb44b8ac530b14ae46eee9a7afbe33e8db80570524632",
+      "bytes": 2447
+    },
+    "BUNDLE_CONTENTS.md": {
+      "sha256": "3a59babe7ff747ad0b0a90f9500afb4cb1264374e20ba04c344ddad169d01ae4",
+      "bytes": 452
+    },
+    "PATCH_ONETOO_UNIVERSAL_WORKER_v2.patch": {
+      "sha256": "d9364c894d2d61160718cb2cf65b55ff7d8e2732d58bbd161834b23e2cca07f7",
+      "bytes": 15467
+    },
+    "worker/onetoo-universal/README.md": {
+      "sha256": "cf47993598f5c1a9f5d5554de2147c8f05cef93d51b792c0434b455e1dfd282d",
+      "bytes": 1473
+    },
+    "worker/onetoo-universal/wrangler.toml.example": {
+      "sha256": "c64bd5994d1fbe616bf7d1e66d6358d0cf553c9e22e7dbb139c518b4e031384b",
+      "bytes": 1765
+    },
+    "worker/onetoo-universal/wrangler.toml": {
+      "sha256": "e65698cb98c48a0cb5cec6c9c8792825cf8dda522eb866033a561140f0290e25",
+      "bytes": 1364
+    },
+    "worker/onetoo-universal/src/index.ts": {
+      "sha256": "54f1feb011f94ddb5d8b037dfae53a3a342b3c7d4298d79dbebf8eba67957d32",
+      "bytes": 5681
+    },
+    "docs/architecture/universal-backend.md": {
+      "sha256": "3adabc98d7bda018fdb38e6eaaf7ad793b458ce82b8e4df44ab49e820126e20d",
+      "bytes": 2195
+    },
+    "scripts/local/dev-universal-worker.sh": {
+      "sha256": "5c7c3d07a14cad27ff2ba960b4b76f9d221e8b3419b253e239d0b438a06e6fa8",
+      "bytes": 456
+    },
+    "scripts/local/dev-universal-worker.ps1": {
+      "sha256": "a582e355046798fd0604d3b26255262db05400bcf27d6b04be21daf1457ef8fe",
+      "bytes": 612
+    }
+  }
+}
