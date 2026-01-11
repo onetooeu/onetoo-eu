@@ -1,8 +1,1 @@
-{
-  "schema": "onetoo-ai-search-rejected-set/v1",
-  "version": "1.0",
-  "updated_at": "2026-01-11T07:16:16Z",
-  "lane": "rejected",
-  "note": "Autopilot rejected set.",
-  "items": []
-}
+{"items":[],"lane":"rejected","note":"Autopilot rejected set.","schema":"onetoo-ai-search-rejected-set/v1","updated_at":"2026-01-11T07:16:16Z","version":"1.0"}
