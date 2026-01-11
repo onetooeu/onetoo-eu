@@ -1,0 +1,49 @@
+name: ci-autogen-deploy-and-sha256
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autogen-artifacts-main
+  cancel-in-progress: false
+
+jobs:
+  autogen:
+    runs-on: ubuntu-latest
+
+    # Prevent infinite loop when the bot commits back to main
+    if: ${{ github.actor != 'github-actions[bot]' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate deploy marker + sha256 artifacts
+        run: |
+          python scripts/ci/gen_artifacts.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git commit -m "ci: autogen deploy marker and sha256 artifacts"
+          git push
