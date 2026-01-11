@@ -1,4 +1,4 @@
 DEPLOY-MARKER ROOT
-commit: 6b43798
-time: 2026-01-11T19:11:30Z
-nonce: ci-autogen
+commit: 44d834d
+time: 2026-01-11T20:01:50Z
+nonce: cf-pages-44d834d-2026-01-11T20:01:50Z
