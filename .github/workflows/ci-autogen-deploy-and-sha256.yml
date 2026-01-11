@@ -16,9 +16,6 @@ jobs:
   autogen:
     runs-on: ubuntu-latest
 
-    # Prevent infinite loop when the bot commits back to main
-    if: ${{ github.actor != 'github-actions[bot]' }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,7 +31,9 @@ jobs:
         run: |
           python scripts/ci/gen_artifacts.py
 
+      # Only commit on human pushes (prevents infinite loop)
       - name: Commit and push if changed
+        if: ${{ github.actor != 'github-actions[bot]' && !startsWith(github.event.head_commit.message, 'ci: autogen') }}
         run: |
           if git diff --quiet && git diff --cached --quiet; then
             echo "No changes."
