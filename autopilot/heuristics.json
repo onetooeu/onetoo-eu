@@ -69,6 +69,12 @@
       "when": "sha256_json_200"
     },
     {
+      "id": "tfws_min_bundle",
+      "desc": "TFWS minimal bundle present (minisign.pub + sha256.json)",
+      "score": 10,
+      "when": "tfws_min_bundle"
+    },
+    {
       "id": "tfws_security_txt",
       "desc": "security.txt reachable",
       "score": 5,

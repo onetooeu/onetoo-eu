@@ -91,15 +91,17 @@ def score_item(item, heur):
     score = 0
     signals = {}
 
-    url = item.get("url","")
-    wk = item.get("wellKnown","") or ""
-    repo = item.get("repo","") or ""
+    url = (item.get("url") or "").strip()
+    wk = (item.get("wellKnown") or "").strip()
+    repo = (item.get("repo") or "").strip()
 
+    # signals: presence
     signals["wellKnown_present"] = bool(wk)
 
+    # probe well-known and standard TFWS-ish artifacts
     if wk:
         ok, code = probe(wk)
-        signals["wellKnown_http_200"] = ok and code == 200
+        signals["wellKnown_http_200"] = bool(ok and code == 200)
 
         for name, key in [
             ("minisign.pub", "minisign_pub_200"),
@@ -107,29 +109,38 @@ def score_item(item, heur):
             ("security.txt", "security_txt_200"),
         ]:
             ok2, code2 = probe(wk.rstrip("/") + "/" + name)
-            signals[key] = ok2 and code2 == 200
+            signals[key] = bool(ok2 and code2 == 200)
     else:
         signals["wellKnown_http_200"] = False
         signals["minisign_pub_200"] = False
         signals["sha256_json_200"] = False
         signals["security_txt_200"] = False
 
-    signals["repo_github"] = repo.startswith("https://github.com/")
+    # repo signal (very light)
+    signals["repo_github"] = bool(repo) and ("github.com/" in repo.lower())
 
-    for rule in heur.get("soft_rules", []):
-        when = rule.get("when")
-        if when and signals.get(when):
-            score += int(rule.get("score", 0))
-
-    allow = heur.get("allowlist", {})
-    if host_of(url) in [h.lower() for h in allow.get("hosts", [])]:
+    # allowlist host bonus (keeps old behavior from your previous edits)
+    allow = heur.get("allowlist", {}) or {}
+    allow_hosts = [h.lower() for h in (allow.get("hosts") or [])]
+    host = host_of(url)
+    if host and host in allow_hosts:
         score += 20
         signals["allow_host_bonus"] = True
-    if any(repo.startswith(pfx) for pfx in allow.get("repos", [])):
-        score += 10
-        signals["allow_repo_bonus"] = True
+    else:
+        signals["allow_host_bonus"] = False
+
+    # soft rules scoring by signals
+    for rule in (heur.get("soft_rules") or []):
+        when = rule.get("when")
+        pts = int(rule.get("score", 0) or 0)
+        if when and signals.get(when):
+            score += pts
+
+    # derived signal: minimal TFWS bundle present
+    signals["tfws_min_bundle"] = bool(signals.get("minisign_pub_200")) and bool(signals.get("sha256_json_200"))
 
     return min(score, 100), signals
+
 
 def decide(score, hard_fail, heur):
     if hard_fail:
@@ -146,16 +157,16 @@ def decide(score, hard_fail, heur):
 def main():
     if os.getenv("ONETOO_AUTOPILOT_ENABLED", "").strip() != "1":
         print('autopilot: disabled (set ONETOO_AUTOPILOT_ENABLED=1 to enable). No changes.')
-    return 0
+        return 0
 
     token = os.getenv("ONETOO_MAINTAINER_TOKEN", "").strip()
     if not token:
         print("autopilot: missing ONETOO_MAINTAINER_TOKEN. No changes.")
-    return 0
+        return 0
 
     base = normalize_base(os.getenv("ONETOO_SEARCH_BASE", "https://search.onetoo.eu"))
     heur = load_heuristics()
-    limits = heur.get("rate_limits", {})
+    limits = heur.get("rate_limits", {}) or {}
     timeout = int(limits.get("http_timeout_seconds", 15))
     max_pending = int(limits.get("max_pending_per_run", 25))
 
@@ -167,19 +178,49 @@ def main():
     except Exception as e:
         print("autopilot: could not discover pending list endpoint (safe exit).")
         print(f"autopilot: last error: {repr(e)}")
-    return 0
+        return 0
 
     items = (pend.get("items") or [])[:max_pending]
     pending_ids = [x.get("id") for x in items if x.get("id")]
     print(f"autopilot: discovered {len(pending_ids)} pending ids")
 
-    accepted = safe_read_json("dumps/contrib-accepted.json", {"schema":"onetoo-ai-search-accepted-set/v1","version":"1.0","updated_at":now_z(),"lane":"stable","note":"Autopilot managed accepted set.","items":[]})
-    sandbox = safe_read_json("dumps/contrib-sandbox.json", {"schema":"onetoo-ai-search-sandbox-set/v1","version":"1.0","updated_at":now_z(),"lane":"sandbox","note":"Autopilot sandbox lane.","items":[]})
-    rejected = safe_read_json("dumps/contrib-rejected.json", {"schema":"onetoo-ai-search-rejected-set/v1","version":"1.0","updated_at":now_z(),"lane":"rejected","note":"Autopilot rejected lane.","items":[]})
+    accepted = safe_read_json(
+        "dumps/contrib-accepted.json",
+        {
+            "schema": "onetoo-ai-search-accepted-set/v1",
+            "version": "1.0",
+            "updated_at": now_z(),
+            "lane": "stable",
+            "note": "Autopilot managed accepted set.",
+            "items": [],
+        },
+    )
+    sandbox = safe_read_json(
+        "dumps/contrib-sandbox.json",
+        {
+            "schema": "onetoo-ai-search-sandbox-set/v1",
+            "version": "1.0",
+            "updated_at": now_z(),
+            "lane": "sandbox",
+            "note": "Autopilot sandbox lane.",
+            "items": [],
+        },
+    )
+    rejected = safe_read_json(
+        "dumps/contrib-rejected.json",
+        {
+            "schema": "onetoo-ai-search-rejected-set/v1",
+            "version": "1.0",
+            "updated_at": now_z(),
+            "lane": "rejected",
+            "note": "Autopilot rejected lane.",
+            "items": [],
+        },
+    )
 
     seen = set()
     for doc in (accepted, sandbox, rejected):
-        for it in doc.get("items", []):
+        for it in doc.get("items", []) or []:
             pid = it.get("added_from_pending")
             if pid:
                 seen.add(pid)
@@ -193,22 +234,43 @@ def main():
         try:
             det = http_get_json(detail_url, headers=headers, timeout=timeout)
         except Exception as e:
-            rec = {"id": pid, "decision":"sandbox", "score":0, "error":repr(e), "at":now_z()}
+            rec = {"id": pid, "decision": "sandbox", "score": 0, "error": repr(e), "at": now_z()}
             decisions.append(rec)
-            append_jsonl("dumps/autopilot/audit-log.jsonl", {"event":"decision", **rec})
+            append_jsonl("dumps/autopilot/audit-log.jsonl", {"event": "decision", **rec})
             continue
 
         body = det.get("body") or {}
         item = dict(body)
+
+        # Normalize pending payload variants (v2 may use type/language/tags)
+        if "kind" not in item and "type" in item:
+            item["kind"] = item.get("type")
+        if "languages" not in item and "language" in item:
+            item["languages"] = item.get("language")
+        if "topics" not in item and "tags" in item:
+            item["topics"] = item.get("tags")
+
+        # Default well-known path if missing
+        if "wellKnown" not in item and item.get("url"):
+            u = (item.get("url") or "").rstrip("/")
+            item["wellKnown"] = u + "/.well-known/"
+
         item["added_from_pending"] = pid
 
         hard = eval_hard_fail(item, heur)
         score, signals = score_item(item, heur)
         decision = decide(score, hard, heur)
 
-        rec = {"id": pid, "decision": decision, "score": score, "signals": signals, "hard_fail": (hard.get("id") if hard else None), "at": now_z()}
+        rec = {
+            "id": pid,
+            "decision": decision,
+            "score": score,
+            "signals": signals,
+            "hard_fail": (hard.get("id") if hard else None),
+            "at": now_z(),
+        }
         decisions.append(rec)
-        append_jsonl("dumps/autopilot/audit-log.jsonl", {"event":"decision", **rec})
+        append_jsonl("dumps/autopilot/audit-log.jsonl", {"event": "decision", **rec})
 
         if decision == "accept":
             accepted["items"].append(item)
@@ -221,7 +283,6 @@ def main():
     for doc in (accepted, sandbox, rejected):
         doc["updated_at"] = ts
 
-    
     # force lane identity (do not inherit stale values from existing files)
     accepted["lane"] = "stable"
     accepted["note"] = "Stable accepted-set used by search (autopilot-managed)."
@@ -230,33 +291,33 @@ def main():
     rejected["lane"] = "rejected"
     rejected["note"] = "Autopilot rejected set."
 
-    if os.getenv("ONETOO_WRITE_STABLE","").strip() == "1":
+    if os.getenv("ONETOO_WRITE_STABLE", "").strip() == "1":
         safe_write_json("dumps/contrib-accepted.json", accepted)
-    else:
-        print("autopilot: ONETOO_WRITE_STABLE!=1, not touching contrib-accepted.json (stable lane).")
-    if os.getenv("ONETOO_WRITE_STABLE","").strip() == "1":
         safe_write_json("public/dumps/contrib-accepted.json", accepted)
     else:
-        pass
+        print("autopilot: ONETOO_WRITE_STABLE!=1, not touching contrib-accepted.json (stable lane).")
+
     safe_write_json("dumps/contrib-sandbox.json", sandbox)
     safe_write_json("public/dumps/contrib-sandbox.json", sandbox)
+
     # publish sandbox alias for convenience (keeps old clients working)
     safe_write_json("dumps/contrib-autopilot.json", sandbox)
     safe_write_json("public/dumps/contrib-autopilot.json", sandbox)
+
     safe_write_json("dumps/contrib-rejected.json", rejected)
     safe_write_json("public/dumps/contrib-rejected.json", rejected)
 
-    safe_write_json("dumps/autopilot/decisions.json", {"schema":"onetoo-autopilot-decisions/v1","updated_at":ts,"decisions":decisions})
-    safe_write_json("public/dumps/autopilot-decisions.json", {"schema":"onetoo-autopilot-decisions/v1","updated_at":ts,"decisions":decisions})
+    safe_write_json("dumps/autopilot/decisions.json", {"schema": "onetoo-autopilot-decisions/v1", "updated_at": ts, "decisions": decisions})
+    safe_write_json("public/dumps/autopilot-decisions.json", {"schema": "onetoo-autopilot-decisions/v1", "updated_at": ts, "decisions": decisions})
 
     print("autopilot: decisions=%d accept=%d sandbox=%d reject=%d" % (
         len(decisions),
-        sum(1 for d in decisions if d["decision"]=="accept"),
-        sum(1 for d in decisions if d["decision"]=="sandbox"),
-        sum(1 for d in decisions if d["decision"]=="reject"),
+        sum(1 for d in decisions if d["decision"] == "accept"),
+        sum(1 for d in decisions if d["decision"] == "sandbox"),
+        sum(1 for d in decisions if d["decision"] == "reject"),
     ))
-
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
