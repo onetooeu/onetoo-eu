@@ -31,10 +31,15 @@ jobs:
         run: |
           python scripts/ci/gen_artifacts.py
 
-      # Only commit on human pushes (prevents infinite loop)
       - name: Commit and push if changed
-        if: ${{ github.actor != 'github-actions[bot]' && !startsWith(github.event.head_commit.message, 'ci: autogen') }}
+        if: ${{ github.actor != 'github-actions[bot]' }}
         run: |
+          # Prevent infinite loop: if last commit message starts with "ci: autogen", do nothing
+          LAST_MSG="$(git log -1 --pretty=%B | tr -d '\r')"
+          case "$LAST_MSG" in
+            ci:\ autogen*) echo "Skip: last commit is CI autogen."; exit 0 ;;
+          esac
+
           if git diff --quiet && git diff --cached --quiet; then
             echo "No changes."
             exit 0
