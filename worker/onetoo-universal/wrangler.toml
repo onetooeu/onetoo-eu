@@ -1,0 +1,35 @@
+# ============================================================
+# ONETOO – Universal Backend (Cloudflare Worker)
+# ============================================================
+# Safe to commit (no secrets here). account_id is not a secret.
+# ============================================================
+
+name = "onetoo-universal"
+main = "src/index.ts"
+compatibility_date = "2026-01-11"
+
+# ------------------------------------------------------------
+# Cloudflare Account
+# ------------------------------------------------------------
+account_id = "5e6e334c7238c84b8a13e3ac0700cf01"
+
+# ------------------------------------------------------------
+# Deployment mode
+# ------------------------------------------------------------
+workers_dev = true
+
+# ------------------------------------------------------------
+# Route configuration (PRODUCTION)
+# ------------------------------------------------------------
+routes = [
+  { pattern = "search.onetoo.eu/*", zone_name = "onetoo.eu" }
+]
+
+# ------------------------------------------------------------
+# Runtime environment variables
+# ------------------------------------------------------------
+[vars]
+TRUST_ROOT_BASE = "https://www.onetoo.eu"
+SEARCH_NOT_READY_MESSAGE = "search.onetoo.eu runtime is deployed, but search index is not enabled yet."
+CORS_ALLOW_ORIGIN = "*"
+# MAINTAINER_HEADER = "X-ONETOO-MAINTAINER"

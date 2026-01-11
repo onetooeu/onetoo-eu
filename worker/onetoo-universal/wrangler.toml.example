@@ -1,0 +1,35 @@
+# Copy to wrangler.toml and fill in your values.
+# IMPORTANT: Do NOT commit wrangler.toml with secrets.
+
+name = "onetoo-universal"
+main = "src/index.ts"
+compatibility_date = "2026-01-11"
+
+# You MUST set account_id (Cloudflare dashboard).
+account_id = "PUT_YOUR_ACCOUNT_ID_HERE"
+
+# If you deploy to a Workers subdomain, you can keep `workers_dev = true`.
+# For custom domain routing (search.onetoo.eu), you will add a route in the dashboard
+# OR enable routes here once you know your zone_id.
+workers_dev = true
+
+# Optional: if you prefer defining routes in wrangler.toml (advanced),
+# uncomment and set `zone_id` + `route`.
+#
+# zone_id = "PUT_YOUR_ZONE_ID_HERE"
+# routes = [
+#   { pattern = "search.onetoo.eu/*", zone_id = "PUT_YOUR_ZONE_ID_HERE" }
+# ]
+
+[vars]
+# Canonical trust-root host (static site)
+TRUST_ROOT_BASE = "https://www.onetoo.eu"
+
+# Public message shown when search is not implemented
+SEARCH_NOT_READY_MESSAGE = "search.onetoo.eu runtime is deployed, but search index is not enabled yet."
+
+# Optional: enable strict CORS for browsers (default: permissive GET only)
+CORS_ALLOW_ORIGIN = "*"
+
+# Optional: if you later add maintainer-only endpoints:
+# MAINTAINER_HEADER = "X-ONETOO-MAINTAINER"
