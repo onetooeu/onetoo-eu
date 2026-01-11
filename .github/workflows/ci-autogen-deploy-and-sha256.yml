@@ -1,0 +1,57 @@
+name: ci-autogen-deploy-and-sha256
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autogen-artifacts-main
+  cancel-in-progress: false
+
+jobs:
+  autogen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Guard: avoid infinite loop on bot commits
+        if: ${{ github.actor == 'github-actions[bot]' }}
+        run: |
+          echo "Triggered by github-actions[bot]; skipping to avoid loop."
+          exit 0
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate deploy marker + sha256 inventory (public output)
+        run: |
+          set -euo pipefail
+          python3 scripts/ci/gen_artifacts.py
+
+      - name: Commit & push if changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add public/_deploy.txt public/.well-known/sha256.json dumps/sha256.json .well-known/sha256.json 2>/dev/null || true
+          # include policy mirror if your repo wants it mirrored into public/.well-known
+          git add public/.well-known/policy.sh public/.well-known/minisign.pub 2>/dev/null || true
+
+          git commit -m "ci: refresh deploy marker + sha256 inventory"
+          git push
