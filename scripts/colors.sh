@@ -19,5 +19,5 @@ fi
 
 log(){ echo -e "${C_CYAN}[*]${C_RESET} $*"; }
 ok(){  echo -e "${C_GREEN}[OK]${C_RESET} $*"; }
-warn(){echo -e "${C_YELLOW}[!!]${C_RESET} $*"; }
+warn(){ echo -e "${C_YELLOW}[!!]${C_RESET} $*"; }
 bad(){ echo -e "${C_RED}[XX]${C_RESET} $*"; }
