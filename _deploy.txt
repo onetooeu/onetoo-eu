@@ -1,4 +1,4 @@
 DEPLOY-MARKER ROOT
-commit: f59e571
-time: 2026-01-08T13:48:55Z
-nonce: manual-force
+commit: 4082af7
+time: 2026-01-11T17:59:50Z
+nonce: manual-warez-defrag
