@@ -1,7 +1,7 @@
 {
   "schema": "onetoo-ai-search-accepted-set/v1",
   "version": "1.0",
-  "updated_at": "2026-01-11T07:22:05Z",
+  "updated_at": "2026-01-11T08:00:22Z",
   "lane": "stable",
   "note": "Stable accepted-set used by search (autopilot-managed).",
   "items": [
@@ -19,46 +19,13 @@
       "topics": [
         "research",
         "physics",
-        "trust",
-        "tfws"
-      ],
-      "repo": "https://github.com/onetooeu/HGP",
-      "contact": "https://www.hgpedu.eu/pages/contact",
-      "notes": "TFWS v2 verified publisher � HGP EDU portal",
-      "added_from_pending": "27e7550a00f999f692f0b2ae567a9cc9a83076971afc72bbbbd130d16ef1bd0a"
-    },
-    {
-      "url": "https://www.hgpedu.eu/",
-      "type": "publisher",
-      "title": "HGP EDU Portal",
-      "description": "Research & educational portal for the Hypothetical Gravitovoltaic Panel (HGP) project. Experimental physics documentation and theoretical exploration.",
-      "language": [
-        "sk",
-        "en"
-      ],
-      "tags": [
-        "research",
-        "physics",
         "education",
         "experimental"
       ],
+      "repo": "https://github.com/onetooeu/HGP",
       "contact": "https://www.hgpedu.eu/pages/about",
-      "timestamp": "2026-01-10T22:47:35Z",
-      "nonce": "184d707ca0729c6489861a6b04861e3f",
-      "kind": "publisher",
-      "languages": [
-        "sk",
-        "en"
-      ],
-      "topics": [
-        "research",
-        "physics",
-        "education",
-        "experimental"
-      ],
-      "wellKnown": "https://www.hgpedu.eu/.well-known/",
-      "repo": "https://github.com/onetooeu/HGP",
-      "added_from_pending": "38f82de3e359aacc65888dcd743b7663f1e773ea6e433951073d3d9f74366598"
+      "notes": "TFWS v2 verified publisher � HGP EDU portal | also_from_pending:38f82de3e359aacc65888dcd743b7663f1e773ea6e433951073d3d9f74366598",
+      "added_from_pending": "27e7550a00f999f692f0b2ae567a9cc9a83076971afc72bbbbd130d16ef1bd0a"
     }
   ]
 }
