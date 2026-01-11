@@ -1,0 +1,89 @@
+{
+  "schema_version": "2.0",
+  "id": "tfws-v2-attack-simulations",
+  "generated_at": "2025-12-25T00:00:00Z",
+  "simulations": [
+    {
+      "id": "SIM_KEY_MISMATCH",
+      "title": "Key mismatch (signature key id != published pubkey id)",
+      "attack_class": "integrity",
+      "symptoms": [
+        "minisign verify returns: 'Signature key id ... but key id in public key ...'"
+      ],
+      "expected_agent_outcome": "F_KEY_MISMATCH",
+      "severity": "critical",
+      "recommended_operator_actions": [
+        "Confirm which secret key signed the artifact",
+        "Re-sign the affected artifact with the currently published key",
+        "Deploy + invalidate CDN cache",
+        "Publish incident entry with timeline"
+      ]
+    },
+    {
+      "id": "SIM_ROLLBACK",
+      "title": "Rollback to older signed dump (valid signature but older epoch/tag)",
+      "attack_class": "rollback",
+      "symptoms": [
+        "Signatures verify but generated_at/tag is older than seen baseline",
+        "epoch_utc decreased or tag regresses"
+      ],
+      "expected_agent_outcome": "ORANGE_ROLLBACK_SUSPECT",
+      "severity": "high",
+      "recommended_operator_actions": [
+        "Verify deployment pipeline / branch protections",
+        "Check logs for forced pushes or accidental redeploy",
+        "Re-issue fresh release.json + sha256.json and re-sign",
+        "Pin monotonic counters (epoch/tag) in trust-state"
+      ]
+    },
+    {
+      "id": "SIM_CACHE_POISON",
+      "title": "Cache poisoning / stale edge serves mixed versions",
+      "attack_class": "cache",
+      "symptoms": [
+        "PAGES and PROD differ for same path",
+        "Same domain differs across colos (CF-RAY changes show different content)",
+        "sha256 differs across requests without repo change"
+      ],
+      "expected_agent_outcome": "YELLOW_INCONSISTENT_VIEW",
+      "severity": "medium",
+      "recommended_operator_actions": [
+        "Set Cache-Control for integrity artifacts (short TTL) + ETag",
+        "Purge cache for affected paths",
+        "Add deploy probe marker file with build id",
+        "Use cache-busting query param during verification"
+      ]
+    },
+    {
+      "id": "SIM_MIRROR_DIVERGENCE",
+      "title": "Mirror divergence (GitHub raw vs Pages vs Prod not equal)",
+      "attack_class": "distribution",
+      "symptoms": [
+        "raw.githubusercontent.com hash != pages.dev hash != prod hash"
+      ],
+      "expected_agent_outcome": "ORANGE_MIRROR_DIVERGENCE",
+      "severity": "high",
+      "recommended_operator_actions": [
+        "Confirm Pages deploy commit id",
+        "Confirm PROD is routed to correct Pages project",
+        "Re-deploy from intended branch",
+        "Publish incident + resolution hash"
+      ]
+    },
+    {
+      "id": "SIM_STALE_SIGNATURE",
+      "title": "Signature valid but references missing/removed file",
+      "attack_class": "availability",
+      "symptoms": [
+        "Signature verifies but referenced path 404s (e.g., release.json exists, sig exists, but sha256.json missing)"
+      ],
+      "expected_agent_outcome": "YELLOW_INCOMPLETE_BUNDLE",
+      "severity": "medium",
+      "recommended_operator_actions": [
+        "Restore missing artifacts",
+        "Rebuild dump bundle + re-sign",
+        "Add inventory verification in CI"
+      ]
+    }
+  ]
+}

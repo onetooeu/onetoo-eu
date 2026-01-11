@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "type": "tfws-release",
+  "channel": "stable",
+  "version": "2.0.4",
+  "tag": "v2.0.4",
+  "generated_at": "2025-12-25T15:44:40Z",
+  "paths": {
+    "index": "/.well-known/tfws/v2/index.json",
+    "inventory_sha256": "/.well-known/tfws/v2/inventory.sha256",
+    "inventory_minisig": "/.well-known/tfws/v2/inventory.sha256.minisig",
+    "minisign_pub": "/.well-known/tfws/v2/keys/minisign.pub"
+  },
+  "integrity": {
+    "inventory_sha256": "sha256:b0611cb298502f3fabd0b9b58e6abdb24e77c8abde4e9b6eef8af33cfff5a80c"
+  },
+  "discovery": {
+    "ai_trust_hub": "/.well-known/ai-trust-hub.json",
+    "ai_trust_hub_signature": "/.well-known/ai-trust-hub.json.minisig",
+    "minisign_keys_dir": "/.well-known/keys/minisign/"
+  },
+  "notes": "Canonical TFWS v2 stable release pointer.",
+  "alias": "latest"
+}

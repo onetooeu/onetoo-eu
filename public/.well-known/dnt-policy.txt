@@ -1,0 +1,4 @@
+ONETOO.eu (operated by ONETOO.dynamics) honors user privacy by design.
+- We do not run invasive behavioral advertising.
+- Verified redirects do not require cookies or cross-site tracking.
+- We minimize logs and prefer aggregated, privacy-preserving metrics.

@@ -1,0 +1,13 @@
+{
+  "cosign": {
+    "bundles_index": "/dumps/attestations/index.json",
+    "certificate_identity_regexp": "https://github.com/.+/.+/.github/workflows/cosign-attest.yml@refs/heads/main",
+    "mode": "keyless",
+    "oidc_issuer": "https://token.actions.githubusercontent.com"
+  },
+  "notes": [
+    "This is an optional attestation layer. Minisign remains the primary trust anchor.",
+    "Identity regexp may need adjustment if the repository or default branch differs."
+  ],
+  "type": "sigstore"
+}

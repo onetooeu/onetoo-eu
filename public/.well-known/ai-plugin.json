@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "ONETOO.eu",
+  "name_for_model": "onetoo_eu",
+  "description_for_human": "Pan-European trust & decision infrastructure for commerce and AI (operated by ONETOO.dynamics).",
+  "description_for_model": "Provides public, signed, versioned trust and governance datasets; jurisdiction engine (EU core + national overrides); transparency and incident feeds.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://onetoo.eu/api/v1/openapi.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://onetoo.eu/assets/icon-512.svg",
+  "contact_email": "trust@onetoo.eu",
+  "legal_info_url": "https://onetoo.eu/terms"
+}

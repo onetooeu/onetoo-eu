@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://onetoo.eu/.well-known/tfws/v2/changelog.feed.xml</id>
+  <title>TFWS v2 Changelog</title>
+  <updated>2025-12-25T15:54:40Z</updated>
+  <link rel="self" href="https://onetoo.eu/.well-known/tfws/v2/changelog.feed.xml" />
+  <link href="https://onetoo.eu/.well-known/tfws/v2/changelog.json" />
+  <entry>
+    <id>https://onetoo.eu/.well-known/tfws/v2/releases/v2.0.4.json</id>
+    <title>TFWS v2.0.4 — restore index + policy pack + release layer</title>
+    <updated>2025-12-25T15:54:40Z</updated>
+    <link href="https://onetoo.eu/.well-known/tfws/v2/releases/v2.0.4.json" />
+    <summary>Restored /.well-known/tfws/v2/index.json and listed policy pack artifacts.; Published policy pack: agent decision contract, trust levels, trust-state template.; Added release pointers: releases/latest.json and releases/v2.0.4.json (+ minisig).; Added minisign pinned keys directory + explicit key list in ai-trust-hub.json.; Canonical redirects for TFWS v2 root and release alias.</summary>
+  </entry>
+</feed>

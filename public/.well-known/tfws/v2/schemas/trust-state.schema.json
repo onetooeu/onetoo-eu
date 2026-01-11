@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onetoo.eu/schemas/v2/trust-state.schema.json",
+  "title": "TFWS v2 Trust State",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "subject", "state", "signals", "integrity"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "2.0" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "subject": {
+      "type": "object",
+      "required": ["domain"],
+      "properties": {
+        "domain": { "type": "string", "minLength": 1 },
+        "tenant": { "type": "string" },
+        "environment": { "type": "string", "enum": ["prod", "staging", "dev", "unknown"], "default": "unknown" }
+      },
+      "additionalProperties": false
+    },
+    "state": {
+      "type": "object",
+      "required": ["level", "reason"],
+      "properties": {
+        "level": { "type": "string", "enum": ["green", "yellow", "orange", "red", "unknown"] },
+        "reason": { "type": "string", "minLength": 1 },
+        "expires_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "signals": {
+      "type": "object",
+      "required": ["keys", "artifacts"],
+      "properties": {
+        "keys": {
+          "type": "object",
+          "required": ["minisign_pubkey_url"],
+          "properties": {
+            "minisign_pubkey_url": { "type": "string" },
+            "key_history_url": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "artifacts": {
+          "type": "object",
+          "properties": {
+            "release_url": { "type": "string" },
+            "sha256_url": { "type": "string" },
+            "targets_url": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["sig"],
+      "properties": {
+        "sig": {
+          "type": "object",
+          "required": ["type", "url"],
+          "properties": {
+            "type": { "type": "string", "enum": ["minisign", "sigstore", "unknown"] },
+            "url": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

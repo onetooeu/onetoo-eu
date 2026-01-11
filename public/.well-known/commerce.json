@@ -1,0 +1,55 @@
+{
+  "project": "Open Commerce Protocol (OCP)",
+  "tag": "2025.12.18-ocp-project-final-v8-signed-ready",
+  "generated_at": "2025-12-18T00:00:00Z",
+  "jurisdictions": [
+    "SK",
+    "CZ"
+  ],
+  "license": "CC0-1.0",
+  "contacts": [
+    "robot@onetoo.eu",
+    "robot@nakupovani.cz"
+  ],
+  "stability": {
+    "semver": "1.0.0",
+    "endpoint_contract": "stable",
+    "data_contract": "stable",
+    "breaking_changes": "only_in_new_major_api_version"
+  },
+  "name": "Open Commerce Protocol (OCP)",
+  "description": "Bot-first AI infra hub: signals + integrity + OCP-MSG spec.",
+  "endpoints": {
+    "first_read": "/.well-known/first-read.json",
+    "index": "/api/v1/index.json",
+    "index_min": "/api/v1/index.min.json",
+    "health": "/api/v1/meta/health.json",
+    "release": "/dumps/release.json",
+    "release_signature": "/dumps/sigs/release.json.minisig",
+    "pubkey": "/control/keys/maintainers.pub",
+    "sha256": "/dumps/sha256.json",
+    "bundle": "/api/v1/bundles/bundle.json",
+    "agent_manifest": "/.well-known/ocp-agent.json",
+    "messaging": {
+      "spec": "/msg/v1/README.md",
+      "openapi": "/msg/v1/openapi.json",
+      "limits_doc": "/msg/v1/meta-limits.json",
+      "reputation_policy": "/msg/v1/reputation-policy.md"
+    },
+    "docs": {
+      "ai_howto": "/ai.md",
+      "contract": "/contract.md",
+      "time_capsule": "/docs/time-capsule.md",
+      "signing": "/SIGNING.md"
+    },
+    "openapi": "/openapi.json",
+    "status": "/status.json"
+  },
+  "contact": {
+    "email": [
+      "robot@onetoo.eu",
+      "robot@nakupovani.cz"
+    ],
+    "security_txt": "/.well-known/security.txt"
+  }
+}

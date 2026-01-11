@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onetoo.eu/schemas/v2/incident.schema.json",
+  "title": "TFWS v2 Incident",
+  "type": "object",
+  "required": ["schema_version", "incident_id", "created_at", "severity", "status", "summary", "affected", "actions"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "2.0" },
+    "incident_id": { "type": "string", "pattern": "^[A-Z0-9\\-]{8,64}$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "status": { "type": "string", "enum": ["open", "monitoring", "resolved", "false_positive"] },
+    "summary": { "type": "string", "minLength": 1 },
+    "details": { "type": "string" },
+    "affected": {
+      "type": "object",
+      "required": ["domains"],
+      "properties": {
+        "domains": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "endpoints": { "type": "array", "items": { "type": "string" } },
+        "artifacts": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["time", "type", "note"],
+        "properties": {
+          "time": { "type": "string", "format": "date-time" },
+          "type": { "type": "string", "enum": ["detect", "contain", "eradicate", "recover", "communicate", "rotate_keys", "verify", "other"] },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "properties": {
+        "sig_url": { "type": "string" },
+        "pubkey_url": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
