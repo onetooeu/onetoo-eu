@@ -1,7 +1,7 @@
 # ============================================================
 # ONETOO – Universal Backend (Cloudflare Worker)
 # ============================================================
-# Safe to commit (no secrets here). account_id is not a secret.
+# Safe to commit (no secrets here). account_id is NOT a secret.
 # ============================================================
 
 name = "onetoo-universal"

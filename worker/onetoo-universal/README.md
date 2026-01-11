@@ -1,26 +1,47 @@
 # ONETOO Universal Backend (Cloudflare Worker)
 
-This Worker is the **missing runtime layer** for the ONETOO ecosystem.
-It is designed to make `https://search.onetoo.eu` respond **deterministically**
-(without breaking the "publish & forget" trust-root).
+**Worker name:** `onetoo-universal`  
+**Purpose:** stable API runtime for `search.onetoo.eu` that avoids 404 and provides a deterministic, minimal endpoint surface.
 
-## Goals
-- Provide a stable **/health** endpoint (always 200 when deployed)
-- Provide **/openapi.json** (machine-readable contract)
-- Provide **/search/v1** as a **stable, explicit** API surface:
-  - today: returns 501 with a clear message (until search index exists)
-  - later: can be extended to real search
-- Provide **/trust/v1/** utilities that help agents:
-  - fetch and verify canonical trust-root data from `www.onetoo.eu/.well-known/*`
+## Goals (Phase 2)
+- Remove 404 on `https://search.onetoo.eu/*`
+- Provide stable endpoints:
+  - `GET /` (info)
+  - `GET /health`
+  - `GET /openapi.json`
+  - `GET /search/v1` (placeholder; returns 501 until index is enabled)
+  - `GET /trust/v1/deploy` (proxy `/.well-known/deploy.txt` from trust-root)
+  - `GET /trust/v1/sha256` (proxy `/.well-known/sha256.json` from trust-root)
+- Keep trust-root **sealed**; backend is an adapter layer.
 
-## Non-goals (by design)
-- This does NOT change the trust-root content or signing model.
-- This does NOT require secrets to be committed (use `wrangler secret put`).
+## Quickstart (local)
+```bash
+cd worker/onetoo-universal
+cp -f wrangler.toml.example wrangler.toml
+# edit wrangler.toml: set account_id; (optionally) enable routes
+wrangler dev
+```
 
-## Deploy overview (short)
-1. Install wrangler: `npm i -g wrangler`
-2. Login: `wrangler login`
-3. Copy config: `cp wrangler.toml.example wrangler.toml` and fill `account_id`.
-4. Deploy: `wrangler deploy`
+## Deploy
+```bash
+cd worker/onetoo-universal
+wrangler deploy
+```
 
-See `APPLY_UNIVERSAL_WORKER_v1.txt` in the patch zip for a step-by-step procedure.
+If routes are enabled in `wrangler.toml`, the deploy will also attach:
+- `search.onetoo.eu/*` (zone: `onetoo.eu`)
+
+## Expected behavior
+- `/health` → **200**
+- `/openapi.json` → **200**
+- `/search/v1?q=test` → **501** with a controlled JSON body
+- `/trust/v1/deploy` → **200** plaintext proxy
+- `/trust/v1/sha256` → **200** JSON proxy
+
+## Security notes
+- No secrets are stored in repo.
+- Worker returns `Cache-Control: no-store` for all responses.
+- Default CORS is permissive for GET-only usage; can be tightened later.
+
+## License
+Inherit repository license.

@@ -1,21 +1,3 @@
-/**
- * ONETOO Universal Backend Worker
- * - makes search.onetoo.eu non-404
- * - provides stable contracts for AI agents
- *
- * Endpoints:
- *   GET  /health
- *   GET  /openapi.json
- *   GET  /search/v1?q=...
- *   GET  /trust/v1/deploy
- *   GET  /trust/v1/sha256
- *
- * Design notes:
- * - Deterministic outputs
- * - No external dependencies
- * - Safe defaults (no secrets required)
- */
-
 export interface Env {
   TRUST_ROOT_BASE: string;
   SEARCH_NOT_READY_MESSAGE: string;
@@ -23,83 +5,49 @@ export interface Env {
   // MAINTAINER_HEADER?: string;
 }
 
-function json(data: unknown, status = 200, env?: Env): Response {
-  const headers = new Headers({
-    "content-type": "application/json; charset=utf-8",
-    "x-content-type-options": "nosniff",
-    "cache-control": "no-store",
+type Json = Record<string, unknown>;
+
+const JSON_HEADERS = {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-store",
+  "x-content-type-options": "nosniff",
+};
+
+const TEXT_HEADERS = {
+  "content-type": "text/plain; charset=utf-8",
+  "cache-control": "no-store",
+  "x-content-type-options": "nosniff",
+};
+
+function corsHeaders(env: Env) {
+  return {
+    "access-control-allow-origin": env.CORS_ALLOW_ORIGIN || "*",
+    "access-control-allow-methods": "GET, OPTIONS",
+    "access-control-allow-headers": "content-type",
+  };
+}
+
+function json(env: Env, status: number, body: Json): Response {
+  return new Response(JSON.stringify(body, null, 2) + "\n", {
+    status,
+    headers: { ...JSON_HEADERS, ...corsHeaders(env) },
   });
-
-  // Minimal CORS (GET-only use cases)
-  const origin = env?.CORS_ALLOW_ORIGIN ?? "*";
-  headers.set("access-control-allow-origin", origin);
-  headers.set("access-control-allow-methods", "GET, OPTIONS");
-  headers.set("access-control-allow-headers", "content-type");
-
-  return new Response(JSON.stringify(data, null, 2) + "\n", { status, headers });
 }
 
-function text(body: string, status = 200, env?: Env): Response {
-  const headers = new Headers({
-    "content-type": "text/plain; charset=utf-8",
-    "x-content-type-options": "nosniff",
-    "cache-control": "no-store",
+function text(env: Env, status: number, body: string): Response {
+  return new Response(body.endsWith("\n") ? body : body + "\n", {
+    status,
+    headers: { ...TEXT_HEADERS, ...corsHeaders(env) },
   });
-
-  const origin = env?.CORS_ALLOW_ORIGIN ?? "*";
-  headers.set("access-control-allow-origin", origin);
-  headers.set("access-control-allow-methods", "GET, OPTIONS");
-  headers.set("access-control-allow-headers", "content-type");
-
-  return new Response(body, { status, headers });
 }
 
-function notFound(env?: Env): Response {
-  return json(
-    {
-      ok: false,
-      error: "not_found",
-      message: "Unknown endpoint.",
-      hint: "Try /health or /openapi.json",
-    },
-    404,
-    env
-  );
+function normalizeBase(url: string): string {
+  if (!url) return "";
+  return url.endsWith("/") ? url.slice(0, -1) : url;
 }
 
-async function proxyWellKnown(path: string, env: Env): Promise<Response> {
-  // Strictly proxy only these two stable artifacts (reduces attack surface).
-  const allow = new Set(["/\.well-known/deploy.txt", "/\.well-known/sha256.json"]);
-  const key = path.startsWith("/") ? path : `/${path}`;
-  if (!allow.has(key)) {
-    return json(
-      { ok: false, error: "forbidden", message: "Only deploy.txt and sha256.json are proxy-allowed." },
-      403,
-      env
-    );
-  }
-
-  const url = new URL(env.TRUST_ROOT_BASE);
-  url.pathname = key;
-
-  const res = await fetch(url.toString(), {
-    method: "GET",
-    headers: { "accept": "application/json,text/plain;q=0.9,*/*;q=0.1" },
-  });
-
-  // Pass through body but normalize caching for safety.
-  const headers = new Headers(res.headers);
-  headers.set("cache-control", "no-store");
-  headers.set("x-content-type-options", "nosniff");
-  headers.set("access-control-allow-origin", env.CORS_ALLOW_ORIGIN ?? "*");
-  headers.set("access-control-allow-methods", "GET, OPTIONS");
-  headers.set("access-control-allow-headers", "content-type");
-
-  return new Response(res.body, { status: res.status, headers });
-}
-
-function openapi(env: Env): Response {
-  const spec = {
+function buildOpenApi(env: Env): Json {
+  return {
     openapi: "3.0.3",
     info: {
       title: "ONETOO Universal Backend",
@@ -109,6 +57,12 @@ function openapi(env: Env): Response {
     },
     servers: [{ url: "https://search.onetoo.eu" }],
     paths: {
+      "/": {
+        get: {
+          summary: "Info",
+          responses: { "200": { description: "OK" } },
+        },
+      },
       "/health": {
         get: {
           summary: "Healthcheck",
@@ -116,7 +70,10 @@ function openapi(env: Env): Response {
         },
       },
       "/openapi.json": {
-        get: { summary: "OpenAPI spec", responses: { "200": { description: "JSON spec" } } },
+        get: {
+          summary: "OpenAPI spec",
+          responses: { "200": { description: "JSON spec" } },
+        },
       },
       "/search/v1": {
         get: {
@@ -133,90 +90,114 @@ function openapi(env: Env): Response {
         },
       },
       "/trust/v1/deploy": {
-        get: { summary: "Proxy deploy.txt", responses: { "200": { description: "deploy.txt" } } },
+        get: {
+          summary: "Proxy deploy.txt",
+          responses: { "200": { description: "deploy.txt" } },
+        },
       },
       "/trust/v1/sha256": {
-        get: { summary: "Proxy sha256.json", responses: { "200": { description: "sha256.json" } } },
+        get: {
+          summary: "Proxy sha256.json",
+          responses: { "200": { description: "sha256.json" } },
+        },
       },
     },
   };
-
-  return json(spec, 200, env);
 }
 
-function searchPlaceholder(req: Request, env: Env): Response {
-  const u = new URL(req.url);
-  const q = u.searchParams.get("q") ?? "";
+async function proxyTrust(env: Env, path: string, accept: string): Promise<Response> {
+  const base = normalizeBase(env.TRUST_ROOT_BASE || "https://www.onetoo.eu");
+  const target = base + path;
 
-  // Deterministic placeholder response so clients can integrate now.
-  return json(
-    {
-      ok: false,
-      implemented: false,
-      error: "not_implemented",
-      message: env.SEARCH_NOT_READY_MESSAGE || "Search index not enabled.",
-      query: q,
-      results: [],
-    },
-    501,
-    env
-  );
+  const resp = await fetch(target, {
+    method: "GET",
+    headers: { accept },
+    cf: { cacheTtl: 0, cacheEverything: false },
+  });
+
+  // Pass through status + content-type, but enforce no-store + CORS.
+  const ct = resp.headers.get("content-type") || (accept.includes("json") ? "application/json" : "text/plain");
+  const headers = new Headers(resp.headers);
+
+  headers.set("content-type", ct);
+  headers.set("cache-control", "no-store");
+  headers.set("x-content-type-options", "nosniff");
+  headers.set("access-control-allow-origin", env.CORS_ALLOW_ORIGIN || "*");
+  headers.set("access-control-allow-methods", "GET, OPTIONS");
+  headers.set("access-control-allow-headers", "content-type");
+
+  return new Response(resp.body, { status: resp.status, headers });
 }
 
 export default {
-  async fetch(req: Request, env: Env): Promise<Response> {
-    if (req.method === "OPTIONS") {
-      // Simple CORS preflight
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    const pathname = url.pathname;
+
+    // CORS preflight (minimal)
+    if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
         headers: {
-          "access-control-allow-origin": env.CORS_ALLOW_ORIGIN ?? "*",
-          "access-control-allow-methods": "GET, OPTIONS",
-          "access-control-allow-headers": "content-type",
+          ...corsHeaders(env),
           "cache-control": "no-store",
+          "x-content-type-options": "nosniff",
         },
       });
     }
 
-    const url = new URL(req.url);
-    const path = url.pathname;
-
-    if (req.method !== "GET") {
-      return json({ ok: false, error: "method_not_allowed" }, 405, env);
+    if (request.method !== "GET") {
+      return json(env, 405, {
+        ok: false,
+        error: "method_not_allowed",
+        allowed: ["GET", "OPTIONS"],
+      });
     }
 
-    if (path === "/" ) {
-      return json(
-        {
-          ok: true,
-          service: "onetoo-universal",
-          hint: "Try /health or /openapi.json",
-        },
-        200,
-        env
-      );
+    if (pathname === "/" || pathname === "") {
+      return json(env, 200, {
+        ok: true,
+        service: "onetoo-universal",
+        hint: "Try /health or /openapi.json",
+      });
     }
 
-    if (path === "/health") {
-      return json({ ok: true, status: "ok" }, 200, env);
+    if (pathname === "/health") {
+      return json(env, 200, { ok: true, status: "ok" });
     }
 
-    if (path === "/openapi.json") {
-      return openapi(env);
+    if (pathname === "/openapi.json") {
+      return json(env, 200, buildOpenApi(env));
     }
 
-    if (path === "/search/v1") {
-      return searchPlaceholder(req, env);
+    if (pathname === "/search/v1") {
+      const q = url.searchParams.get("q") || "";
+      return json(env, 501, {
+        ok: false,
+        implemented: false,
+        error: "not_implemented",
+        message:
+          env.SEARCH_NOT_READY_MESSAGE ||
+          "search.onetoo.eu runtime is deployed, but search index is not enabled yet.",
+        query: q,
+        results: [],
+      });
     }
 
-    if (path === "/trust/v1/deploy") {
-      return proxyWellKnown("/.well-known/deploy.txt", env);
+    if (pathname === "/trust/v1/deploy") {
+      return proxyTrust(env, "/.well-known/deploy.txt", "text/plain");
     }
 
-    if (path === "/trust/v1/sha256") {
-      return proxyWellKnown("/.well-known/sha256.json", env);
+    if (pathname === "/trust/v1/sha256") {
+      return proxyTrust(env, "/.well-known/sha256.json", "application/json");
     }
 
-    return notFound(env);
+    // Stable 404 (ours, not Cloudflare default)
+    return json(env, 404, {
+      ok: false,
+      error: "not_found",
+      path: pathname,
+      hint: "Try /openapi.json",
+    });
   },
 };
