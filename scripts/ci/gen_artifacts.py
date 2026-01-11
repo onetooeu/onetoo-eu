@@ -133,5 +133,9 @@ def main() -> None:
     write_json(DUMPS_DIR / "sha256.json", inv)
     write_json(ROOT_WELLKNOWN / "sha256.json", inv)
 
+    # Ensure HTTP /.well-known/sha256.json is always published via Pages output
+    PUBLIC_WELLKNOWN.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT_WELLKNOWN / "sha256.json", PUBLIC_WELLKNOWN / "sha256.json")
+
 if __name__ == "__main__":
     main()
