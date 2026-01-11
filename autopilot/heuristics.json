@@ -4,8 +4,8 @@
   "updated_at": "2026-01-10T00:00:00Z",
   "defaults": {
     "action": "sandbox",
-    "min_score_to_accept": 70,
-    "min_score_to_sandbox": 40
+    "min_score_to_accept": 35,
+    "min_score_to_sandbox": 10
   },
   "hard_fail": [
     {
