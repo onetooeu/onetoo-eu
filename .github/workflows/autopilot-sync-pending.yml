@@ -8,15 +8,17 @@ on:
 permissions:
   contents: write
 
-defaults:
-  run:
-    shell: bash
 
 jobs:
   sync:
     # Self-hosted runner is intentional (your machine).
     # We enforce bash because the commands are POSIX-style.
     runs-on: self-hosted
+
+    defaults:
+      run:
+        shell: '"C:\Program Files\Git\bin\bash.exe" --noprofile --norc -e -o pipefail {0}'
+
 
     steps:
       - name: Checkout
