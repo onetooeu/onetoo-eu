@@ -8,65 +8,71 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   sync:
+    # Self-hosted runner is intentional (your machine).
+    # We enforce bash because the commands are POSIX-style.
     runs-on: self-hosted
-
-    defaults:
-      run:
-        shell: powershell
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Preflight (python + curl)
+      # ===============================
+      # PRE-FLIGHT – verify runner basics
+      # ===============================
+      - name: Preflight (bash + python + curl)
         run: |
-          $ErrorActionPreference = "Stop"
+          set -euo pipefail
+          echo "Runner: $(uname -a || true)"
 
-          Write-Host ("Runner: " + (Get-CimInstance Win32_OperatingSystem).Caption)
-          Write-Host ("Arch: " + $env:PROCESSOR_ARCHITECTURE)
-
-          # Use curl.exe explicitly (PowerShell has curl alias)
-          if (-not (Get-Command curl.exe -ErrorAction SilentlyContinue)) {
-            Write-Host "ERROR: curl.exe not found on runner."
-            exit 1
+          command -v bash >/dev/null 2>&1 || {
+            echo "ERROR: bash not found. Install Git Bash (Windows) or bash (Linux).";
+            exit 1;
+          }
+          command -v curl >/dev/null 2>&1 || {
+            echo "ERROR: curl not found on runner.";
+            exit 1;
           }
 
-          # Pick python3 if present, else python
-          if (Get-Command python3 -ErrorAction SilentlyContinue) {
-            $py = "python3"
-          } elseif (Get-Command python -ErrorAction SilentlyContinue) {
-            $py = "python"
-          } else {
-            Write-Host "ERROR: Python not found. Install Python 3.11+ on the self-hosted runner."
-            exit 1
-          }
+          if command -v python3 >/dev/null 2>&1; then
+            PY=python3
+          elif command -v python >/dev/null 2>&1; then
+            PY=python
+          else
+            echo "ERROR: Python not found. Install Python 3.11+ on the self-hosted runner.";
+            exit 1;
+          fi
 
-          Write-Host ("Using: " + $py)
-          & $py --version
+          echo "Using: $PY"
+          $PY --version
 
       # ===============================
-      # DEBUG STEP – zistíme, čo runner
-      # naozaj dostáva z pending API
+      # DEBUG STEP – show what pending endpoint returns
       # ===============================
-      - name: DEBUG pending endpoint (show response)
+      - name: DEBUG pending endpoint (headers + body snippet)
         env:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
           ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
         run: |
-          $ErrorActionPreference = "Stop"
-          Write-Host "DEBUG BASE=$env:ONETOO_SEARCH_BASE"
-          Write-Host ("DEBUG TOKEN SET? " + ($(if ($env:ONETOO_MAINTAINER_TOKEN) { "yes" } else { "no" })))
+          set -euo pipefail
+          echo "DEBUG BASE=$ONETOO_SEARCH_BASE"
+          echo "DEBUG TOKEN present? $([[ -n \"$ONETOO_MAINTAINER_TOKEN\" ]] && echo yes || echo no)"
 
-          Write-Host "DEBUG HEADERS + STATUS:"
-          curl.exe -sS -i "$env:ONETOO_SEARCH_BASE/contrib/v2/pending" `
-            -H "X-ONETOO-MAINTAINER: $env:ONETOO_MAINTAINER_TOKEN" | Select-Object -First 80
+          echo "---- HEADERS ----"
+          curl -sS -D - "$ONETOO_SEARCH_BASE/contrib/v2/pending" \
+            -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" \
+            -o /dev/null | head -n 80
 
-          Write-Host "---- BODY ----"
-          $body = curl.exe -sS "$env:ONETOO_SEARCH_BASE/contrib/v2/pending" `
-            -H "X-ONETOO-MAINTAINER: $env:ONETOO_MAINTAINER_TOKEN"
-          if ($body.Length -gt 600) { $body.Substring(0,600) } else { $body }
+          echo "---- BODY ----"
+          curl -sS "$ONETOO_SEARCH_BASE/contrib/v2/pending" \
+            -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" \
+            | head -c 900
+          echo
 
       # ===============================
       # AUTOPILOT SYNC
@@ -76,26 +82,32 @@ jobs:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
           ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
           ONETOO_AUTOPILOT_ENABLED: "1"
-          ONETOO_WRITE_STABLE: "1"
         run: |
-          python scripts/autopilot_sync_pending.py
+          set -euo pipefail
+          if command -v python3 >/dev/null 2>&1; then PY=python3; else PY=python; fi
+          $PY scripts/autopilot_sync_pending.py
 
       # ===============================
-      # COMMIT & PUSH (ak sa niečo zmenilo)
+      # COMMIT & PUSH (if changed)
       # ===============================
       - name: Commit & push if changed
         run: |
-          git status --porcelain
-          if (-not (git diff --quiet)) {
-            git config user.name "onetoo-autopilot"
-            git config user.email "autopilot@onetoo.eu"
-            git add public/dumps/contrib-accepted.json public/dumps/contrib-accepted.json.minisig dumps/contrib-accepted.json dumps/contrib-accepted.json.minisig 2>$null
-            if (-not (git diff --cached --quiet)) {
-              git commit -m "autopilot: sync accepted feed"
-              git push
-            } else {
-              Write-Host "No accepted feed changes staged."
-            }
-          } else {
-            Write-Host "No changes."
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git config user.name "onetoo-autopilot"
+          git config user.email "autopilot@onetoo.eu"
+
+          # Keep commits deterministic + minimal: only generated dumps + autopilot audit.
+          [ -d dumps ] && git add dumps || true
+          [ -d public/dumps ] && git add public/dumps || true
+          [ -d autopilot ] && git add autopilot || true
+
+          git commit -m "autopilot: sync pending → lanes" || {
+            echo "Nothing to commit."
+            exit 0
           }
+          git push
