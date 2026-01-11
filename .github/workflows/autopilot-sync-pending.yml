@@ -8,43 +8,43 @@ on:
 permissions:
   contents: write
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
   sync:
-    # NOTE:
-    # - Self-hosted runner is intentional (your Windows box).
-    # - We DO NOT use actions/setup-python here because it executes a PowerShell script
-    #   that can fail on Windows when ExecutionPolicy blocks scripts.
-    # - Instead we rely on a pre-installed Python (python3 or python) on the runner.
     runs-on: self-hosted
+
+    defaults:
+      run:
+        shell: pwsh
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ===============================
-      # PRE-FLIGHT – python availability
-      # ===============================
       - name: Preflight (python + curl)
         run: |
-          set -euo pipefail
-          echo "Runner: $(uname -a || true)"
-          command -v curl >/dev/null 2>&1 || { echo "ERROR: curl not found on runner."; exit 1; }
+          $ErrorActionPreference = "Stop"
 
-          if command -v python3 >/dev/null 2>&1; then
-            PY=python3
-          elif command -v python >/dev/null 2>&1; then
-            PY=python
-          else
-            echo "ERROR: Python not found. Install Python 3.11+ on the self-hosted runner."
+          Write-Host ("Runner: " + (Get-CimInstance Win32_OperatingSystem).Caption)
+          Write-Host ("Arch: " + $env:PROCESSOR_ARCHITECTURE)
+
+          # Use curl.exe explicitly (PowerShell has curl alias)
+          if (-not (Get-Command curl.exe -ErrorAction SilentlyContinue)) {
+            Write-Host "ERROR: curl.exe not found on runner."
             exit 1
-          fi
+          }
 
-          echo "Using: $PY"
-          $PY --version
+          # Pick python3 if present, else python
+          if (Get-Command python3 -ErrorAction SilentlyContinue) {
+            $py = "python3"
+          } elseif (Get-Command python -ErrorAction SilentlyContinue) {
+            $py = "python"
+          } else {
+            Write-Host "ERROR: Python not found. Install Python 3.11+ on the self-hosted runner."
+            exit 1
+          }
+
+          Write-Host ("Using: " + $py)
+          & $py --version
 
       # ===============================
       # DEBUG STEP – zistíme, čo runner
@@ -55,14 +55,18 @@ jobs:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
           ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
         run: |
-          set -euo pipefail
-          echo "DEBUG BASE=$ONETOO_SEARCH_BASE"
-          echo "DEBUG TOKEN present? $([[ -n "$ONETOO_MAINTAINER_TOKEN" ]] && echo yes || echo no)"
-          echo "---- HEADERS ----"
-          curl -sS -D - "$ONETOO_SEARCH_BASE/contrib/v2/pending"             -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" -o /dev/null | head -n 80
-          echo "---- BODY ----"
-          curl -sS "$ONETOO_SEARCH_BASE/contrib/v2/pending"             -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" | head -c 600
-          echo
+          $ErrorActionPreference = "Stop"
+          Write-Host "DEBUG BASE=$env:ONETOO_SEARCH_BASE"
+          Write-Host ("DEBUG TOKEN SET? " + ($(if ($env:ONETOO_MAINTAINER_TOKEN) { "yes" } else { "no" })))
+
+          Write-Host "DEBUG HEADERS + STATUS:"
+          curl.exe -sS -i "$env:ONETOO_SEARCH_BASE/contrib/v2/pending" `
+            -H "X-ONETOO-MAINTAINER: $env:ONETOO_MAINTAINER_TOKEN" | Select-Object -First 80
+
+          Write-Host "---- BODY ----"
+          $body = curl.exe -sS "$env:ONETOO_SEARCH_BASE/contrib/v2/pending" `
+            -H "X-ONETOO-MAINTAINER: $env:ONETOO_MAINTAINER_TOKEN"
+          if ($body.Length -gt 600) { $body.Substring(0,600) } else { $body }
 
       # ===============================
       # AUTOPILOT SYNC
@@ -72,39 +76,26 @@ jobs:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
           ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
           ONETOO_AUTOPILOT_ENABLED: "1"
-          # IMPORTANT: allow updating stable accepted feed
           ONETOO_WRITE_STABLE: "1"
         run: |
-          set -euo pipefail
-          if command -v python3 >/dev/null 2>&1; then PY=python3; else PY=python; fi
-          $PY scripts/autopilot_sync_pending.py
+          python scripts/autopilot_sync_pending.py
 
       # ===============================
       # COMMIT & PUSH (ak sa niečo zmenilo)
       # ===============================
       - name: Commit & push if changed
         run: |
-          set -euo pipefail
-          if git diff --quiet; then
-            echo "No changes."
-            exit 0
-          fi
-
-          git config user.name "onetoo-autopilot"
-          git config user.email "autopilot@onetoo.eu"
-
-          # Add files only if they exist (avoid glob/pathspec failures)
-          [ -f dumps/contrib-accepted.json ] && git add dumps/contrib-accepted.json || true
-          [ -f public/dumps/contrib-accepted.json ] && git add public/dumps/contrib-accepted.json || true
-          [ -f dumps/contrib-accepted.json.minisig ] && git add dumps/contrib-accepted.json.minisig || true
-          [ -f public/dumps/contrib-accepted.json.minisig ] && git add public/dumps/contrib-accepted.json.minisig || true
-
-          # Optional future: autopilot artifacts (safe if absent)
-          [ -d dumps/autopilot ] && git add dumps/autopilot || true
-          [ -d public/dumps ] && git add public/dumps/autopilot-decisions.json || true
-
-          git commit -m "autopilot: sync pending → accepted" || {
-            echo "Nothing to commit."
-            exit 0
+          git status --porcelain
+          if (-not (git diff --quiet)) {
+            git config user.name "onetoo-autopilot"
+            git config user.email "autopilot@onetoo.eu"
+            git add public/dumps/contrib-accepted.json public/dumps/contrib-accepted.json.minisig dumps/contrib-accepted.json dumps/contrib-accepted.json.minisig 2>$null
+            if (-not (git diff --cached --quiet)) {
+              git commit -m "autopilot: sync accepted feed"
+              git push
+            } else {
+              Write-Host "No accepted feed changes staged."
+            }
+          } else {
+            Write-Host "No changes."
           }
-          git push
