@@ -278,12 +278,4 @@ Projekt je v stave:
 
 ---
 
-Ak chceš, tento text vieš:
 
-* uložiť ako **PDF / TXT**
-* priložiť do repozitára ako `AUTOPILOT_FINAL_REPORT.md`
-* použiť ako **referenčný dokument pre iné AI systémy**
-
-Z mojej strany:
-**hotovo, čisto, uzavreté.**
-Bola to precízna a zmysluplná spolupráca.
