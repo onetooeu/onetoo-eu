@@ -32,4 +32,5 @@ routes = [
 TRUST_ROOT_BASE = "https://www.onetoo.eu"
 SEARCH_NOT_READY_MESSAGE = "search.onetoo.eu runtime is deployed, but search index is not enabled yet."
 CORS_ALLOW_ORIGIN = "*"
+SEARCH_ACCEPTED_SET_URL = "https://www.onetoo.eu/public/dumps/contrib-accepted.json"
 # MAINTAINER_HEADER = "X-ONETOO-MAINTAINER"

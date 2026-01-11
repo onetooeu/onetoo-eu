@@ -2,6 +2,8 @@ export interface Env {
   TRUST_ROOT_BASE: string;
   SEARCH_NOT_READY_MESSAGE: string;
   CORS_ALLOW_ORIGIN: string;
+  // Source of the accepted-set used for search (JSON).
+  SEARCH_ACCEPTED_SET_URL?: string;
   // MAINTAINER_HEADER?: string;
 }
 
@@ -46,6 +48,49 @@ function normalizeBase(url: string): string {
   return url.endsWith("/") ? url.slice(0, -1) : url;
 }
 
+// ------------------------------
+// Phase 3A: Real search over accepted-set (autopilot-managed)
+// ------------------------------
+type AcceptedSet = { items?: any[]; schema?: string; version?: string; updated_at?: string; lane?: string; note?: string };
+let CACHE: { at: number; data: AcceptedSet } | null = null;
+
+function acceptedSetUrl(env: Env): string {
+  return env.SEARCH_ACCEPTED_SET_URL || "https://www.onetoo.eu/public/dumps/contrib-accepted.json";
+}
+
+async function getAcceptedSet(env: Env): Promise<AcceptedSet> {
+  const now = Date.now();
+  if (CACHE && now - CACHE.at < 60_000) return CACHE.data; // 60s isolate cache
+  const src = acceptedSetUrl(env);
+  const resp = await fetch(src, {
+    headers: { accept: "application/json" },
+    cf: { cacheTtl: 60, cacheEverything: true },
+  });
+  if (!resp.ok) return { items: [], note: `upstream_fetch_failed:${resp.status}` };
+  const data = (await resp.json()) as AcceptedSet;
+  CACHE = { at: now, data: data && Array.isArray((data as any).items) ? data : { items: [], note: "upstream_invalid_shape" } };
+  return CACHE.data;
+}
+
+function norm(s: unknown): string {
+  return String(s || "").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function itemHaystack(it: any): string {
+  return [
+    it?.title,
+    it?.description,
+    it?.url,
+    it?.repo,
+    it?.wellKnown,
+    ...(Array.isArray(it?.topics) ? it.topics : []),
+    ...(Array.isArray(it?.languages) ? it.languages : []),
+    it?.kind,
+    it?.notes,
+  ].map(norm).join(" | ");
+}
+
+
 function buildOpenApi(env: Env): Json {
   return {
     openapi: "3.0.3",
@@ -79,13 +124,13 @@ function buildOpenApi(env: Env): Json {
         get: {
           summary: "Search (v1)",
           description:
-            "Stable placeholder endpoint. Returns 501 until search index is enabled.",
+            "Search over the accepted-set (autopilot-managed). Simple deterministic substring match (Phase 3A).",
           parameters: [
             { name: "q", in: "query", required: false, schema: { type: "string" } },
+            { name: "limit", in: "query", required: false, schema: { type: "integer", minimum: 1, maximum: 50 } },
           ],
           responses: {
             "200": { description: "Search results" },
-            "501": { description: "Not implemented (index not enabled)" },
           },
         },
       },
@@ -171,16 +216,59 @@ export default {
     }
 
     if (pathname === "/search/v1") {
-      const q = url.searchParams.get("q") || "";
-      return json(env, 501, {
-        ok: false,
-        implemented: false,
-        error: "not_implemented",
-        message:
-          env.SEARCH_NOT_READY_MESSAGE ||
-          "search.onetoo.eu runtime is deployed, but search index is not enabled yet.",
+      const q = (url.searchParams.get("q") || "").trim();
+      const limitRaw = parseInt(url.searchParams.get("limit") || "10", 10);
+      const limit = Math.max(1, Math.min(50, Number.isFinite(limitRaw) ? limitRaw : 10));
+
+      const acc = await getAcceptedSet(env);
+      const items = Array.isArray(acc.items) ? acc.items : [];
+
+      if (!q) {
+        return json(env, 200, {
+          ok: true,
+          implemented: true,
+          query: "",
+          meta: {
+            source: acceptedSetUrl(env),
+            schema: acc.schema || null,
+            version: acc.version || null,
+            updated_at: acc.updated_at || null,
+            lane: acc.lane || null,
+            total_items: items.length,
+            note: acc.note || null,
+          },
+          results: [],
+        });
+      }
+
+      const qq = norm(q);
+      const results = items
+        .map((it) => ({ it, hay: itemHaystack(it) }))
+        .filter((x) => x.hay.includes(qq))
+        .slice(0, limit)
+        .map((x) => ({
+          title: x.it?.title || "(untitled)",
+          url: x.it?.url || "",
+          description: x.it?.description || "",
+          kind: x.it?.kind || null,
+          topics: x.it?.topics || [],
+          languages: x.it?.languages || [],
+          repo: x.it?.repo || null,
+          wellKnown: x.it?.wellKnown || null,
+          timestamp: x.it?.timestamp || null,
+        }));
+
+      return json(env, 200, {
+        ok: true,
+        implemented: true,
         query: q,
-        results: [],
+        meta: {
+          source: acceptedSetUrl(env),
+          total_items: items.length,
+          hits: results.length,
+          limit,
+        },
+        results,
       });
     }
 
