@@ -898,26 +898,17 @@
 /sv/regulatory/ /sv/regulatory/index.html 200
 
 # Friendly routes (default EN)
-/for-humans /en/for-humans/ 302
-/for-ai /en/for-ai/ 302
-/about /en/about/ 302
-/pricing /en/pricing/ 302
-/affiliate /en/affiliate/ 302
-/partners /en/partners/ 302
-/transparency  /en/transparency 302
-/methodology   /en/methodology 302
-/incidents     /en/incidents   302
-/regulatory    /en/regulatory  302
+/incidents /en/incidents 302
+/regulatory /en/regulatory 302
 
 # AI Trust Hub
-/ai-trust  /ai-trust-hub.html  302
-/.well-known/ai-trust  /.well-known/ai-trust-hub.json  302
+/ai-trust /ai-trust-hub.html 302
 
-/llms  /llms.txt  302
-/.well-known/llms.txt  /llms.txt  302
-/incidents  /incidents/index.html  302
-/changelog  /changelog/index.html  302
+/llms /llms.txt 302
+/.well-known/llms.txt /llms.txt 302
+/incidents /incidents/index.html 302
+/changelog /changelog/index.html 302
 /minisign.pub /.well-known/minisign.pub 301
 
 # Legacy minisig alias
-/dumps/sha256.json.minisig  /dumps/sigs/sha256.json.minisig  302
+/dumps/sha256.json.minisig /dumps/sigs/sha256.json.minisig 302

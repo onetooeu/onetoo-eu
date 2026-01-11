@@ -42,5 +42,19 @@
     },
     "openapi": "/openapi.json",
     "status": "/status.json"
-  }
+  },
+  "services": {
+    "www.onetoo.eu": {
+      "type": "static_trust_root",
+      "status": "ok"
+    },
+    "search.onetoo.eu": {
+      "type": "external_worker",
+      "status": "unknown",
+      "note": "If 404, re-attach Cloudflare Worker route or update DNS; see /status/search/"
+    }
+  },
+  "notes": [
+    "Added /status/search/ explainer and remote verification script; policy.sh published at /.well-known/policy.sh (sign before production)."
+  ]
 }
