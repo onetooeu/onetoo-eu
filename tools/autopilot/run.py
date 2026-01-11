@@ -126,10 +126,22 @@ def apply_domain_rules(repo_root: Path, cfg: Config) -> None:
         data = maybe_sort_items(data, cfg.sort_item_keys, cfg.max_items, p)
 
         before = p.read_text(encoding="utf-8")
-        dump_canonical_json(p, data, sort_keys=True, compact=True, ensure_ascii=False, newline=True)
-        after = p.read_text(encoding="utf-8")
-        if after != before:
-            print(f"[autopilot] canonicalized: {rel}")
+
+        # Render canonical JSON deterministically and write only if changed (anti-churn)
+        canonical = (
+            json.dumps(
+                data,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            + "\n"
+        )
+
+        if canonical != before:
+            p.write_text(canonical, encoding="utf-8")
+            print(f"[autopilot] updated: {rel}")
+
 
 def main() -> int:
     repo_root = require_repo_root(Path(os.environ.get("ONETOO_REPO_ROOT", ".")).resolve())
