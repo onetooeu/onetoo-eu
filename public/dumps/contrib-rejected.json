@@ -1,7 +1,7 @@
 {
   "schema": "onetoo-ai-search-rejected-set/v1",
   "version": "1.0",
-  "updated_at": "2026-01-10T22:19:46Z",
+  "updated_at": "2026-01-11T07:16:16Z",
   "lane": "rejected",
   "note": "Autopilot rejected set.",
   "items": []
