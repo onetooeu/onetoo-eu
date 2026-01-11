@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Search API status — ONETOO.eu</title>
+<meta name="description" content="Status and routing notes for the ONETOO search API.">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/site.js"></script>
+</head><body>
+<h1>Search API status</h1>
+
+<p><strong>Context:</strong> the primary website <code>www.onetoo.eu</code> is a static trust-root. The actual search API (historically on <code>search.onetoo.eu</code>) may be deployed as a separate Cloudflare Worker / service.</p>
+
+<h2>What this means</h2>
+<ul>
+  <li>If <code>search.onetoo.eu</code> returns <strong>404</strong>, it usually means the Worker route is not currently attached, is under maintenance, or the subdomain is pointing elsewhere.</li>
+  <li>This repository still publishes <strong>search-related trust signals</strong> (OpenAPI, schemas, signed manifests) that remain valid even while the runtime API is being rebuilt.</li>
+</ul>
+
+<h2>Where to look next</h2>
+<ul>
+  <li>Current public API docs: <a href="/openapi.json">/openapi.json</a></li>
+  <li>Status (machine-readable): <a href="/status.json">/status.json</a></li>
+  <li>Incidents: <a href="/incidents/">/incidents/</a></li>
+</ul>
+
+<p>If you operate the API yourself, consider re-attaching the Worker route for <code>search.onetoo.eu</code> and publishing a signed note in <code>/incidents/</code>.</p>
+
+</body></html>
