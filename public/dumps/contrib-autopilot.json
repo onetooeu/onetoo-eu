@@ -1,8 +1,1 @@
-{
-  "schema": "onetoo-ai-search-sandbox-set/v1",
-  "version": "1.0",
-  "updated_at": "2026-01-11T07:16:16Z",
-  "lane": "sandbox",
-  "note": "Autopilot sandbox set (unsigned).",
-  "items": []
-}
+{"items":[],"lane":"sandbox","note":"Autopilot sandbox set (unsigned).","schema":"onetoo-ai-search-sandbox-set/v1","updated_at":"2026-01-11T07:16:16Z","version":"1.0"}

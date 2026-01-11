@@ -1,0 +1,81 @@
+name: onetoo-autopilot-bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Start conservative (hourly). After proving stability you can go to */15.
+    - cron: "0 * * * *"
+
+# We do NOT rely on GITHUB_TOKEN for writes.
+# Push uses a fine-grained PAT stored as ONETOO_BOT_TOKEN.
+permissions:
+  contents: read
+
+concurrency:
+  group: onetoo-autopilot
+  cancel-in-progress: false
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+
+    # Guard against accidental future push-trigger loops.
+    if: ${{ github.actor != 'onetoo-autopilot-bot' }}
+
+    steps:
+      - name: Checkout (no persisted credentials)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      # NOTE: To minimize third-party surface, we rely on system python.
+      # ubuntu-latest ships with python3.
+      - name: Preflight
+        run: |
+          set -euo pipefail
+          python3 --version
+          git --version
+
+      - name: Run autopilot (generate + validate)
+        env:
+          ONETOO_MODE: "ci"
+          ONETOO_REPO_ROOT: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          python3 tools/autopilot/run.py
+
+      - name: Configure git identity (bot)
+        run: |
+          set -euo pipefail
+          git config user.name  "onetoo-autopilot-bot"
+          git config user.email "autopilot-bot@onetoo.eu"
+
+      - name: Stage allow-listed outputs only
+        run: |
+          set -euo pipefail
+          python3 tools/autopilot/stage_allowlist.py
+
+      - name: Commit if changes
+        run: |
+          set -euo pipefail
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "autopilot: sync registries [autopilot]"
+
+      - name: Push (PAT)
+        env:
+          ONETOO_BOT_TOKEN: ${{ secrets.ONETOO_BOT_TOKEN }}
+        run: |
+          set -euo pipefail
+          set +x
+          if [ -z "${ONETOO_BOT_TOKEN:-}" ]; then
+            echo "Missing secret ONETOO_BOT_TOKEN" >&2
+            exit 1
+          fi
+
+          # Never echo the URL (token must not appear in logs).
+          git remote set-url origin "https://x-access-token:${ONETOO_BOT_TOKEN}@github.com/${{ github.repository }}.git"
+          git push origin HEAD:${{ github.ref_name }}
