@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Generate:
 - public/_deploy.txt  (served marker)
+- public/.well-known/deploy.txt (canonical trust location)
 - public/.well-known/sha256.json (served inventory)
 - dumps/sha256.json (legacy mirror)
 - .well-known/sha256.json (root mirror, for repos that expose it)
+- .well-known/deploy.txt (root mirror for tooling parity)
 
 Design goals:
 - Deterministic ordering
@@ -12,13 +14,13 @@ Design goals:
 """
 
 from __future__ import annotations
+
 import hashlib
 import json
-import os
-from pathlib import Path
-from datetime import datetime, timezone
-import subprocess
 import shutil
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -30,6 +32,7 @@ DUMPS_DIR = REPO_ROOT / "dumps"
 EXCLUDE_DIRS = {".git", ".github", "node_modules", ".wrangler"}
 EXCLUDE_FILES = {".DS_Store"}
 
+
 def git_short_head() -> str:
     try:
         out = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=REPO_ROOT)
@@ -37,8 +40,10 @@ def git_short_head() -> str:
     except Exception:
         return "unknown"
 
+
 def utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 
 def sha256_file(p: Path) -> tuple[str, int]:
     h = hashlib.sha256()
@@ -49,6 +54,7 @@ def sha256_file(p: Path) -> tuple[str, int]:
             size += len(chunk)
     return h.hexdigest(), size
 
+
 def should_exclude(path: Path) -> bool:
     parts = set(path.parts)
     if parts & EXCLUDE_DIRS:
@@ -56,6 +62,7 @@ def should_exclude(path: Path) -> bool:
     if path.name in EXCLUDE_FILES:
         return True
     return False
+
 
 def sync_root_wellknown_into_public() -> None:
     """Mirror root .well-known into public/.well-known so Pages output contains trust-root."""
@@ -70,6 +77,7 @@ def sync_root_wellknown_into_public() -> None:
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
 
+
 def build_inventory_for_public() -> dict:
     items = []
     for f in sorted(PUBLIC_DIR.rglob("*")):
@@ -77,7 +85,6 @@ def build_inventory_for_public() -> dict:
             continue
         if should_exclude(f):
             continue
-        # Served path is relative to PUBLIC_DIR, prefixed with "/"
         rel = f.relative_to(PUBLIC_DIR).as_posix()
         digest, size = sha256_file(f)
         items.append({
@@ -92,27 +99,37 @@ def build_inventory_for_public() -> dict:
         "items": items,
     }
 
+
 def write_json(p: Path, data: dict) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+
 def write_deploy_marker() -> None:
-    PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+    """Write deploy marker into:
+    - public/_deploy.txt (optional served path)
+    - public/.well-known/deploy.txt (canonical trust location)
+    - .well-known/deploy.txt (repo root mirror for tooling parity)
+    """
+    commit = git_short_head()
+    now = utc_now()
+
     content = (
         "DEPLOY-MARKER ROOT\n"
-        f"commit: {git_short_head()}\n"
-        f"time: {utc_now()}\n"
-        "nonce: ci-autogen\n"
+        f"commit: {commit}\n"
+        f"time: {now}\n"
+        f"nonce: cf-pages-{commit}-{now}\n"
     )
-    ().write_text(content, encoding="utf-8")
 
-    # Also publish deploy marker under .well-known (canonical trust location)
+    PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+    (PUBLIC_DIR / "_deploy.txt").write_text(content, encoding="utf-8")
+
     PUBLIC_WELLKNOWN.mkdir(parents=True, exist_ok=True)
     (PUBLIC_WELLKNOWN / "deploy.txt").write_text(content, encoding="utf-8")
 
-    # Mirror to root .well-known for tooling parity
     ROOT_WELLKNOWN.mkdir(parents=True, exist_ok=True)
     (ROOT_WELLKNOWN / "deploy.txt").write_text(content, encoding="utf-8")
+
 
 def main() -> None:
     if not PUBLIC_DIR.exists():
@@ -121,7 +138,7 @@ def main() -> None:
     # Ensure trust-root ends up in published output
     sync_root_wellknown_into_public()
 
-    # Deploy marker (served)
+    # Deploy marker(s)
     write_deploy_marker()
 
     inv = build_inventory_for_public()
@@ -133,9 +150,6 @@ def main() -> None:
     write_json(DUMPS_DIR / "sha256.json", inv)
     write_json(ROOT_WELLKNOWN / "sha256.json", inv)
 
-    # Ensure HTTP /.well-known/sha256.json is always published via Pages output
-    PUBLIC_WELLKNOWN.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT_WELLKNOWN / "sha256.json", PUBLIC_WELLKNOWN / "sha256.json")
 
 if __name__ == "__main__":
     main()

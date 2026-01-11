@@ -40,6 +40,7 @@ jobs:
             ci:\ autogen*) echo "Skip: last commit is CI autogen."; exit 0 ;;
           esac
 
+          # Check working tree changes (cached will be empty until we add)
           if git diff --quiet; then
             echo "No changes."
             exit 0
