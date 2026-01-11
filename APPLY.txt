@@ -1,0 +1,31 @@
+ONETOO Patch (Audit text + re-audit scripts)
+==========================================
+
+What this patch does
+- Adds a cleaned, copy-paste safe audit note (Markdown) that fixes the messy table + wording.
+- Adds local re-audit scripts (bash + PowerShell) to re-check deploy/sha256 consistency.
+
+How to apply
+Option A (recommended): copy files manually
+- Copy the folder `docs/audit/` into your repo (create folders if missing)
+- Copy the folder `scripts/local/` into your repo
+
+Option B: apply the unified diff patch (git apply)
+- From repo root:
+    git apply PATCH_ONETOO_AUDIT_FIX.patch
+
+Then run:
+- Bash (Git Bash / Linux / macOS):
+    bash scripts/local/re-audit.sh
+
+- PowerShell (Windows):
+    powershell -ExecutionPolicy Bypass -File scripts/local/re-audit.ps1
+
+Notes
+- The scripts are read-only: they only curl + grep and print results.
+- They assume these endpoints exist:
+    https://www.onetoo.eu/.well-known/deploy.txt
+    https://www.onetoo.eu/.well-known/sha256.json
+    https://onetoo-eu.pages.dev/.well-known/deploy.txt
+    https://onetoo-eu.pages.dev/.well-known/sha256.json
+- They also check search.onetoo.eu health endpoints (expected to be 404 per current audit).
