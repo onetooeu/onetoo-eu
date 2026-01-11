@@ -1,0 +1,25 @@
+{
+  "bot": {
+    "git_name": "onetoo-autopilot-bot",
+    "git_email": "autopilot-bot@onetoo.eu",
+    "commit_message": "autopilot: sync registries [autopilot]"
+  },
+  "allowlist": [
+    "public/dumps/contrib-accepted.json",
+    "public/dumps/contrib-sandbox.json",
+    "public/dumps/contrib-autopilot.json",
+    "public/dumps/contrib-rejected.json",
+    "public/dumps/autopilot-decisions.json",
+    "public/dumps/ai-search-index.json"
+  ],
+  "canonical_json": {
+    "sort_keys": true,
+    "compact": true,
+    "ensure_ascii": false,
+    "newline": true
+  },
+  "rules": {
+    "sort_items_by": ["id", "domain", "url"],
+    "max_items": 200000
+  }
+}
