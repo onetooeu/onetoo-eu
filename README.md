@@ -278,4 +278,40 @@ Projekt je v stave:
 
 ---
 
+## Quick verification (local + remote)
+
+### Local (regenerate inventory + basic integrity checks)
+
+```bash
+# from repo root
+bash scripts/verify_local.sh
+```
+
+### Remote (verify deployed domain)
+
+```bash
+# example:
+bash scripts/verify_remote.sh https://www.onetoo.eu
+```
+
+This remote check:
+- downloads `/.well-known/minisign.pub` and `sha256.json`
+- verifies `sha256.json.minisig` if present and `minisign` is installed
+- spot-checks a handful of files against the SHA-256 inventory
+
+## Policy reference script
+
+This repo now includes a small **deterministic** reference policy script:
+
+- `scripts/policy.sh` (developer-facing)
+- `/.well-known/policy.sh` (public copy)
+
+If you want it to be part of the cryptographic trust chain, **sign it** with your current maintainer key and publish `/.well-known/policy.sh.minisig` during your signing step.
+
+
+
+## 🎛️ Presentation layer (Neon/Warez)
+
+- Theme: `/themes/warez/`
+- Shared variables: `assets/site.css` → used by `assets/ai-search.css`
 
