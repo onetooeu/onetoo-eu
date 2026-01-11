@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 from datetime import datetime, timezone
@@ -132,8 +133,8 @@ def write_deploy_marker() -> None:
 
 
 def main() -> None:
-    if not PUBLIC_DIR.exists():
-        raise SystemExit("public/ directory not found. Pages output must exist.")
+    # Mini-polish: allow local runs even if public/ didn't exist yet.
+    PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
     # Ensure trust-root ends up in published output
     sync_root_wellknown_into_public()
