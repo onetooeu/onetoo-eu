@@ -20,6 +20,28 @@ jobs:
         with:
           python-version: "3.11"
 
+      # ===============================
+      # DEBUG STEP – zistíme, čo runner
+      # naozaj dostáva z pending API
+      # ===============================
+      - name: DEBUG pending endpoint (show response)
+        env:
+          ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
+          ONETOO_SEARCH_BASE: ${{ secrets.ONETOO_SEARCH_BASE }}
+        run: |
+          echo "DEBUG BASE=$ONETOO_SEARCH_BASE"
+          echo "DEBUG TOKEN SET? $( [ -n "$ONETOO_MAINTAINER_TOKEN" ] && echo yes || echo no )"
+          echo "DEBUG HEADERS + STATUS:"
+          curl -sS -i "$ONETOO_SEARCH_BASE/contrib/v2/pending" \
+            -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" | head -n 80
+          echo "---- BODY ----"
+          curl -sS "$ONETOO_SEARCH_BASE/contrib/v2/pending" \
+            -H "X-ONETOO-MAINTAINER: $ONETOO_MAINTAINER_TOKEN" | head -c 600
+          echo
+
+      # ===============================
+      # AUTOPILOT SYNC
+      # ===============================
       - name: Sync pending → lanes (accept/sandbox/reject)
         env:
           ONETOO_MAINTAINER_TOKEN: ${{ secrets.ONETOO_MAINTAINER_TOKEN }}
@@ -28,6 +50,9 @@ jobs:
         run: |
           python scripts/autopilot_sync_pending.py
 
+      # ===============================
+      # COMMIT & PUSH (ak sa niečo zmenilo)
+      # ===============================
       - name: Commit & push if changed
         run: |
           if git diff --quiet; then
